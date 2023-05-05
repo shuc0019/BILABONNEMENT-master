@@ -16,9 +16,9 @@ public class EmployeeRepository {
     public Employee findByUserAndPassword(String username, String user_password){
        String sql = "SELECT * FROM Employee WHERE username=? AND user_password=?";
         RowMapper rowMapper = new BeanPropertyRowMapper(Employee.class);
-        List<Employee> users = template.query(sql, rowMapper, username, user_password);
-        if (users.size() == 1) {
-            return users.get(0);
+        List<Employee> employees = template.query(sql, rowMapper, username, user_password);
+        if ((employees.size()) == 1) {
+            return employees.get(0);
         } else {
             return null;
         }
