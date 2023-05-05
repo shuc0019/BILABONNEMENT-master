@@ -46,13 +46,23 @@ public class HomeController {
         Employee employee = employeeRepository.findByUserAndPassword(username, user_password);
         if (employee != null){
             session.setAttribute("username", username);
-            return "redirect:/";
+            return "redirect:/home";
         } else {
             model.addAttribute("invalid", "Din login er forkert");
             return "login";
 
         }
     }
+    @GetMapping("/car")
+    public String car() {
+        return "car";
+    }
+    @GetMapping("/report")
+    public String damageReport() {
+        return "report";
+    }
+
+
 
 
 
