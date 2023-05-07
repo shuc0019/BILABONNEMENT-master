@@ -19,18 +19,18 @@
         <th>Price</th>
         <th>Flow</th>
     </tr>
-    <tr th:each="car : ${cars}">
-        <td th:text="${car.vehicleNumber}"></td>
-        <td th:text="${car.frameNumber}"></td>
-        <td th:text="${car.brand}"></td>
-        <td th:text="${car.model}"></td>
-        <td th:text="${car.make}"></td>
-        <td th:text="${car.color}"></td>
-        <td th:text="${car.fuelType}"></td>
-        <td th:text="${car.gearType}"></td>
-        <td th:text="${car.motor}"></td>
-        <td th:text="${car.price}"></td>
-        <td th:text="${car.flow}"></td>
+    <tr th:each="cars : ${car}">
+        <td th:text="${cars.vehicle_number}"></td>
+        <td th:text="${cars.frame_number}"></td>
+        <td th:text="${cars.brand}"></td>
+        <td th:text="${cars.model}"></td>
+        <td th:text="${cars.make}"></td>
+        <td th:text="${cars.color}"></td>
+        <td th:text="${cars.fuel_type}"></td>
+        <td th:text="${cars.gear_type}"></td>
+        <td th:text="${cars.motor}"></td>
+        <td th:text="${cars.price}"></td>
+        <td th:text="${cars.flow}"></td>
     </tr>
 </table>
 </body>

@@ -60,6 +60,11 @@ public class HomeController {
         return "car";
     }
 
+
+
+
+
+
   /*  @GetMapping("/car")
     public String car() {
         return "car";
@@ -68,10 +73,14 @@ public class HomeController {
 
    */
 
+
+
     @GetMapping("/report")
     public String damageReport() {
         return "report";
     }
+
+
     @GetMapping ("/contract")
     public String leasingContract(){
         return "contract";
