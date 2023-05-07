@@ -1,25 +1,24 @@
 package com.example.bilabonnementen.controller;
 
+import com.example.bilabonnementen.model.Car;
 import com.example.bilabonnementen.model.Employee;
+import com.example.bilabonnementen.repository.CarRepo;
 import com.example.bilabonnementen.repository.EmployeeRepository;
-import com.example.bilabonnementen.service.EmployeeService;
+import com.example.bilabonnementen.service.CarService;
+import com.example.bilabonnementen.service.Service;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.management.relation.Role;
+import java.util.List;
 
 @Controller
 public class HomeController {
-
-
+    @Autowired
+    CarService carService;
     @Autowired
     EmployeeRepository employeeRepository;
 
@@ -53,14 +52,37 @@ public class HomeController {
 
         }
     }
+
     @GetMapping("/car")
+    public String car(Model model) {
+        List<Car> cars = carService.fetchAll();
+        model.addAttribute("car", cars);
+        return "car";
+    }
+
+  /*  @GetMapping("/car")
     public String car() {
         return "car";
     }
+
+
+   */
+
     @GetMapping("/report")
     public String damageReport() {
         return "report";
     }
+    @GetMapping ("/contract")
+    public String leasingContract(){
+        return "contract";
+    }
+
+    @GetMapping ("/employee")
+    public String employee(){
+        return "employee";
+    }
+
+
 
 
 
