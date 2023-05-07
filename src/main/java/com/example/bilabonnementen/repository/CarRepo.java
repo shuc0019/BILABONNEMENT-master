@@ -21,6 +21,12 @@ public class CarRepo {
     }
 
 
+    public List<Car> fetchAvailable(int i) {
+        String sql = "SELECT * FROM car WHERE flow = 1";
+        RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        return template.query(sql, rowMapper);
+    }
+
 
 
 }

@@ -17,8 +17,7 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    @Autowired
-    CarService carService;
+
     @Autowired
     EmployeeRepository employeeRepository;
 
@@ -51,13 +50,6 @@ public class HomeController {
             return "login";
 
         }
-    }
-
-    @GetMapping("/car")
-    public String car(Model model) {
-        List<Car> cars = carService.fetchAll();
-        model.addAttribute("car", cars);
-        return "car";
     }
 
 
