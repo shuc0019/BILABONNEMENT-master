@@ -7,19 +7,28 @@ public class Car {
     private String model;
     private int make;
     private String color;
+
+    private  String fuel_type;
+
+    private String gear_type;
+
+    private String moter;
     private double price;
     private int flow;
 
     public Car() {
     }
 
-    public Car(int vehicle_number, String frame_number, String brand, String model, int make, String color, double price, int flow) {
+    public Car(int vehicle_number, String frame_number, String brand, String model, int make, String color, String fuel_type, String gear_type, String moter, double price, int flow) {
         this.vehicle_number = vehicle_number;
         this.frame_number = frame_number;
         this.brand = brand;
         this.model = model;
         this.make = make;
         this.color = color;
+        this.fuel_type = fuel_type;
+        this.gear_type = gear_type;
+        this.moter = moter;
         this.price = price;
         this.flow = flow;
     }
@@ -70,6 +79,30 @@ public class Car {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getFuel_type() {
+        return fuel_type;
+    }
+
+    public void setFuel_type(String fuel_type) {
+        this.fuel_type = fuel_type;
+    }
+
+    public String getGear_type() {
+        return gear_type;
+    }
+
+    public void setGear_type(String gear_type) {
+        this.gear_type = gear_type;
+    }
+
+    public String getMoter() {
+        return moter;
+    }
+
+    public void setMoter(String moter) {
+        this.moter = moter;
     }
 
     public double getPrice() {
