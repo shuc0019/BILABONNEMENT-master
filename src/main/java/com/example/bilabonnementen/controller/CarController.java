@@ -16,7 +16,7 @@ public class CarController {
         CarService carService;
 
 
-
+//Se alle biler
     @GetMapping("/seallebiler")
     public String car(Model model) {
         List<Car> cars = carService.fetchAll();
@@ -24,13 +24,14 @@ public class CarController {
         return "seallebiler";
     }
 
-        @GetMapping("car")
-        public String getAvailableCars(Model model) {
-            List<Car> availableCars = carService.fetchAvailable();
-            model.addAttribute("car", availableCars);
-            return "car";
-        }
+    //Se alle biler der er ledig
 
+    @GetMapping("/ledigbiler")
+    public String getAvailableCars(Model model) {
+        List <Car> availableCars = carService.fetchAvailable();
+        model.addAttribute("available", availableCars);
+        return "ledigbiler";
+    }
 
 
 

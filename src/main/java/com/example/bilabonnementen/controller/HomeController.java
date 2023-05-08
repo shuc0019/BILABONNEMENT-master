@@ -73,12 +73,12 @@ public class HomeController {
 
 
     // rapportering og overvågning
-    @GetMapping("/seallebile")
+    @GetMapping("/seallebil")
     public String allCars() {
         return "seallebiler";
     }
 
-    @GetMapping("/ledigbiler")
+    @GetMapping("/ledigbil")
     public String availaibleCars() {
         return "ledigbiler";
     }
@@ -89,7 +89,7 @@ public class HomeController {
     }
 
     //personale
-    @GetMapping("/personale")
+    @GetMapping("/personal")
     public String personale() {
         return "personale";
     }

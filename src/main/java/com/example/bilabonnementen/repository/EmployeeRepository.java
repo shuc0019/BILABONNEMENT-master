@@ -13,6 +13,8 @@ import java.util.List;
 public class EmployeeRepository {
     @Autowired
     JdbcTemplate template;
+
+    //Find employee hvor username er ? og user_password er ?... Vi bruger den login
     public Employee findByUserAndPassword(String username, String user_password){
        String sql = "SELECT * FROM Employee WHERE username=? AND user_password=?";
         RowMapper rowMapper = new BeanPropertyRowMapper(Employee.class);
@@ -23,6 +25,12 @@ public class EmployeeRepository {
             return null;
         }
 
+    }
+    //Hent alle employees (users) ... Til visning af alle users
+    public List<Employee>fetchAll(){
+        String sql = "SELECT * FROM Employee";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        return template.query(sql,rowMapper);
     }
 
 }
