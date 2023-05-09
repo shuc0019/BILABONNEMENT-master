@@ -11,6 +11,16 @@
     text-align: center;
 }
 
+.create.employee button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
 .title {
 }
 

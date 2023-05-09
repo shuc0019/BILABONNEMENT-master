@@ -52,7 +52,7 @@ public class HomeController {
     //Dataregistrering
     @GetMapping("/selegekontrakt")
     public String allContracts() {
-        return "selegekontrakt";
+        return "selejekontrakt";
     }
 
     @GetMapping("/opretlegekontrakt")
