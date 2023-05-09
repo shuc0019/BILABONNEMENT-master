@@ -12,14 +12,14 @@ public class Car {
 
     private String gear_type;
 
-    private String moter;
+    private String motor;
     private double price;
     private int flow;
 
     public Car() {
     }
 
-    public Car(int vehicle_number, String frame_number, String brand, String model, int make, String color, String fuel_type, String gear_type, String moter, double price, int flow) {
+    public Car(int vehicle_number, String frame_number, String brand, String model, int make, String color, String fuel_type, String gear_type, String motor, double price, int flow) {
         this.vehicle_number = vehicle_number;
         this.frame_number = frame_number;
         this.brand = brand;
@@ -28,7 +28,7 @@ public class Car {
         this.color = color;
         this.fuel_type = fuel_type;
         this.gear_type = gear_type;
-        this.moter = moter;
+        this.motor = motor;
         this.price = price;
         this.flow = flow;
     }
@@ -97,12 +97,12 @@ public class Car {
         this.gear_type = gear_type;
     }
 
-    public String getMoter() {
-        return moter;
+    public String getMotor() {
+        return motor;
     }
 
-    public void setMoter(String moter) {
-        this.moter = moter;
+    public void setMoter(String motor) {
+        this.motor = moter;
     }
 
     public double getPrice() {
