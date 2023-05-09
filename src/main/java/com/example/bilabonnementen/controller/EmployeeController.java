@@ -17,16 +17,9 @@ public class EmployeeController {
     @GetMapping("/personale")
     public String getAllEmployees(Model model){
         List <Employee> employees = employeeService.fetchAllEmployees();
-        System.out.println(employees.size());
         model.addAttribute("employees", employees);
         return "personale";
     }
-    @GetMapping("/test")
-    public String testAllEmployees(Model model){
-        List <Employee> employees = employeeService.fetchAllEmployees();
-        System.out.println(employees.size());
-        model.addAttribute("employees", employees);
-        return "test";
-    }
+
 
 }
