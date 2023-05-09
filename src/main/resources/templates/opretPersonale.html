@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <h1>Opret Personale</h1>
+    <form method="post" action="/login">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="user_password" required>
+
+        <button type="submit">Opret</button>
+    </form>
+    <p th:text="${invalid}"></p>
+
+</div>
+</body>
+</html>

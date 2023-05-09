@@ -15,8 +15,8 @@ public class EmployeeRepository {
     JdbcTemplate template;
 
     //Find employee hvor username er ? og user_password er ?... Vi bruger den login
-    public Employee findByUserAndPassword(String username, String user_password){
-       String sql = "SELECT * FROM Employee WHERE username=? AND user_password=?";
+    public Employee findByUserAndPassword(String username, String user_password) {
+        String sql = "SELECT * FROM Employee WHERE username=? AND user_password=?";
         RowMapper rowMapper = new BeanPropertyRowMapper(Employee.class);
         List<Employee> employees = template.query(sql, rowMapper, username, user_password);
         if ((employees.size()) == 1) {
@@ -26,11 +26,25 @@ public class EmployeeRepository {
         }
 
     }
+
     //Hent alle employees (users) ... Til visning af alle users
-    public List<Employee>fetchAll(){
+    public List<Employee> fetchAll() {
         String sql = "SELECT * FROM Employee";
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
-        return template.query(sql,rowMapper);
+        return template.query(sql, rowMapper);
     }
 
+    //Add user
+    public void addEmployee(Employee employee) {
+        String sql = "INSERT INTO Employee (username, user_password, full_name, email, phone, is_active, is_admin) VALUES (?,?,?,?,?,?,?)";
+        template.update(sql, employee.getUsername(), employee.getUser_password(), employee.getFull_name(), employee.getEmail(), employee.getPhone(), employee.getIs_active(), employee.getIs_admin());
+
+    }
+
+    public boolean doesTheUserExsit(String username){
+        String sql = "SELECT * FROM Employee WHERE Username=?";
+        RowMapper<Employee>rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        List<Employee>employees = template.query(sql,rowMapper,username);
+        return !employees.isEmpty();
+    }
 }
