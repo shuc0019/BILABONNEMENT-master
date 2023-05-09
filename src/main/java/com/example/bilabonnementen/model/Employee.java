@@ -6,13 +6,13 @@ public class Employee {
     private String full_name;
     private String email;
     private String phone;
-    private boolean is_active;
-    private boolean is_admin;
+    private int is_active;
+    private int is_admin;
 
     public Employee() {
     }
 
-    public Employee(String username, String user_password, String full_name, String email, String phone, boolean is_active, boolean is_admin) {
+    public Employee(String username, String user_password, String full_name, String email, String phone, int is_active, int is_admin) {
         this.username = username;
         this.user_password = user_password;
         this.full_name = full_name;
@@ -62,19 +62,20 @@ public class Employee {
         this.phone = phone;
     }
 
-    public boolean isIs_active() {
+    public int getIs_active() {
         return is_active;
     }
 
-    public void setIs_active(boolean is_active) {
+    public void setIs_active(int is_active) {
         this.is_active = is_active;
     }
 
-    public boolean isIs_admin(boolean b) {
+    public int getIs_admin() {
         return is_admin;
     }
 
-    public void setIs_admin(boolean is_admin) {
+    public void setIs_admin(int is_admin) {
         this.is_admin = is_admin;
     }
 }
+
