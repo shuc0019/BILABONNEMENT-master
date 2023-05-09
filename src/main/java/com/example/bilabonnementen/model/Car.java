@@ -102,7 +102,7 @@ public class Car {
     }
 
     public void setMoter(String motor) {
-        this.motor = moter;
+        this.motor = motor;
     }
 
     public double getPrice() {
