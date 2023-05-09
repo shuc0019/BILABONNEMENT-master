@@ -52,13 +52,9 @@ public class HomeController {
     //Dataregistrering
     @GetMapping("/selegekontrakt")
     public String allContracts() {
-        return "selegekontrakt";
+        return "selejekontrakt";
     }
 
-    @GetMapping("/opretlegekontrakt")
-    public String createContracts() {
-        return "opretlegekontrakt";
-    }
 
     //skade og udbedring
 
@@ -66,10 +62,7 @@ public class HomeController {
     public String createDamagereport() {
         return "opretskaderapport";
     }
-    @GetMapping("/skaderapport")
-    public String alldamagereports(){
-        return "skaderapport";
-    }
+
 
 
     // rapportering og overvågnings

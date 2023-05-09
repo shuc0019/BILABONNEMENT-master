@@ -22,7 +22,7 @@ public class CarRepo {
 
 
         public List<Car> fetchAvailable() {
-            String sql = "SELECT * FROM Car WHERE flow = 1";
+            String sql = "SELECT * FROM Car WHERE flow = 0";
             RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
             return template.query(sql, rowMapper);
         }
@@ -37,6 +37,28 @@ public class CarRepo {
 
 
         }
+
+
+
+        public Car findAvailableCarByVehicleNum (int vehicle_number, int flow){
+
+            String sql = "SELECT * FROM car WHERE vehicle_number = ? AND flow = 0";
+            RowMapper<Car >rowMapper=new BeanPropertyRowMapper<>(Car.class);
+            Car c = template.queryForObject(sql,rowMapper,vehicle_number, flow);
+
+        return c;
+        }
+
+        // TODO add search button
+
+        // TODO delete car (Admin feature)
+
+        // TODO update feature?
+
+
+
+
+
 
 
 
