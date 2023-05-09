@@ -11,6 +11,7 @@ public class Car {
     private  String fuel_type;
 
     private String gear_type;
+    private int odometer;
 
     private String motor;
     private double price;
@@ -19,7 +20,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(int vehicle_number, String frame_number, String brand, String model, int make, String color, String fuel_type, String gear_type, String motor, double price, int flow) {
+    public Car(int vehicle_number, String frame_number, String brand, String model, int make, String color, int odometer,String fuel_type, String gear_type, String motor, double price, int flow) {
         this.vehicle_number = vehicle_number;
         this.frame_number = frame_number;
         this.brand = brand;
@@ -31,6 +32,14 @@ public class Car {
         this.motor = motor;
         this.price = price;
         this.flow = flow;
+        this.odometer = odometer;
+    }
+
+    public int getOdometer(){
+        return odometer;
+    }
+    public void setOdometer(int odometer){
+        this.odometer = odometer;
     }
 
     public int getVehicle_number() {

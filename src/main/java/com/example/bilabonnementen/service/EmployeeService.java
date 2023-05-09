@@ -15,4 +15,10 @@ public class EmployeeService {
 public List <Employee> fetchAllEmployees(){
     return employeeRepository.fetchAll();
 }
+
+public void createEmployee(Employee employee){
+     employeeRepository.addEmployee(employee);
+}
+
+
 }
