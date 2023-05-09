@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 @Controller
@@ -31,6 +32,15 @@ public class CarController {
         List <Car> availableCars = carService.fetchAvailable();
         model.addAttribute("available", availableCars);
         return "ledigbiler";
+    }
+    @GetMapping("/tilføjBiler")
+    public String addCar() {
+        return "tilføjBiler";
+    }
+    @PostMapping("/createNew")
+    public String addCartoList( Car car) {
+        carService.addCar(car);
+        return "redirect:/seallebiler";
     }
 
 

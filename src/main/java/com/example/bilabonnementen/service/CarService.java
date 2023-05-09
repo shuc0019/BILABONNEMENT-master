@@ -19,4 +19,7 @@ public class CarService {
     public List<Car>fetchAvailable(){
         return carRepo.fetchAvailable();
     }
+    public void addCar( Car car){
+        carRepo.addCar(car);
+    }
 }

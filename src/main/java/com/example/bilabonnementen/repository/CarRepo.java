@@ -27,6 +27,17 @@ public class CarRepo {
             return template.query(sql, rowMapper);
         }
 
+        public void addCar(Car c){
+            String sql = "INSERT INTO car (vehicle_number,frame_number, " +
+                    "brand, model, make, color, price, flow, odometer, fuel_type, motor, gear_type)" +
+                    " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+
+            template.update(sql,c.getVehicle_number(), c.getFrame_number(), c.getBrand(), c.getModel(), c.getMake(),
+            c.getColor(), c.getPrice(), c.getFlow(), c.getOdometer(), c.getFuel_type(), c.getMotor(), c.getGear_type());
+
+
+        }
+
 
 
 
