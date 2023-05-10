@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lejekontrakt</title>
+    <link rel="stylesheet" href="personale.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+
+        <div class="dashboard">
+            <h1 class="title">BA</h1>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Dataregistrering</button>
+                <div class="dropdown">
+                    <a href="opretlegekontrakt">Opret lejekontrakt</a>
+                    <a href="selegekontrakt">Se lejekontrakt</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Skade og udbedring</button>
+                <div class="dropdown">
+                    <a href="opretskaderapport">Opret skade rapport</a>
+                    <a href="skaderapport">Se skade rapport</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Rapportering og overvågning</button>
+                <div class="dropdown">
+                    <a href="seallebiler">Se alle biler</a>
+                    <a href="ledigbiler">Se ledige biler</a>
+                    <a href="sammenlagtpris">Sammenlagt pris på nuværende udlejede biler</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Users</button>
+                <div class="dropdown">
+                    <a href="personale">Personale</a>
+                </div>
+            </div>
+        </div>
+
+        <form method="post" action="/login">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="user_password" required>
+
+            <button type="submit">Opret</button>
+        </form>
+        <p th:text="${invalid}"></p>
+
+        <h1> Opret lejekontrakt</h1>
+
+
+<div class="create customer">
+
+    <button>
+        Opret ny kunde
+    </button>
+
+</div>
+</body>
+</html>

@@ -57,7 +57,7 @@ public class HomeController {
 
     @GetMapping("/opretlegekontrakt")
     public String createContracts() {
-        return "opretlegekontrakt";
+        return "opretlejekontrakt";
     }
 
     //skade og udbedring
