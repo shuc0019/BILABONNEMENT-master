@@ -34,6 +34,11 @@ public class EmployeeController {
         return "test";
     }
 
+    @GetMapping("/opretPersonale")
+    public String opretPersonale() {
+        return "opretPersonale";
+    }
+
     @PostMapping("/opretPersonale")
     public String opretPersonale(@ModelAttribute Employee employee, Model model, String confirm_password) {
         if (employeeRepository.doesTheUserExsit(employee.getUsername())) {
@@ -49,7 +54,7 @@ public class EmployeeController {
                 return "personale";
             }
 
-            //hejwfhg
+
         }
     }
 }
