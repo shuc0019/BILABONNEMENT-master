@@ -3,8 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Personale</title>
+
+    <link rel="stylesheet" href="personale.css">
+
 </head>
 <body>
+
+<div class="container">
+    <div class="header">
+
+        <div class="dashboard">
+            <h1 class="title">BA</h1>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Dataregistrering</button>
+                <div class="dropdown">
+                    <a href="opretlegekontrakt">Opret lejekontrakt</a>
+                    <a href="selegekontrakt">Se lejekontrakt</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Skade og udbedring</button>
+                <div class="dropdown">
+                    <a href="opretskaderapport">Opret skade rapport</a>
+                    <a href="skaderapport">Se skade rapport</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Rapportering og overvågning</button>
+                <div class="dropdown">
+                    <a href="seallebiler">Se alle biler</a>
+                    <a href="ledigbiler">Se ledige biler</a>
+                    <a href="sammenlagtpris">Sammenlagt pris på nuværende udlejede biler</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Users</button>
+                <div class="dropdown">
+                    <a href="personale">Personale</a>
+                </div>
+            </div>
+        </div>
+
 <div class="container">
     <h1>Opret Personale</h1>
     <form method="post" action="/login">
