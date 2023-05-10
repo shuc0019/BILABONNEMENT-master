@@ -4,6 +4,7 @@ import com.example.bilabonnementen.model.Customer;
 import com.example.bilabonnementen.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -19,8 +20,9 @@ public class CustomerController {
         return "opretlejekontrakt";
     }
     @PostMapping("/opretenkunde")
-    public String createCustomer (Customer c){
+    public String createCustomer (Customer c, Model model){
         customerService.createCustomer(c);
+        model.addAttribute("kunde", "Kunde tilføjet");
         return "opretlejekontrakt";
     }
 
