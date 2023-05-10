@@ -44,19 +44,35 @@
             </div>
         </div>
 
-<div class="container">
+
     <h1>Opret Personale</h1>
-    <form method="post" action="/login">
+    <form method="post" action="/opretPersonaler">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="user_password" required>
+        <label for="user_password">User password:</label>
+        <input type="text" id="user_password" name="user_password" required>
+
+        <label for="full_name">Full name:</label>
+        <input type="text" id="full_name" name="full_name" required>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required>
+
+
+        <input type="hidden" id="is_active" name="is_active" value=1>
+
+
+        <input type="hidden" id="is_admin" name="is_admin" value=0>
 
         <button type="submit">Opret</button>
     </form>
     <p th:text="${invalid}"></p>
 
+    </div>
 </div>
 </body>
 </html>
