@@ -17,7 +17,6 @@ public class CustomerRepo {
 
         template.update(sql, c.getCustomer_id(), c.getFull_name(), c.getEmail(), c.getPhone(), c.getAddress(), c.getCpr());
 
-
     }
 
     //TODO read metode
