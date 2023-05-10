@@ -28,11 +28,6 @@ public class CustomerRepo {
         template.update(sql, customer.getFull_name(), customer.getEmail(), customer.getPhone(), customer.getAddress(), customer.getCpr(), customer.getCustomer_id());
     }
 
-    //TODO DELETE metode
-    public void deleteCustomer(int customerId) {
-        String sql = "DELETE FROM customer WHERE customer_id = ?";
-        template.update(sql, customerId);
-    }
 
 
 }
