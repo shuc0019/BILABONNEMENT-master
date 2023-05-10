@@ -21,8 +21,18 @@ public class CustomerRepo {
 
     //TODO read metode
 
+
     //TODO UPDATE metode (ændringer i kundens oplysninger..)
+    public void updateCustomer(Customer customer) {
+        String sql = "UPDATE customer SET full_name = ?, email = ?, phone = ?, address = ?, cpr = ? WHERE customer_id = ?";
+        template.update(sql, customer.getFull_name(), customer.getEmail(), customer.getPhone(), customer.getAddress(), customer.getCpr(), customer.getCustomer_id());
+    }
 
     //TODO DELETE metode
+    public void deleteCustomer(int customerId) {
+        String sql = "DELETE FROM customer WHERE customer_id = ?";
+        template.update(sql, customerId);
+    }
+
 
 }

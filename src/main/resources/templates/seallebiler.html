@@ -56,9 +56,10 @@
         <button id="search-button">Search</button>
     </div>
 
+
     <script>
-        document.getElementById("search-button").addEventListener("click", function() {
-            var searchInput = document.getElementById("search-input").value.toLowerCase();
+        document.getElementById("search-input").addEventListener("input", function() {
+            var searchInput = this.value.toLowerCase();
             var tableRows = document.getElementsByTagName("tr");
 
             for (var i = 1; i < tableRows.length; i++) {
@@ -77,6 +78,9 @@
             }
         });
     </script>
+
+
+
 
     <table>
     <thead>
