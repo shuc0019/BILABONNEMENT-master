@@ -55,10 +55,6 @@ public class HomeController {
         return "selejekontrakt";
     }
 
-    @GetMapping("/opretlegekontrakt")
-    public String createContracts() {
-        return "opretlejekontrakt";
-    }
 
     //skade og udbedring
 
@@ -66,10 +62,7 @@ public class HomeController {
     public String createDamagereport() {
         return "opretskaderapport";
     }
-    @GetMapping("/skaderapport")
-    public String alldamagereports(){
-        return "skaderapport";
-    }
+
 
 
     // rapportering og overvågnings
