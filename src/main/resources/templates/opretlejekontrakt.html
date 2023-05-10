@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <title>Lejekontrakt</title>
     <link rel="stylesheet" href="personale.css">
 </head>
@@ -62,5 +63,42 @@
     </button>
 
 </div>
+=======
+    <title>Title</title>
+</head>
+<body>
+
+<h1> Oprettelsen af en lejekontrakt </h1>
+
+
+<h2> Opret en kunde</h2>
+
+<form method="post" action="/opretenkunde">
+
+
+
+
+    <label for="fullname">fullname:</label>
+    <input type="text" id="fullname" name="full_name" required><br><br>
+
+    <label for="email">email:</label>
+    <input type="text" id="email" name="email" required><br><br>
+
+    <label for="phone">phone:</label>
+    <input type="text" id="phone" name="phone" required><br><br>
+
+    <label for="address">address:</label>
+    <input type="text" id="address" name="address" required><br><br>
+
+    <label for="cpr">cpr:</label>
+    <input type="text" id="cpr" name="cpr" required><br><br>
+
+    <button type="submit">Opret kunde</button>
+</form>
+
+
+<p th:text="${kunde}"></p>
+
+>>>>>>> origin/master
 </body>
 </html>

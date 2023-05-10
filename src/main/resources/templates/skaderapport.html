@@ -3,8 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="cars.css">
 </head>
 <body>
-<h1>damage report</h1>
+<div class="container">
+    <div class="header">
+
+        <div class="dashboard">
+            <h1 class="title">BA</h1>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Dataregistrering</button>
+                <div class="dropdown">
+                    <a href="opretlegekontrakt">Opret lejelkontrakt</a>
+                    <a href="selegekontrakt">Se lejekontrakt</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Skade og udbedring</button>
+                <div class="dropdown">
+                    <a href="opretskaderapport">Opret skade rapport</a>
+                    <a href="skaderapport">Se priser på skader</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Rapportering og overvågning</button>
+                <div class="dropdown">
+                    <a href="seallebiler">Se alle biler</a>
+                    <a href="ledigbiler">se ledige biler</a>
+                    <a href="sammenlagtpris">Sammenlagt pris på nuværende udlejede biler</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Users</button>
+                <div class="dropdown">
+                    <a href="personale">Personale</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<h1>prisliste på skader</h1>
+<table>
+    <thead>
+    <tr>
+        <th>category_id</th>
+        <th>damage_name</th>
+        <th>price</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through the cars and populate the table rows -->
+    <tr th:each="damages:${category}">
+        <td th:text="${damages.category_id}"></td>
+        <td th:text="${damages.damage_name}"></td>
+        <td th:text="${damages.price}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
 </body>
 </html>

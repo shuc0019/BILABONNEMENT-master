@@ -15,5 +15,4 @@ public class CustomerService {
         customerRepo.createCustomer(customer);
     }
 
-    //TODO lav controller klassen
 }

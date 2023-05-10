@@ -48,6 +48,10 @@ public class CarRepo {
 
         return c;
         }
+    public Boolean deleteCar(int vehicle_number){
+        String sql = "DELETE FROM car WHERE vehicle_number = ?";
+        return template.update(sql,vehicle_number) > 0;
+    }
 
         // TODO add search button
 

@@ -23,7 +23,7 @@
             <button class="dashboard-button">Skade og udbedring</button>
             <div class="dropdown">
                 <a href="opretskaderapport">Opret skade rapport</a>
-                <a href="skaderapport">Se skade rapport</a>
+                <a href="skaderapport">Se priser på skader</a>
             </div>
         </div>
         <div class="dashboard-item">
@@ -82,7 +82,12 @@
         <td th:text="${car.price}"></td>
         <td th:text="${car.odometer}"></td>
         <td th:text="${car.flow}"></td>
+        <td> <a th:href="@{'/deleteOne/'+${car.vehicle_number}}">
+            <button class="btn-deleteOne" id="btn-deleteOne">Slet car</button>
+        </a></td>
+
     </tr>
+
     </tbody>
 </table>
 </div>

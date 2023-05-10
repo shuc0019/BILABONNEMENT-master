@@ -1,11 +1,12 @@
 package com.example.bilabonnementen.controller;
 
 import com.example.bilabonnementen.model.Customer;
-import com.example.bilabonnementen.repository.CustomerRepo;
 import com.example.bilabonnementen.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CustomerController {
@@ -14,9 +15,15 @@ public class CustomerController {
 
 
     @GetMapping("/opretlegekontrakt")
-    public String createCustomer (Customer c){
+    public String lejekontrakt (Customer c){
 
-        return "index";
+        return "opretlejekontrakt";
+    }
+    @PostMapping("/opretenkunde")
+    public String createCustomer (Customer c, Model model){
+        customerService.createCustomer(c);
+        model.addAttribute("kunde", "Kunde tilføjet");
+        return "opretlejekontrakt";
     }
 
     //TODO lav færdig imorgen
