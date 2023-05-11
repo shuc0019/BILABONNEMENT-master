@@ -40,6 +40,7 @@
                 <a href="personale">Personale</a>
             </div>
         </div>
+
     </div>
 
 </div>
@@ -96,6 +97,7 @@
         <th>Pris</th>
         <th>Odometer</th>
         <th>Flow</th>
+
     </tr>
     </thead>
     <tbody>
@@ -113,17 +115,13 @@
         <td th:text="${car.price}"></td>
         <td th:text="${car.odometer}"></td>
         <td th:text="${car.flow}"></td>
-        <td>
-            <a href="opdaterBil.html">
-                <button>
-                    Opdater
-                </button>
-            </a>
-
-        </td>
         <td>  <a th:href="@{'/deleteOne/'+${car.vehicle_number}}">
             <button class="btn-deleteOne" id="btn-deleteOne">Slet bil</button>
         </a></td>
+        <td>
+            <a href="/opdaterBil"><button class="btn-update">Opdater bil</button>
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
