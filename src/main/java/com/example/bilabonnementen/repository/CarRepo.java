@@ -34,31 +34,33 @@ public class CarRepo {
 
             template.update(sql,c.getVehicle_number(), c.getFrame_number(), c.getBrand(), c.getModel(), c.getMake(),
             c.getColor(), c.getPrice(), c.getFlow(), c.getOdometer(), c.getFuel_type(), c.getMotor(), c.getGear_type());
-
-
         }
-
-
 
         public Car findAvailableCarByVehicleNum (int vehicle_number, int flow){
 
             String sql = "SELECT * FROM car WHERE vehicle_number = ? AND flow = 0";
             RowMapper<Car >rowMapper=new BeanPropertyRowMapper<>(Car.class);
             Car c = template.queryForObject(sql,rowMapper,vehicle_number, flow);
-
-        return c;
+            return c;
         }
-    public Boolean deleteCar(int vehicle_number){
+
+       public Boolean deleteCar(int vehicle_number){
         String sql = "DELETE FROM car WHERE vehicle_number = ?";
         return template.update(sql,vehicle_number) > 0;
-    }
-
-        // TODO add search button
+        }
 
         // TODO delete car (Admin feature)
+        public void deleteCar(String vehicleNumber) {
+            String sql = "DELETE FROM car WHERE vehicle_number = ?";
+            template.update(sql, vehicleNumber);
+        }
+
 
         // TODO update feature?
-
+        public void updateCar(Car c) {
+        String sql = "UPDATE car SET frame_number = ?, brand = ?, model = ?, make = ?, color = ?, price = ?, flow = ?, odometer = ?, fuel_type = ?, motor = ?, gear_type = ? WHERE vehicle_number = ?";
+        template.update(sql, c.getFrame_number(), c.getBrand(), c.getModel(), c.getMake(), c.getColor(), c.getPrice(), c.getFlow(), c.getOdometer(), c.getFuel_type(), c.getMotor(), c.getGear_type(), c.getVehicle_number());
+         }
 
 
 

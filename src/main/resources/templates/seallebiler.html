@@ -113,6 +113,9 @@
         <td th:text="${car.price}"></td>
         <td th:text="${car.odometer}"></td>
         <td th:text="${car.flow}"></td>
+        <td>  <a th:href="@{'/deleteOne/'+${car.vehicle_number}}">
+            <button class="btn-deleteOne" id="btn-deleteOne">Delete Car hashtag scucabe</button>
+        </a></td>
     </tr>
     </tbody>
 </table>

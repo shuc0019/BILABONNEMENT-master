@@ -21,6 +21,9 @@ public class CustomerRepo {
 
     //TODO read metode
 
+    //TODO DELETE metode
+
+
 
     //TODO UPDATE metode (ændringer i kundens oplysninger..)
     public void updateCustomer(Customer customer) {
