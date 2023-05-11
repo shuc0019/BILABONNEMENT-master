@@ -53,7 +53,10 @@ public class CarController {
         }
     }
 
-
+    @GetMapping("/opdaterBil")
+    public String updateCar() {
+        return "opdaterBil";
+    }
 
 
 
