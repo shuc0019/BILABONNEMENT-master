@@ -17,8 +17,8 @@ body {
 }
 
 .header {
-    background-color: darkblue;
-    color: #fff;
+    background-color: white;
+    color: black;
     padding: 20px;
     text-align: center;
 }
@@ -44,8 +44,8 @@ body {
 .dashboard-button {
     padding: 20px 40px;
     font-size: 18px;
-    background-color: darkblue ;
-    color: #fff;
+    background-color: white ;
+    color: black;
     border: none;
     cursor: pointer;
 }
