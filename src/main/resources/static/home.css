@@ -7,6 +7,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-image: url("images/Hero.jpg");
 }
 
 .container {
@@ -43,7 +44,7 @@ body {
 .dashboard-button {
     padding: 20px 40px;
     font-size: 18px;
-    background-color:darkblue ;
+    background-color: darkblue ;
     color: #fff;
     border: none;
     cursor: pointer;
