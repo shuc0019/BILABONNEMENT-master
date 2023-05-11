@@ -26,5 +26,9 @@ public class CarService {
         return carRepo.deleteCar(id);
     }
 
+  public void updateCar(Car car){
+         carRepo.updateCar( car);
+  }
+
 
 }

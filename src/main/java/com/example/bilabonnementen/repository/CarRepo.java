@@ -62,11 +62,4 @@ public class CarRepo {
         template.update(sql, c.getFrame_number(), c.getBrand(), c.getModel(), c.getMake(), c.getColor(), c.getPrice(), c.getFlow(), c.getOdometer(), c.getFuel_type(), c.getMotor(), c.getGear_type(), c.getVehicle_number());
          }
 
-
-
-
-
-
-
-
     }

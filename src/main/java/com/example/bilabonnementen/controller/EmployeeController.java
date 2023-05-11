@@ -38,27 +38,7 @@ public class EmployeeController {
     public String opretPersonale() {
         return "opretPersonale";
     }
-/*
-    @PostMapping("/opretPersonale")
-    public String opretPersonale(@ModelAttribute Employee employee, Model model, String confirm_password) {
-        if (employeeRepository.doesTheUserExsit(employee.getUsername())) {
-            model.addAttribute("forkert", "Brugernavn allerede i brug");
-            return "opretPersonale";
-        } else {
-            if (!employee.getUser_password().equals(confirm_password)) {
-                model.addAttribute("forkert", "Koden matcher ikke");
-                return "opretPersonale";
-            } else {
-                employeeRepository.addEmployee(employee);
-                model.addAttribute("succes", "Account created!!!!");
-                return "personale";
-            }
 
-
-        }
-    }
-
- */
     @PostMapping("/opretPersonaler")
     public String opretPersonaler(Employee employee, Model model) {
           employeeService.createEmployee(employee);
