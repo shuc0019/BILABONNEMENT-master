@@ -80,6 +80,10 @@ public class HomeController {
     public String totalpriceNow() {
         return "sammenlagtpris";
     }
+    @GetMapping("/opretlejekontrakt")
+    public String lejekontrakt() {
+        return "opretlejekontrakt";
+    }
 
 
 }
