@@ -22,6 +22,9 @@ public class CarService {
     public void addCar( Car car){
         carRepo.addCar(car);
     }
+    public boolean deleteCar(int id){
+        return carRepo.deleteCar(id);
+    }
 
 
 }
