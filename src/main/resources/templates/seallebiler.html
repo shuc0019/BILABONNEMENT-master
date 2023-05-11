@@ -57,8 +57,10 @@
     </div>
 
     <script>
-        document.getElementById("search-button").addEventListener("click", function() {
-            var searchInput = document.getElementById("search-input").value.toLowerCase();
+        var searchInput = document.getElementById("search-input");
+
+        searchInput.addEventListener("input", function() {
+            var searchTerm = searchInput.value.toLowerCase();
             var tableRows = document.getElementsByTagName("tr");
 
             for (var i = 1; i < tableRows.length; i++) {
@@ -67,7 +69,7 @@
 
                 for (var j = 0; j < cells.length; j++) {
                     var cellValue = cells[j].textContent.toLowerCase();
-                    if (cellValue.includes(searchInput)) {
+                    if (cellValue.includes(searchTerm)) {
                         found = true;
                         break;
                     }
@@ -77,6 +79,7 @@
             }
         });
     </script>
+
 
     <table>
     <thead>
