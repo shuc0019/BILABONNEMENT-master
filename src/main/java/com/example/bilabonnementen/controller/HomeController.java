@@ -50,7 +50,7 @@ public class HomeController {
     //Dashboards button gateways
 
     //Dataregistrering
-    @GetMapping("/selegekontrakt")
+    @GetMapping("/selejekontrakt")
     public String allContracts() {
         return "selejekontrakt";
     }
@@ -80,17 +80,6 @@ public class HomeController {
     public String totalpriceNow() {
         return "sammenlagtpris";
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
