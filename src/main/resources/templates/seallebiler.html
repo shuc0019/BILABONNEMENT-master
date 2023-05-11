@@ -56,10 +56,9 @@
         <button id="search-button">Search</button>
     </div>
 
-
     <script>
-        document.getElementById("search-input").addEventListener("input", function() {
-            var searchInput = this.value.toLowerCase();
+        document.getElementById("search-button").addEventListener("click", function() {
+            var searchInput = document.getElementById("search-input").value.toLowerCase();
             var tableRows = document.getElementsByTagName("tr");
 
             for (var i = 1; i < tableRows.length; i++) {
@@ -111,9 +110,6 @@
         <td th:text="${car.price}"></td>
         <td th:text="${car.odometer}"></td>
         <td th:text="${car.flow}"></td>
-        <td><a>
-            <button> Update </button>
-        </a> </td>
     </tr>
     </tbody>
 </table>

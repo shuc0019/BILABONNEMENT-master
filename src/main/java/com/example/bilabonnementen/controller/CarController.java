@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -41,6 +42,15 @@ public class CarController {
     public String addCartoList( Car car) {
         carService.addCar(car);
         return "redirect:/seallebiler";
+    }
+    @GetMapping("/deleteOne/{vehicle_number}")
+    public String deleteOne(@PathVariable("vehicle_number") int vehicle_number){
+        boolean deleted = carService.deleteCar(vehicle_number);
+        if (deleted){
+            return "redirect:/seallebiler";
+        }else {
+            return "redirect:/seallebiler";
+        }
     }
 
 
