@@ -23,7 +23,12 @@ public class CustomerController {
     public String createCustomer (Customer c, Model model){
         customerService.createCustomer(c);
         model.addAttribute("kunde", "Kunde tilføjet");
-        return "opretlejekontrakt";
+        return "opretKontrakt";
+    }
+
+    @GetMapping("/opretKunde")
+    public String CreateNewCustomer(){
+        return "opretNyKunde";
     }
 
     //TODO lav færdig imorgen
