@@ -9,49 +9,49 @@
 </head>
 <body>
 <div class="container">
-<div class="header">
+    <div class="header">
 
-    <div class="dashboard">
-        <h1 class="title">BA</h1>
-        <div class="dashboard-item">
-            <button class="dashboard-button">Dataregistrering</button>
-            <div class="dropdown">
-                <a href="opretlejekontrakt">Opret lejelkontrakt</a>
-                <a href="selejekontrakt">Se lejekontrakt</a>
+        <div class="dashboard">
+            <h1 class="title">BA</h1>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Dataregistrering</button>
+                <div class="dropdown">
+                    <a href="opretlejekontrakt">Opret lejelkontrakt</a>
+                    <a href="selejekontrakt">Se lejekontrakt</a>
+                </div>
             </div>
-        </div>
-        <div class="dashboard-item">
-            <button class="dashboard-button">Skade og udbedring</button>
-            <div class="dropdown">
-                <a href="opretskaderapport">Opret skade rapport</a>
-                <a href="skaderapport">Se priser på skader</a>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Skade og udbedring</button>
+                <div class="dropdown">
+                    <a href="opretskaderapport">Opret skade rapport</a>
+                    <a href="skaderapport">Se priser på skader</a>
+                </div>
             </div>
-        </div>
-        <div class="dashboard-item">
-            <button class="dashboard-button">Rapportering og overvågning</button>
-            <div class="dropdown">
-                <a href="seallebiler">Se alle biler</a>
-                <a href="ledigbiler">se ledige biler</a>
-                <a href="sammenlagtpris">Sammenlagt pris på nuværende udlejede biler</a>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Rapportering og overvågning</button>
+                <div class="dropdown">
+                    <a href="seallebiler">Se alle biler</a>
+                    <a href="ledigbiler">se ledige biler</a>
+                    <a href="sammenlagtpris">Sammenlagt pris på nuværende udlejede biler</a>
+                </div>
             </div>
-        </div>
-        <div class="dashboard-item">
-            <button class="dashboard-button">Users</button>
-            <div class="dropdown">
-                <a href="personale">Personale</a>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Users</button>
+                <div class="dropdown">
+                    <a href="personale">Personale</a>
+                </div>
             </div>
+
         </div>
 
     </div>
-
-</div>
 
     <a href="tilføjBiler">
         <button>
             tilføj en bil taber
         </button>
     </a>
-<h1>Alle biler</h1>
+    <h1>Alle biler</h1>
 
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search...">
@@ -84,48 +84,48 @@
 
 
     <table>
-    <thead>
-    <tr>
-        <th>bil nr</th>
-        <th>stel nr</th>
-        <th>Brand</th>
-        <th>Model</th>
-        <th>Årgang</th>
-        <th>Farve</th>
-        <th>Brændstof type</th>
-        <th>Gear Type</th>
-        <th>Motor</th>
-        <th>Pris</th>
-        <th>Odometer</th>
-        <th>Flow</th>
+        <thead>
+        <tr>
+            <th>bil nr</th>
+            <th>stel nr</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Årgang</th>
+            <th>Farve</th>
+            <th>Brændstof type</th>
+            <th>Gear Type</th>
+            <th>Motor</th>
+            <th>Pris</th>
+            <th>Odometer</th>
+            <th>Flow</th>
 
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Loop through the cars and populate the table rows -->
-    <tr th:each="car : ${cars}">
-        <td th:text="${car.vehicle_number}"></td>
-        <td th:text="${car.frame_number}"></td>
-        <td th:text="${car.brand}"></td>
-        <td th:text="${car.model}"></td>
-        <td th:text="${car.make}"></td>
-        <td th:text="${car.color}"></td>
-        <td th:text="${car.fuel_type}"></td>
-        <td th:text="${car.gear_type}"></td>
-        <td th:text="${car.motor}"></td>
-        <td th:text="${car.price}"></td>
-        <td th:text="${car.odometer}"></td>
-        <td th:text="${car.flow}"></td>
-        <td>  <a th:href="@{'/deleteOne/'+${car.vehicle_number}}">
-            <button class="btn-deleteOne" id="btn-deleteOne">Slet bil</button>
-        </a></td>
-        <td>
-            <a <a th:href="@{'/opdaterBilen/'+${car.vehicle_number}}"><button class="btn-update">Opdater bil</button>
-            </a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the cars and populate the table rows -->
+        <tr th:each="car : ${cars}">
+            <td th:text="${car.vehicle_number}"></td>
+            <td th:text="${car.frame_number}"></td>
+            <td th:text="${car.brand}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.make}"></td>
+            <td th:text="${car.color}"></td>
+            <td th:text="${car.fuel_type}"></td>
+            <td th:text="${car.gear_type}"></td>
+            <td th:text="${car.motor}"></td>
+            <td th:text="${car.price}"></td>
+            <td th:text="${car.odometer}"></td>
+            <td th:text="${car.flow}"></td>
+            <td>  <a th:href="@{'/deleteOne/'+${car.vehicle_number}}">
+                <button class="btn-deleteOne" id="btn-deleteOne">Slet bil</button>
+            </a></td>
+            <td>  <a th:href="@{'/opdaterBilen/'+${car.vehicle_number}}">
+                <button class="btnOpdater">Opdater bil</button>
+            </a></td>
+
+        </tr>
+        </tbody>
+    </table>
 </div>
 <div class="footer">
     <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>

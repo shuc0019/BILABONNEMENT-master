@@ -44,25 +44,25 @@
 
     </div>
 
-<h1>prisliste på skader</h1>
-<table>
-    <thead>
-    <tr>
-        <th>category_id</th>
-        <th>damage_name</th>
-        <th>price</th>
+    <h1>prisliste på skader</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>category_id</th>
+            <th>damage_name</th>
+            <th>price</th>
 
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Loop through the cars and populate the table rows -->
-    <tr th:each="damages:${category}">
-        <td th:text="${damages.category_id}"></td>
-        <td th:text="${damages.damage_name}"></td>
-        <td th:text="${damages.price}"></td>
-    </tr>
-    </tbody>
-</table>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the cars and populate the table rows -->
+        <tr th:each="damages:${category}">
+            <td th:text="${damages.category_id}"></td>
+            <td th:text="${damages.damage_name}"></td>
+            <td th:text="${damages.price}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

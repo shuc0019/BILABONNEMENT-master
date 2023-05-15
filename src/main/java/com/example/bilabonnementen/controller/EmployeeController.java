@@ -32,7 +32,7 @@ public class EmployeeController {
 
     @PostMapping("/opretPersonaler")
     public String opretPersonaler(Employee employee, Model model) {
-          employeeService.createEmployee(employee);
-          return "login";
+        employeeService.createEmployee(employee);
+        return "login";
     }
 }

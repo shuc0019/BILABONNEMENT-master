@@ -19,4 +19,14 @@ public class DamageRepo {
         RowMapper<Damage_category> rowMapper = new BeanPropertyRowMapper<>(Damage_category.class);
         return template.query(sql, rowMapper);
     }
+
+    // tilføj specifikke skader metoden bliver ikke brugt endnu!
+    public void addSpecificDamage(Specific_damage specific_damage){
+        String sql = "INSERT INTO specific_damage (specific_damage_id, report_id, category_id) VALUES (?,?,?)";
+        template.update(sql, specific_damage.getSpecific_damage_id(), specific_damage.getReport_id(), specific_damage.getCategory_id());
+    }
 }
+
+
+
+

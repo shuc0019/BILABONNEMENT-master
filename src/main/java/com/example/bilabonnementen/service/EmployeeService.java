@@ -12,13 +12,13 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
 
-public List <Employee> fetchAllEmployees(){
-    return employeeRepository.fetchAll();
-}
+    public List <Employee> fetchAllEmployees(){
+        return employeeRepository.fetchAll();
+    }
 
-public void createEmployee(Employee employee){
-     employeeRepository.addEmployee(employee);
-}
+    public void createEmployee(Employee employee){
+        employeeRepository.addEmployee(employee);
+    }
 
 
 }

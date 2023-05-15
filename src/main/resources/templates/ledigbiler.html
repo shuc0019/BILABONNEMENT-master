@@ -42,7 +42,7 @@
         </div>
 
     </div>
-<h1>Ledige biler</h1>
+    <h1>Ledige biler</h1>
 
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search...">
@@ -74,39 +74,39 @@
     </script>
 
     <table>
-    <thead>
-    <tr>
-        <th>Vehicle Number</th>
-        <th>Frame Number</th>
-        <th>Brand</th>
-        <th>Model</th>
-        <th>Make</th>
-        <th>Color</th>
-        <th>Fuel Type</th>
-        <th>Gear Type</th>
-        <th>Moter</th>
-        <th>Price</th>
-        <th>Flow</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Loop through the cars and populate the table rows -->
-    <tr th:each="car: ${available}">
-        <td th:text="${car.vehicle_number}"></td>
-        <td th:text="${car.frame_number}"></td>
-        <td th:text="${car.brand}"></td>
-        <td th:text="${car.model}"></td>
-        <td th:text="${car.make}"></td>
-        <td th:text="${car.color}"></td>
-        <td th:text="${car.fuel_type}"></td>
-        <td th:text="${car.gear_type}"></td>
-        <td th:text="${car.motor}"></td>
-        <td th:text="${car.price}"></td>
-        <td th:text="${car.flow}"></td>
+        <thead>
+        <tr>
+            <th>Vehicle Number</th>
+            <th>Frame Number</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Make</th>
+            <th>Color</th>
+            <th>Fuel Type</th>
+            <th>Gear Type</th>
+            <th>Moter</th>
+            <th>Price</th>
+            <th>Flow</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the cars and populate the table rows -->
+        <tr th:each="car: ${available}">
+            <td th:text="${car.vehicle_number}"></td>
+            <td th:text="${car.frame_number}"></td>
+            <td th:text="${car.brand}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.make}"></td>
+            <td th:text="${car.color}"></td>
+            <td th:text="${car.fuel_type}"></td>
+            <td th:text="${car.gear_type}"></td>
+            <td th:text="${car.motor}"></td>
+            <td th:text="${car.price}"></td>
+            <td th:text="${car.flow}"></td>
 
-    </tr>
-    </tbody>
-</table>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <div class="footer">
     <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>

@@ -51,7 +51,9 @@ public class HomeController {
 
     //Dataregistrering
     @GetMapping("/selejekontrakt")
-    public String allContracts() {
+    public String allContracts(HttpSession session, Model model) {
+        String username = (String) session.getAttribute("username");
+        model.addAttribute("username", username);
         return "selejekontrakt";
     }
 
