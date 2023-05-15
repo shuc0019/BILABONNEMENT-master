@@ -15,6 +15,7 @@ public class EmployeeRepository {
     JdbcTemplate template;
 
     //Find employee hvor username er ? og user_password er ?... Vi bruger den login
+
     public Employee findByUserAndPassword(String username, String user_password) {
         String sql = "SELECT * FROM Employee WHERE username=? AND user_password=?";
         RowMapper rowMapper = new BeanPropertyRowMapper(Employee.class);
@@ -47,4 +48,16 @@ public class EmployeeRepository {
         List<Employee>employees = template.query(sql,rowMapper,username);
         return !employees.isEmpty();
     }
+
+
+    // ADMIN function remove/fire a employee
+    public void fireEmployee(String username){
+        String sql = "UPDATE employee SET is_active = 0 WHERE username = ?";
+        template.update(sql, username);
+
+
+    }
+
+
+
 }
