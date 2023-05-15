@@ -54,12 +54,14 @@ public class CarController {
         }
     }
 
-    @GetMapping("/opdaterBilen")
-    public String updateCar() {
+    @GetMapping("/opdaterBilen/{vehicle_number}")
+    public String updateCar(@PathVariable("vehicle_number") int vehicle_number, Model model) {
+        Car car = carService.findId(vehicle_number);
+        model.addAttribute("opdater", car);
         return "opdaterBil";
     }
 
-    @PostMapping("/opdaterBiler")
+    @PostMapping("/carupdate")
     public String updateCarToList(Car car) {
         carService.updateCar(car);
         return "redirect:/seallebiler";

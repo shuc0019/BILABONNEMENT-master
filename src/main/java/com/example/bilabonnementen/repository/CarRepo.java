@@ -55,8 +55,21 @@ public class CarRepo {
             template.update(sql, vehicleNumber);
         }
 
+    public Car findCarByid(int vehicle_number) {
+        String sql = "Select * FROM car WHERE vehicle_number = ?";
+        RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        List<Car> users = template.query(sql, rowMapper, vehicle_number);
+        if (users.size() == 1) {
+            return users.get(0);
+        } else {
+            return null;
+        }
 
-        // TODO update feature?
+    }
+
+
+
+    // TODO update feature?
         public void updateCar(Car c) {
         String sql = "UPDATE car SET frame_number = ?, brand = ?, model = ?, make = ?, color = ?, price = ?, flow = ?, odometer = ?, fuel_type = ?, motor = ?, gear_type = ? WHERE vehicle_number = ?";
         template.update(sql, c.getFrame_number(), c.getBrand(), c.getModel(), c.getMake(), c.getColor(), c.getPrice(), c.getFlow(), c.getOdometer(), c.getFuel_type(), c.getMotor(), c.getGear_type(), c.getVehicle_number());

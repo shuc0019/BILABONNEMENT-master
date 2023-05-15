@@ -29,6 +29,9 @@ public class CarService {
   public void updateCar(Car car){
          carRepo.updateCar( car);
   }
+  public Car findId(int id){
+        return carRepo.findCarByid(id);
+  }
 
 
 }
