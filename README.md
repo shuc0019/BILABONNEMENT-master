@@ -1,5 +1,27 @@
 # BILABONNEMENT this is the way 
---------------------------------------------
+----------------------------------------------------------------------------------------
+Susmita Dey
+GitHub brugernavn: Suusmita
+https://github.com/suusmita
+
+Hannan Noor
+GitHub brugernavn: HannanxNoor
+https://github.com/hannanxnoor
+
+Shucabe
+GitHub brugernavn: shuc0019
+https://github.com/shuc0019/
+
+Hassan
+GitHub brugernavn: 	Hassan2200dk
+https://github.com/Hassan2200dk
+
+Yasin
+GitHub brugernavn: 	yasi1095
+https://github.com/yasi1095/
+
+----------------------------------------------------------------------------------------
+
 Dette er en vejledning til brugen af Bilabonnement-systemet. Bilabonnement giver brugere mulighed for at abonnere på biler i stedet for at eje dem.
 
 Installation

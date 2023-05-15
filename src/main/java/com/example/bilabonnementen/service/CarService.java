@@ -26,8 +26,12 @@ public class CarService {
         return carRepo.deleteCar(id);
     }
 
-  public void updateCar(Car car){
-         carRepo.updateCar( car);
+  public void updateCar(Car car, int id){
+         carRepo.updateCar(car, id);
+  }
+  public Car findId(int id){
+        Car car = carRepo.findCarByid(id);
+        return car;
   }
   public Car findId(int id){
         return carRepo.findCarByid(id);
