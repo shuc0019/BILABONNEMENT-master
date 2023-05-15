@@ -33,9 +33,6 @@ public class CarService {
         Car car = carRepo.findCarByid(id);
         return car;
   }
-  public Car findId(int id){
-        return carRepo.findCarByid(id);
-  }
 
 
 }
