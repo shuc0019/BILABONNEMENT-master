@@ -37,11 +37,12 @@ public class HomeController {
     @PostMapping("/login")
     public String loginAccount(String username, String user_password, Model model, HttpSession session) {
         Employee employee = employeeRepository.findByUserAndPassword(username, user_password);
-        if (employee != null){
+
+        if (employee != null && employee.getIs_active()==1){
             session.setAttribute("username", username);
             return "redirect:/home";
         } else {
-            model.addAttribute("invalid", "Din login er forkert");
+            model.addAttribute("invalid", "bruger findes ikke");
             return "login";
 
         }

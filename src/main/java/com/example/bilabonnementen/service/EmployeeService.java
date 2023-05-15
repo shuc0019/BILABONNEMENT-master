@@ -20,5 +20,9 @@ public class EmployeeService {
         employeeRepository.addEmployee(employee);
     }
 
+    public void fireEmployee(String username){
+        employeeRepository.fireEmployee(username);
+    }
+
 
 }

@@ -47,4 +47,11 @@ public class EmployeeRepository {
         List<Employee>employees = template.query(sql,rowMapper,username);
         return !employees.isEmpty();
     }
+
+    public void fireEmployee(String username){
+        String sql = "UPDATE employee SET is_active = 0 WHERE username = ?";
+        template.update(sql, username);
+
+
+    }
 }
