@@ -15,11 +15,11 @@ import java.util.List;
 @Controller
 public class CarController {
 
-        @Autowired
-        CarService carService;
+    @Autowired
+    CarService carService;
 
 
-//Se alle biler
+    //Se alle biler
     @GetMapping("/seallebiler")
     public String car(Model model) {
         List<Car> cars = carService.fetchAll();
@@ -62,9 +62,9 @@ public class CarController {
     }
 
     @PostMapping("/carupdate")
-    public String updateCarToList(Car car) {
-        carService.updateCar(car);
+    public String updateCarToList(Car car, int vehicle_number) {
+        carService.updateCar(car, vehicle_number);
         return "redirect:/seallebiler";
     }
 
-    }
+}

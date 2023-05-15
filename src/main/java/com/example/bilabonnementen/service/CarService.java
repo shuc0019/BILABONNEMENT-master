@@ -26,16 +26,15 @@ public class CarService {
         return carRepo.deleteCar(id);
     }
 
-  public void updateCar(Car car, int id){
-         carRepo.updateCar(car, id);
-  }
-  public Car findId(int id){
-        Car car = carRepo.findCarByid(id);
-        return car;
-  }
-  public Car findId(int id){
+    public void updateCar(Car car, int id){
+        carRepo.updateCar(car, id);
+    }
+    public void updateAfterContract(int id){
+        carRepo.updateAfterContract(id);
+    }
+    public Car findId(int id){
         return carRepo.findCarByid(id);
-  }
+    }
 
 
 }

@@ -38,3 +38,4 @@ public class Specific_damage {
         this.category_id = category_id;
     }
 }
+

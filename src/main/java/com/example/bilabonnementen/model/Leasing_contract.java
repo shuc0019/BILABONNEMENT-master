@@ -6,23 +6,26 @@ public class Leasing_contract {
     private int contract_id;
     private LocalDate start_date;
     private LocalDate end_date;
+
+    private double price;
     private int vehicle_number;
     private String username;
     private int customer_id;
-    private int report_id;
+
 
 
     public Leasing_contract() {
     }
 
-    public Leasing_contract(int contract_id, LocalDate start_date, LocalDate end_date, int vehicle_number, String username, int customer_id, int report_id) {
+    public Leasing_contract(int contract_id, LocalDate start_date, LocalDate end_date, double price ,int vehicle_number, String username, int customer_id) {
         this.contract_id = contract_id;
         this.start_date = start_date;
         this.end_date = end_date;
+        this.price = price;
         this.vehicle_number = vehicle_number;
         this.username = username;
         this.customer_id = customer_id;
-        this.report_id = report_id;
+
     }
 
     public int getContract_id() {
@@ -49,6 +52,14 @@ public class Leasing_contract {
         this.end_date = end_date;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public int getVehicle_number() {
         return vehicle_number;
     }
@@ -73,11 +84,5 @@ public class Leasing_contract {
         this.customer_id = customer_id;
     }
 
-    public int getReport_id() {
-        return report_id;
-    }
 
-    public void setReport_id(int report_id) {
-        this.report_id = report_id;
-    }
 }

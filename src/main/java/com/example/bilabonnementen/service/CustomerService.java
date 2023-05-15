@@ -14,6 +14,9 @@ public class CustomerService {
     public void createCustomer( Customer customer){
         customerRepo.createCustomer(customer);
     }
+    public Customer findId(int id){
+        return customerRepo.findCustomerByid(id);
+    }
 
     //TODO lav controller klassen
 }
