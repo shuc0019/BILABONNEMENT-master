@@ -54,7 +54,7 @@ public class HomeController {
     public String allContracts(HttpSession session, Model model) {
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username);
-        return "selejekontrakt";
+        return "seLejekontrakt";
     }
 
 
