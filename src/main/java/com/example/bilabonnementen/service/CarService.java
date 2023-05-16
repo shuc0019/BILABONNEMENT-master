@@ -35,6 +35,21 @@ public class CarService {
     public Car findId(int id){
         return carRepo.findCarByid(id);
     }
+    public double calculateTotalPriceOfRentedCars() {
+        List<Car> rentedCars = carRepo.fetchRentedCars(); // Retrieve rented cars
+        double totalPrice = 0.0;
 
+        for (Car car : rentedCars) {
+            if (car.getFlow() == 1) { // Check if car is rented (flow = 1)
+                totalPrice += car.getPrice(); // Add the car's price to the total
+            }
+        }
+
+        return totalPrice;
+    }
+
+    public List <Car> getRentedCars(){
+        return carRepo.fetchRentedCars();
+    }
 
 }

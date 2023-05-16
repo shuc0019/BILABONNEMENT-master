@@ -79,7 +79,11 @@ public class CarRepo {
         String sql = "UPDATE car SET flow = 1 WHERE vehicle_number = ?";
         template.update(sql, vehicle_number);
     }
-
+    public List<Car> fetchRentedCars() {
+        String sql = "SELECT * FROM car WHERE flow = 1";
+        RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        return template.query(sql, rowMapper);
+    }
  
 
 

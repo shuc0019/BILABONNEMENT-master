@@ -66,5 +66,16 @@ public class CarController {
         carService.updateCar(car, vehicle_number);
         return "redirect:/seallebiler";
     }
+    @GetMapping("/sammenlagtpris")
+    public String getTotalPrice(Model model) {
+        double totalPrice = carService.calculateTotalPriceOfRentedCars();
+        model.addAttribute("totalPrice", totalPrice);
+
+        List<Car> rentedCars = carService.getRentedCars(); // Retrieve rented cars
+        model.addAttribute("rentedCars", rentedCars);
+
+        return "sammenlagtpris";
+    }
+
 
 }
