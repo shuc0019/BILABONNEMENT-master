@@ -45,10 +45,31 @@
             </div>
         </div>
     </div>
-</div>
 
 
-<h1>Se leje</h1>
+        <h1>Lejekontrakter</h1>
+        <table>
+            <tr>
+                <th>Contract ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Price</th>
+                <th>Vehicle Number</th>
+                <th>Username</th>
+                <th>Customer ID</th>
+            </tr>
+            <tbody>
+            <tr th:each="leasingContract : ${LC}">
+                <td th:text="${leasingContract.contract_id}"></td>
+                <td th:text="${leasingContract.start_date}"></td>
+                <td th:text="${leasingContract.end_date}"></td>
+                <td th:text="${leasingContract.price}"></td>
+                <td th:text="${leasingContract.vehicle_number}"></td>
+                <td th:text="${leasingContract.username}"></td>
+                <td th:text="${leasingContract.customer_id}"></td>
+            </tr>
+            </tbody>
+        </table>
 
 <h1 th:text="${username}"></h1>
 

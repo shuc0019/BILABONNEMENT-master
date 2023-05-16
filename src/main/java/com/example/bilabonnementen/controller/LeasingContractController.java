@@ -57,6 +57,16 @@ public class LeasingContractController {
             }
         }
     }
+    @GetMapping("/selejekontrakt")
+    public String Leasing_contracts(Model model){
+        List<Leasing_contract> LC = leasing_contractService.fetchAll();
+        model.addAttribute("LC",LC );
+        System.out.println(LC.size());
+        return "seLejekontrakt";
+    }
+
+
+
 
 
     @GetMapping("/lej")

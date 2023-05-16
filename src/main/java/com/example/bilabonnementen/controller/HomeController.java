@@ -51,12 +51,7 @@ public class HomeController {
     //Dashboards button gateways
 
     //Dataregistrering
-    @GetMapping("/selejekontrakt")
-    public String allContracts(HttpSession session, Model model) {
-        String username = (String) session.getAttribute("username");
-        model.addAttribute("username", username);
-        return "seLejekontrakt";
-    }
+
 
 
     //skade og udbedring
@@ -83,6 +78,7 @@ public class HomeController {
     public String lejekontrakt() {
         return "opretLejekontrakt";
     }
+
 
 
 }
