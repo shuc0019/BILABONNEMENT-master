@@ -3,6 +3,7 @@ package com.example.bilabonnementen.controller;
 import com.example.bilabonnementen.model.Employee;
 import com.example.bilabonnementen.repository.EmployeeRepository;
 import com.example.bilabonnementen.service.EmployeeService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,4 +43,27 @@ public class EmployeeController {
         employeeService.fireEmployee(username);
         return "redirect:/personale";
     }
+
+    @GetMapping("/opdaterPersonale/{username}")
+    public String findByUsername(@PathVariable("username") String username, Model model, HttpSession session){
+       Employee employee = employeeService.findByUsername(username);
+        model.addAttribute("employee", employee);
+        session.setAttribute("username", username);
+        return "opdaterPersonale";
+    }
+
+    @PostMapping("/opdateretPersonale")
+    public String opdateretPersonal(@PathVariable("username") String username, Employee employee, int is_active, int is_admin, Model model, HttpSession session ){
+       username = (String)  session.getAttribute(username);
+        if (is_active!=1 || is_active!=0){
+            model.addAttribute("fejl", "denne er en fejl");
+            return "redirect:/opdaterPersonale/" +username;
+        } else {
+            employeeService.updateEmployee(employee);
+            return "redirect:/personale";
+        }
+
+    }
+
+
 }

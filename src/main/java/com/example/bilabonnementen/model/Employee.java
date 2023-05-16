@@ -77,5 +77,7 @@ public class Employee {
     public void setIs_admin(int is_admin) {
         this.is_admin = is_admin;
     }
+
+
 }
 
