@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Leasing Contract</title>
+    <link rel="stylesheet" href="home.css">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin-top: 200px;
-        }
+
         table{
             margin-top: 50px;
             margin-left: 350px;
@@ -73,7 +71,42 @@
     </style>
 </head>
 <body>
-<h1>Oprettelse af en leasingKontrakt</h1>
+<div class="container">
+    <div class="header">
+        <div class="dashboard">
+            <h1 class="title">BA</h1>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Dataregistrering</button>
+                <div class="dropdown">
+                    <a href="opretlejekontrakt">Opret lejekontrakt</a>
+                    <a href="selejekontrakt">Se lejekontrakt</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Skade og udbedring</button>
+                <div class="dropdown">
+                    <a href="opretskaderapport">Opret skade rapport</a>
+                    <a href="skaderapport">Se priser på skader</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Rapportering og overvågning</button>
+                <div class="dropdown">
+                    <a href="seallebiler">Se alle biler</a>
+                    <a href="ledigbiler">se ledige biler</a>
+                    <a href="sammenlagtpris">Sammenlagt pris på nuværende udlejede biler</a>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <button class="dashboard-button">Personale</button>
+                <div class="dropdown">
+                    <a href="personale">Se ansatte</a>
+                </div>
+            </div>
+        </div>
+</div>
+
+<h1>Oprettelse af en leasing kontrakt</h1>
 <form method="post" action="/chooseCar">
     <h2>Vælg en bil ud fra vognnummeret. Se nedenfor for ledig biler</h2>
     <label for="vehicle_number">Vehicle Number:</label>
@@ -117,5 +150,10 @@
     </tr>
     </tbody>
 </table>
+
+    <div class="footer">
+        <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
+    </div>
+
 </body>
 </html>
