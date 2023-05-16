@@ -80,11 +80,11 @@ public class HomeController {
 
     @GetMapping("/sammenlagtpris")
     public String totalpriceNow() {
-        return "sammenlagtpris";
+        return "sammenlagtPris";
     }
     @GetMapping("/opretlejekontrakt")
     public String lejekontrakt() {
-        return "opretlejekontrakt";
+        return "opretLejekontrakt";
     }
 
 
