@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -48,22 +49,28 @@ public class EmployeeController {
     public String findByUsername(@PathVariable("username") String username, Model model, HttpSession session){
        Employee employee = employeeService.findByUsername(username);
         model.addAttribute("employee", employee);
-        session.setAttribute("username", username);
+        session.setAttribute("username", employee.getUsername());
         return "opdaterPersonale";
     }
 
     @PostMapping("/opdateretPersonale")
-    public String opdateretPersonal(@PathVariable("username") String username, Employee employee, int is_active, int is_admin, Model model, HttpSession session ){
-       username = (String)  session.getAttribute(username);
-        if (is_active!=1 || is_active!=0){
-            model.addAttribute("fejl", "denne er en fejl");
-            return "redirect:/opdaterPersonale/" +username;
+    public String opdateretPersonal(Employee employee, int is_active, int is_admin, Model model, HttpSession session, RedirectAttributes redirectAttributes) {
+        String usernames = (String) session.getAttribute("username");
+
+        if (is_active == 0 || is_active == 1) {
+            if (is_admin == 0 || is_admin == 1) {
+                employeeService.updateEmployee(employee);
+                return "redirect:/personale";
+            } else {
+                redirectAttributes.addFlashAttribute("fejl", "Admin value should be 0 or 1");
+            }
         } else {
-            employeeService.updateEmployee(employee);
-            return "redirect:/personale";
+            redirectAttributes.addFlashAttribute("fejl", "Active value should be 0 or 1");
         }
 
+        return "redirect:/opdaterPersonale/" + usernames;
     }
+
 
 
 }
