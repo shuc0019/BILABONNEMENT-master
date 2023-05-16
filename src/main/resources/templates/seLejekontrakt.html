@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Personale</title>
+    <title>Se lejekontrakt</title>
     <link rel="stylesheet" href="home.css">
 
 </head>
@@ -41,52 +41,35 @@
                 </div>
             </div>
         </div>
+<h1>Se leje</h1>
+        <h1>Leasing Contracts</h1>
+        <table>
+            <tr>
+                <th>Contract ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Price</th>
+                <th>Vehicle Number</th>
+                <th>Username</th>
+                <th>Customer ID</th>
+            </tr>
+            <tbody>
+            <tr th:each="leasingContract : ${LC}">
+                <td th:text="${leasingContract.contract_id}"></td>
+                <td th:text="${leasingContract.start_date}"></td>
+                <td th:text="${leasingContract.end_date}"></td>
+                <td th:text="${leasingContract.price}"></td>
+                <td th:text="${leasingContract.vehicle_number}"></td>
+                <td th:text="${leasingContract.username}"></td>
+                <td th:text="${leasingContract.customer_id}"></td>
+            </tr>
+            </tbody>
+        </table>
 
-    </div>
-    <h1>Personale</h1>
-    <div class="create employee">
+<h1 th:text="${username}"></h1>
 
-        <a href="/opretPersonale">
-            <button>
-                Opret ny medarbejder
-            </button>
-        </a>
-
-
-    </div>
-
-    <table>
-
-        <thead>
-        <tr>
-            <th>Brugernavn</th>
-            <th>Adgangskode</th>
-            <th>Fuldenavn</th>
-            <th>Email</th>
-            <th>Telefon nr</th>
-            <th>Aktiv</th>
-            <th>Admin</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Loop through the cars and populate the table rows -->
-        <tr th:each="employee:${employees}">
-            <td th:text="${employee.username}"></td>
-            <td th:text="${employee.user_password}"></td>
-            <td th:text="${employee.full_name}"></td>
-            <td th:text="${employee.email}"></td>
-            <td th:text="${employee.phone}"></td>
-            <td th:text="${employee.is_active}"></td>
-            <td th:text="${employee.is_admin}"></td>
-            <td> <a th:href="@{'/personale/'+${employee.username}}">  <button> gør bruger inaktiv </button></a></td>
-
-        </tr>
-        </tbody>
-    </table>
-</div>
-<div class="footer">
-    <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
-</div>
-
+        <div class="footer">
+            <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
+        </div>
 </body>
 </html>

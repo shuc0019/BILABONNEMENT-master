@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pris</title>
+    <title>Lejekontrakt</title>
+
     <link rel="stylesheet" href="home.css">
 </head>
-<body><div class="container">
+<body>
+<div class="container">
     <div class="header">
+
         <div class="dashboard">
             <h1 class="title">BA</h1>
             <div class="dashboard-item">
@@ -20,40 +23,35 @@
                 <button class="dashboard-button">Skade og udbedring</button>
                 <div class="dropdown">
                     <a href="opretskaderapport">Opret skade rapport</a>
-                    <a href="skaderapport">Se priser på skader</a>
+                    <a href="skaderapport">Se skade rapport</a>
                 </div>
             </div>
             <div class="dashboard-item">
                 <button class="dashboard-button">Rapportering og overvågning</button>
                 <div class="dropdown">
                     <a href="seallebiler">Se alle biler</a>
-                    <a href="ledigbiler">se ledige biler</a>
+                    <a href="ledigbiler">Se ledige biler</a>
                     <a href="sammenlagtpris">Sammenlagt pris på nuværende udlejede biler</a>
                 </div>
             </div>
             <div class="dashboard-item">
-                <button class="dashboard-button">Users</button>
+                <button class="dashboard-button">Personale</button>
                 <div class="dropdown">
-                    <a href="personale">Personale</a>
+                    <a href="personale">Se ansatte</a>
                 </div>
             </div>
         </div>
+
+
     </div>
-    <h1> sammenlagt priser</h1>
-    <table>
-        <tr>
-            <th>Sum of Price</th>
-        </tr>
+    <h1> Oprettelsen af en lejekontrakt</h1>
 
-            <td th:text="${cars}"></td>
-
-    </table>
-
+    <h1> <a href="/opretKunde">Opret ny kunde </a></h1>
+    <h1><a href="/opretKontrakt">Eksisterende kunde </a></h1>
 </div>
 
-
-
-
-
+<div class="footer">
+    <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
+</div>
 </body>
 </html>

@@ -17,7 +17,7 @@ public class CustomerController {
     @GetMapping("/opretlegekontrakt")
     public String lejekontrakt (Customer c){
 
-        return "opretlejekontrakt";
+        return "opretLejekontrakt";
     }
     @PostMapping("/opretenkunde")
     public String createCustomer (Customer c, Model model){

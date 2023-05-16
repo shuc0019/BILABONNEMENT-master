@@ -1,15 +1,25 @@
 package com.example.bilabonnementen.repository;
 
+import com.example.bilabonnementen.model.Car;
 import com.example.bilabonnementen.model.Leasing_contract;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class Leasing_contractRepo {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    public List<Leasing_contract> fetchAll(){
+        String sql = "SELECT * FROM leasing_contract";
+        RowMapper<Leasing_contract> rowMapper = new BeanPropertyRowMapper<>(Leasing_contract.class);
+        return jdbcTemplate.query(sql, rowMapper);
+    }
 
     public void createLeasingContract(Leasing_contract leasingContract) {
         String sql = "INSERT INTO leasing_contract (start_date, end_date, price, vehicle_number, username, customer_id) " +
