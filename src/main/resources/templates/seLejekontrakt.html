@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lejekontrakt</title>
-
+    <title>Se lejekontrakt</title>
     <link rel="stylesheet" href="home.css">
+
 </head>
 <body>
 <div class="container">
@@ -23,7 +23,7 @@
                 <button class="dashboard-button">Skade og udbedring</button>
                 <div class="dropdown">
                     <a href="opretskaderapport">Opret skade rapport</a>
-                    <a href="skaderapport">Se skade rapport</a>
+                    <a href="skaderapport">Se priser på skader</a>
                 </div>
             </div>
             <div class="dashboard-item">
@@ -35,19 +35,18 @@
                 </div>
             </div>
             <div class="dashboard-item">
-                <button class="dashboard-button">Users</button>
+                <button class="dashboard-button">Personale</button>
                 <div class="dropdown">
-                    <a href="personale">Personale</a>
+                    <a href="personale">Se ansatte</a>
                 </div>
             </div>
         </div>
+<h1>Se leje</h1>
 
+<h1 th:text="${username}"></h1>
 
-    </div>
-    <h1> Oprettelsen af en lejekontrakt</h1>
-
-    <h1> <a href="/opretKunde">Opret ny kunde </a></h1>
-    <h1><a href="/opretKontrakt">Eksisterende kunde </a></h1>
-</div>
+        <div class="footer">
+            <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
+        </div>
 </body>
 </html>

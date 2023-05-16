@@ -55,7 +55,7 @@ public class HomeController {
     public String allContracts(HttpSession session, Model model) {
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username);
-        return "selejekontrakt";
+        return "seLejekontrakt";
     }
 
 
@@ -81,11 +81,11 @@ public class HomeController {
 
     @GetMapping("/sammenlagtpris")
     public String totalpriceNow() {
-        return "sammenlagtpris";
+        return "sammenlagtPris";
     }
     @GetMapping("/opretlejekontrakt")
     public String lejekontrakt() {
-        return "opretlejekontrakt";
+        return "opretLejekontrakt";
     }
 
 

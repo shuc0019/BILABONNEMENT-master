@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Personale</title>
-    <link rel="stylesheet" href="home.css">
+    <title>Lejekontrakt</title>
 
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
 <div class="container">
@@ -23,7 +23,7 @@
                 <button class="dashboard-button">Skade og udbedring</button>
                 <div class="dropdown">
                     <a href="opretskaderapport">Opret skade rapport</a>
-                    <a href="skaderapport">Se priser på skader</a>
+                    <a href="skaderapport">Se skade rapport</a>
                 </div>
             </div>
             <div class="dashboard-item">
@@ -42,51 +42,16 @@
             </div>
         </div>
 
-    </div>
-    <h1>Personale</h1>
-    <div class="create employee">
-
-        <a href="/opretPersonale">
-            <button>
-                Opret ny medarbejder
-            </button>
-        </a>
-
 
     </div>
+    <h1> Oprettelsen af en lejekontrakt</h1>
 
-    <table>
-
-        <thead>
-        <tr>
-            <th>Brugernavn</th>
-            <th>Adgangskode</th>
-            <th>Fuldenavn</th>
-            <th>Email</th>
-            <th>Telefon nr</th>
-            <th>Aktiv</th>
-            <th>Admin</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Loop through the cars and populate the table rows -->
-        <tr th:each="employee:${employees}">
-            <td th:text="${employee.username}"></td>
-            <td th:text="${employee.user_password}"></td>
-            <td th:text="${employee.full_name}"></td>
-            <td th:text="${employee.email}"></td>
-            <td th:text="${employee.phone}"></td>
-            <td th:text="${employee.is_active}"></td>
-            <td th:text="${employee.is_admin}"></td>
-            <td> <a th:href="@{'/personale/'+${employee.username}}">  <button> gør bruger inaktiv </button></a></td>
-
-        </tr>
-        </tbody>
-    </table>
+    <h1> <a href="/opretKunde">Opret ny kunde </a></h1>
+    <h1><a href="/opretKontrakt">Eksisterende kunde </a></h1>
 </div>
+
 <div class="footer">
     <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
 </div>
-
 </body>
 </html>
