@@ -44,34 +44,34 @@
         </div>
 
 
-        <h1>Opret Personale</h1>
-        <form method="post" action="/opretPersonaler">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
 
-            <label for="user_password">User password:</label>
-            <input type="text" id="user_password" name="user_password" required>
+    </div>   <h1>Opret Personale</h1>
+    <form method="post" action="/opretPersonaler">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
 
-            <label for="full_name">Full name:</label>
-            <input type="text" id="full_name" name="full_name" required>
+        <label for="user_password">User password:</label>
+        <input type="text" id="user_password" name="user_password" required>
 
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" required>
+        <label for="full_name">Full name:</label>
+        <input type="text" id="full_name" name="full_name" required>
 
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" required>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
 
-
-            <input type="hidden" id="is_active" name="is_active" value=1>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required>
 
 
-            <input type="hidden" id="is_admin" name="is_admin" value=0>
-
-            <button type="submit">Opret</button>
-        </form>
+        <input type="hidden" id="is_active" name="is_active" value=1>
 
 
-    </div>
+        <input type="hidden" id="is_admin" name="is_admin" value=0>
+
+        <button type="submit">Opret</button>
+    </form>
+
+
 </div>
 </body>
 </html>
