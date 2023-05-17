@@ -54,27 +54,32 @@ public class EmployeeController {
     }
 
 
-    //inkluderes i rapporten
+    //opdaterer personale oplysninger
+
     @PostMapping("/opdateretPersonale")
     public String opdateretPersonal(Employee employee, int is_active, int is_admin, HttpSession session, RedirectAttributes redirectAttributes) {
         String usernames = (String) session.getAttribute("username");
 
+        //hvis begge to felter ikke har rigtig inputs, skal der gives to fejl meddelelser,
         if(is_active != 0 && is_active != 1 && is_admin != 0 && is_admin != 1  ){
             redirectAttributes.addFlashAttribute("fejl", "Admin value should be 0 or 1");
             redirectAttributes.addFlashAttribute("fejl2", "Active value should be 0 or 1");
             return "redirect:/opdaterPersonale/" + usernames;
         }
+        //hvis active felten ikke er korrect skal der gives en meddelse til dette
         else if (is_active != 0 && is_active != 1) {
             redirectAttributes.addFlashAttribute("fejl", "Active value should be 0 or 1");
             return "redirect:/opdaterPersonale/" + usernames;
         }
+        //hvis active felten ikke er korrect skal der gives en meddelse til dette
         else if (is_admin != 0 && is_admin != 1) {
             redirectAttributes.addFlashAttribute("fejl2", "Admin value should be 0 or 1");
             return "redirect:/opdaterPersonale/" + usernames;
         }else {
+            //hvis begge inputs er indtastet rigtigt skal update væres succesfuld og den skal refresh personale html siden
+
             employeeService.updateEmployee(employee);
             return "redirect:/personale";
         }
-
     }
 }
