@@ -43,7 +43,6 @@ public class EmployeeController {
 
     @PostMapping("/opretPersonaler")
     public String opretPersonaler(Employee employee, Model model, HttpSession session) {
-
             employeeService.createEmployee(employee);
             return "redirect:/personale";
 
