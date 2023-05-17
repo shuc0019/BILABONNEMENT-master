@@ -2,18 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <title>Skaderapport</title>
+    <title>Opret skaderapport</title>
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
 <div class="container">
     <div class="header">
-
         <div class="dashboard">
             <a href="/">
-            <img class="logo" src="images/BILABONNEMENT_rgb_mmahqw.png" alt="Logo">
-        </a>
+                <img class="logo" src="images/BILABONNEMENT_rgb_mmahqw.png" alt="Logo">
+            </a>
             <div class="dashboard-item">
                 <button class="dashboard-button">Dataregistrering</button>
                 <div class="dropdown">
@@ -24,8 +22,8 @@
             <div class="dashboard-item">
                 <button class="dashboard-button">Skade og udbedring</button>
                 <div class="dropdown">
-                    <a href="opretskaderapport">Opret skade rapport</a>
-                    <a href="skaderapport">Se priser på skader</a>
+                    <a href="skaderapport">skade rapport</a>
+                    <a href="skader">Se priser på skader</a>
                 </div>
             </div>
             <div class="dashboard-item">
@@ -42,30 +40,33 @@
                     <a href="personale">Se ansatte</a>
                 </div>
             </div>
+
         </div>
 
     </div>
-
-    <h1>Prisliste på skader</h1>
+<h1>skaderapport</h1>
+    <a href="opretskaderapport">
+        <button>
+            Opret en skaderapport
+        </button>
+    </a>
     <table>
         <thead>
         <tr>
-            <th>category_id</th>
-            <th>damage_name</th>
-            <th>price</th>
-
+            <th>report id</th>
+            <th>total price</th>
+            <th>contract id</th>
         </tr>
         </thead>
         <tbody>
         <!-- Loop through the cars and populate the table rows -->
-        <tr th:each="damages:${category}">
-            <td th:text="${damages.category_id}"></td>
-            <td th:text="${damages.damage_name}"></td>
-            <td th:text="${damages.price}"></td>
+        <tr th:each="damage_report : ${damage_report}">
+            <td th:text="${damage_report.report_id}"></td>
+            <td th:text="${damage_report.total_price}"></td>
+            <td th:text="${damage_report.contract_id}"></td>
         </tr>
         </tbody>
     </table>
-</div>
 
 <div class="footer">
     <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>

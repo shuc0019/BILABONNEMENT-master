@@ -1,9 +1,6 @@
 package com.example.bilabonnementen.controller;
 
-import com.example.bilabonnementen.model.Car;
-import com.example.bilabonnementen.model.Customer;
-import com.example.bilabonnementen.model.Employee;
-import com.example.bilabonnementen.model.Leasing_contract;
+import com.example.bilabonnementen.model.*;
 import com.example.bilabonnementen.service.CarService;
 import com.example.bilabonnementen.service.CustomerService;
 import com.example.bilabonnementen.service.EmployeeService;
@@ -62,9 +59,10 @@ public class LeasingContractController {
         List<Leasing_contract> LC = leasing_contractService.fetchAll();
         model.addAttribute("LC",LC );
         System.out.println(LC.size());
+        double totalPrice = leasing_contractService.calculateTotalPriceOfLeasingContracts();
+        model.addAttribute("totalPrices", totalPrice);
         return "seLejekontrakt";
     }
-
 
 
 

@@ -3,17 +3,15 @@ package com.example.bilabonnementen.model;
 public class Damage_report {
     private int report_id;
     private double total_price;
-    private String username;
-    private int customer_id;
+    private int contract_id;
 
     public Damage_report() {
     }
 
-    public Damage_report(int report_id, double total_price, String username, int customer_id) {
+    public Damage_report(int report_id, double total_price, int contract_id) {
         this.report_id = report_id;
         this.total_price = total_price;
-        this.username = username;
-        this.customer_id = customer_id;
+        this.contract_id = contract_id;
     }
 
     public int getReport_id() {
@@ -32,19 +30,11 @@ public class Damage_report {
         this.total_price = total_price;
     }
 
-    public String getUsername() {
-        return username;
+    public int getContract_id() {
+        return contract_id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public int getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    public void setContract_id(int contract_id) {
+        this.contract_id = contract_id;
     }
 }

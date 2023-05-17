@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Se lejekontrakt</title>
-    <link rel="stylesheet" href="home.css">
 
+    <title>Skaderapport</title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-
 <div class="container">
     <div class="header">
 
         <div class="dashboard">
             <a href="/">
-                <img class="logo" src="images/BILABONNEMENT_rgb_mmahqw.png" alt="Logo">
-            </a>
+            <img class="logo" src="images/BILABONNEMENT_rgb_mmahqw.png" alt="Logo">
+        </a>
             <div class="dashboard-item">
                 <button class="dashboard-button">Dataregistrering</button>
                 <div class="dropdown">
@@ -25,7 +24,7 @@
             <div class="dashboard-item">
                 <button class="dashboard-button">Skade og udbedring</button>
                 <div class="dropdown">
-                    <a href="skaderapport">kade rapport</a>
+                    <a href="skaderapport">skade rapport</a>
                     <a href="skader">Se priser på skader</a>
                 </div>
             </div>
@@ -44,38 +43,32 @@
                 </div>
             </div>
         </div>
+
     </div>
 
+    <h1>Prisliste på skader</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>category_id</th>
+            <th>damage_name</th>
+            <th>price</th>
 
-        <h1>Lejekontrakter</h1>
-        <table>
-            <tr>
-                <th>Contract ID</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Price</th>
-                <th>Vehicle Number</th>
-                <th>Username</th>
-                <th>Customer ID</th>
-            </tr>
-            <tbody>
-            <tr th:each="leasingContract : ${LC}">
-                <td th:text="${leasingContract.contract_id}"></td>
-                <td th:text="${leasingContract.start_date}"></td>
-                <td th:text="${leasingContract.end_date}"></td>
-                <td th:text="${leasingContract.price}"></td>
-                <td th:text="${leasingContract.vehicle_number}"></td>
-                <td th:text="${leasingContract.username}"></td>
-                <td th:text="${leasingContract.customer_id}"></td>
-            </tr>
-            <h1><p> Sammenlagt pris på alle kontrakter: <span th:text="${totalPrices}"></span></p></h1>
-            </tbody>
-        </table>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the cars and populate the table rows -->
+        <tr th:each="damages:${category}">
+            <td th:text="${damages.category_id}"></td>
+            <td th:text="${damages.damage_name}"></td>
+            <td th:text="${damages.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
-<h1 th:text="${username}"></h1>
-
-        <div class="footer">
-            <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
-        </div>
+<div class="footer">
+    <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
+</div>
 </body>
 </html>
