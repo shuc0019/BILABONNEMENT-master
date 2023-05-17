@@ -56,10 +56,7 @@ public class HomeController {
 
     //skade og udbedring
 
-    @GetMapping("/opretskaderapport")
-    public String createDamagereport() {
-        return "opretskaderapport";
-    }
+
 
 
 
@@ -74,10 +71,6 @@ public class HomeController {
         return "ledigbiler";
     }
 
-    @GetMapping("/sammenlagtpris")
-    public String totalpriceNow() {
-        return "sammenlagtPris";
-    }
     @GetMapping("/opretlejekontrakt")
     public String lejekontrakt() {
         return "opretLejekontrakt";

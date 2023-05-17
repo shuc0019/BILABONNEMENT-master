@@ -24,5 +24,16 @@ public class EmployeeService {
         employeeRepository.fireEmployee(username);
     }
 
+    public void updateEmployee(Employee employee){
+        employeeRepository.updateEmployee(employee);
+
+    }
+
+    public Employee findByUsername(String username){
+        return employeeRepository.findByUsername(username);
+
+
+    }
+
 
 }
