@@ -56,10 +56,7 @@ public class HomeController {
 
     //skade og udbedring
 
-    @GetMapping("/opretskaderapport")
-    public String createDamagereport() {
-        return "opretskaderapport";
-    }
+
 
 
 

@@ -1,6 +1,5 @@
 package com.example.bilabonnementen.controller;
 
-import com.example.bilabonnementen.model.Car;
 import com.example.bilabonnementen.model.Damage_category;
 import com.example.bilabonnementen.service.DamageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +16,12 @@ public class DamageController {
     DamageService damageService;
 
 
-    @GetMapping("/skaderapport")
+    @GetMapping("/skader")
     public String skaddeRapportListe(Model model){
         List<Damage_category> damage_category =  damageService.fetchAllDamageCategories();
         model.addAttribute("category", damage_category);
 
-        return "skaderapport";
+        return "skader";
     }
 
 }
