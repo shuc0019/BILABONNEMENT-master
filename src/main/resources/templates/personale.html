@@ -11,7 +11,7 @@
     <div class="header">
 
         <div class="dashboard">
-            <a href="/">
+            <a href="home">
                 <img class="logo" src="images/BILABONNEMENT_rgb_mmahqw.png" alt="Logo">
             </a>
             <div class="dashboard-item">
@@ -49,7 +49,7 @@
     <div class="create employee">
 
         <a href="/opretPersonale">
-            <button>
+            <button class = "createEmployee">
                 Opret ny medarbejder
             </button>
         </a>
@@ -80,8 +80,8 @@
             <td th:text="${employee.phone}"></td>
             <td th:text="${employee.is_active}"></td>
             <td th:text="${employee.is_admin}"></td>
-            <td><a th:href="@{'/personale/'+${employee.username}}">  <button> gør bruger inaktiv </button></a></td>
-            <td> <a th:href="@{'/opdaterPersonale/'+${employee.username}}">  <button> Opdaterer oplysninger </button></a></td>
+            <td> <a th:href="@{'/personale/'+${employee.username}}">  <button> gør bruger inaktiv </button></a></td>
+            <td> <a th:href="@{'/opdaterPersonale/'+${employee.username}}">  <button> Opdater oplysninger </button></a></td>
         </tr>
         </tbody>
     </table>

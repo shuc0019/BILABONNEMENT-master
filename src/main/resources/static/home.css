@@ -182,3 +182,23 @@ button[type="submit"]:focus {
 button[type="submit"]:active {
     background-color: #003d80;
 }
+
+
+.createEmployee{
+    margin-left: 68%;
+    background-color: #3e8e41;
+
+
+}
+
+.addCarButton{
+    margin-left: 82%;
+    background-color: #3e8e41;
+}
+
+.createDamageRep{
+    margin-left: 75%;
+    background-color: #3e8e41;
+
+}
+
