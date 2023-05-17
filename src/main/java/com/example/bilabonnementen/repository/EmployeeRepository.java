@@ -51,7 +51,24 @@ public class EmployeeRepository {
     public void fireEmployee(String username){
         String sql = "UPDATE employee SET is_active = 0 WHERE username = ?";
         template.update(sql, username);
+        
+    }
 
+    public void updateEmployee(Employee employee){
+        String sql = "UPDATE employee SET user_password = ?, full_name= ?, email= ?, phone= ?, is_active= ?, is_admin = ? where username=?";
+        template.update(sql,employee.getUser_password(), employee.getFull_name(), employee.getEmail(), employee.getPhone(), employee.getIs_active(), employee.getIs_admin(), employee.getUsername());
+
+    }
+
+    public Employee findByUsername(String username){
+        String sql = "Select * FROM employee WHERE username = ?";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        List<Employee> users = template.query(sql, rowMapper, username);
+        if (users.size() == 1) {
+            return users.get(0);
+        } else {
+            return null;
+        }
 
     }
 }
