@@ -80,7 +80,7 @@
             <td th:text="${employee.phone}"></td>
             <td th:text="${employee.is_active}"></td>
             <td th:text="${employee.is_admin}"></td>
-            <td> <a th:href="@{'/personale/'+${employee.username}}">  <button> gør bruger inaktiv </button></a></td>
+            <td><a th:href="@{'/personale/'+${employee.username}}">  <button> gør bruger inaktiv </button></a></td>
             <td> <a th:href="@{'/opdaterPersonale/'+${employee.username}}">  <button> Opdaterer oplysninger </button></a></td>
         </tr>
         </tbody>

@@ -71,4 +71,15 @@ public class EmployeeRepository {
         }
 
     }
+    public Employee findAdmin(String username){
+        String sql = "SELECT * FROM employee WHERE is_admin=1 and username = ?";
+        RowMapper rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        List<Employee> users = template.query(sql, rowMapper, username);
+        if (users.size() == 1) {
+            return users.get(0);
+        } else {
+            return null;
+        }
+
+    }
 }
