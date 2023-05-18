@@ -47,34 +47,58 @@
     </div>
 
 
-        <h1>Lejekontrakter</h1>
-        <table>
-            <tr>
-                <th>Contract ID</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Price</th>
-                <th>Vehicle Number</th>
-                <th>Username</th>
-                <th>Customer ID</th>
-            </tr>
-            <tbody>
-            <tr th:each="leasingContract : ${LC}">
-                <td th:text="${leasingContract.contract_id}"></td>
-                <td th:text="${leasingContract.start_date}"></td>
-                <td th:text="${leasingContract.end_date}"></td>
-                <td th:text="${leasingContract.price}"></td>
-                <td th:text="${leasingContract.vehicle_number}"></td>
-                <td th:text="${leasingContract.username}"></td>
-                <td th:text="${leasingContract.customer_id}"></td>
-            </tr>
-            <h1><p> Sammenlagt pris på alle kontrakter: <span th:text="${totalPrices}"></span></p></h1>
-            </tbody>
-        </table>
+    <h1>Lejekontrakter</h1>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Contract ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Price</th>
+            <th>Vehicle Number</th>
+            <th>Username</th>
+            <th>Customer ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="leasingContract : ${LC}">
+            <td th:text="${leasingContract.contract_id}"></td>
+            <td th:text="${leasingContract.start_date}"></td>
+            <td th:text="${leasingContract.end_date}"></td>
+            <td th:text="${leasingContract.price}"></td>
+            <td th:text="${leasingContract.vehicle_number}"></td>
+            <td th:text="${leasingContract.username}"></td>
+            <td th:text="${leasingContract.customer_id}"></td>
+        </tr>
+        </tbody>
+    </table>
 
-<h1 th:text="${username}"></h1>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const rows = document.querySelectorAll('tbody tr');
 
-        <div class="footer">
+        searchInput.addEventListener('input', function() {
+            const searchText = searchInput.value.toLowerCase();
+
+            rows.forEach(function(row) {
+                const text = row.innerText.toLowerCase();
+
+                if (text.includes(searchText)) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <h1 th:text="${username}"></h1>
+
+
+    <div class="footer">
             <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
         </div>
 </body>
