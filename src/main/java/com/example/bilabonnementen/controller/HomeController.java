@@ -76,16 +76,4 @@ public class HomeController {
         return "opretLejekontrakt";
     }
 
-    @GetMapping("/navbartest")
-    public String lejvjhekontrakt() {
-        return "navbartest";
-    }
-
-    @GetMapping("/navbar")
-    public String lejvjhekhjontrakt() {
-        return "navbar";
-    }
-
-
-
 }
