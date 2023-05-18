@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <title>Opret skaderapport</title>
     <link rel="stylesheet" href="home.css">
+
+    <style>
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Add this line to include padding and border in the element's total width */
+        }
+
+    </style>
 </head>
 <body>
 <div class="container">
@@ -46,9 +64,17 @@
     </div>
     <h1>Skadesrapport</h1>
 
+
+
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search...">
     </div>
+
+    <a href="opretskaderapport">
+        <button class="createDamageRep">
+            Opret en skadesrapport
+        </button>
+    </a>
 
     <table>
         <thead>
@@ -67,11 +93,7 @@
         </tbody>
     </table>
 
-    <a href="opretskaderapport">
-        <button class="createDamageRep">
-            Opret en skadesrapport
-        </button>
-    </a>
+
 
     <script>
         const searchInput = document.getElementById('search-input');
