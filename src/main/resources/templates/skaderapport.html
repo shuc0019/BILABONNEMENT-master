@@ -44,18 +44,21 @@
         </div>
 
     </div>
-<h1>Skadesrapport</h1>
+    <h1>Skadesrapport</h1>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+    </div>
 
     <table>
         <thead>
         <tr>
-            <th>Report id</th>
+            <th>Report ID</th>
             <th>Samlet pris</th>
-            <th>Kontrakt id</th>
+            <th>Kontrakt ID</th>
         </tr>
         </thead>
         <tbody>
-        <!-- Loop through the cars and populate the table rows -->
         <tr th:each="damage_report : ${damage_report}">
             <td th:text="${damage_report.report_id}"></td>
             <td th:text="${damage_report.total_price}"></td>
@@ -69,6 +72,26 @@
             Opret en skadesrapport
         </button>
     </a>
+
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const rows = document.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('input', function() {
+            const searchText = searchInput.value.toLowerCase();
+
+            rows.forEach(function(row) {
+                const text = row.innerText.toLowerCase();
+
+                if (text.includes(searchText)) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
 
 <div class="footer">
     <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
