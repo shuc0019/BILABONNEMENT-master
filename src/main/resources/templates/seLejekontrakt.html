@@ -94,21 +94,26 @@
     </table>
 
     <script>
-        const searchInput = document.getElementById('searchInput');
-        const rows = document.querySelectorAll('tbody tr');
+        var searchInput = document.getElementById("search-input");
 
-        searchInput.addEventListener('input', function() {
-            const searchText = searchInput.value.toLowerCase();
+        searchInput.addEventListener("input", function() {
+            var searchTerm = searchInput.value.toLowerCase();
+            var tableRows = document.getElementsByTagName("tr");
 
-            rows.forEach(function(row) {
-                const text = row.innerText.toLowerCase();
+            for (var i = 1; i < tableRows.length; i++) {
+                var cells = tableRows[i].getElementsByTagName("td");
+                var found = false;
 
-                if (text.includes(searchText)) {
-                    row.style.display = 'table-row';
-                } else {
-                    row.style.display = 'none';
+                for (var j = 0; j < cells.length; j++) {
+                    var cellValue = cells[j].textContent.toLowerCase();
+                    if (cellValue.includes(searchTerm)) {
+                        found = true;
+                        break;
+                    }
                 }
-            });
+
+                tableRows[i].style.display = found ? "" : "none";
+            }
         });
     </script>
 
