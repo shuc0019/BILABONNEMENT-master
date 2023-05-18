@@ -76,6 +76,4 @@ public class HomeController {
         return "opretLejekontrakt";
     }
 
-
-
 }

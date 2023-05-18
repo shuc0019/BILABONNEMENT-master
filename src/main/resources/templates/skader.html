@@ -5,6 +5,24 @@
 
     <title>Skaderapport</title>
     <link rel="stylesheet" href="home.css">
+    <style>
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Add this line to include padding and border in the element's total width */
+        }
+
+    </style>
+
 </head>
 <body>
 <div class="container">
@@ -24,7 +42,7 @@
             <div class="dashboard-item">
                 <button class="dashboard-button">Skade og udbedring</button>
                 <div class="dropdown">
-                    <a href="skaderapport">skade rapport</a>
+                    <a href="skaderapport">   Skaderapport </a>
                     <a href="skader">Se priser på skader</a>
                 </div>
             </div>
@@ -47,13 +65,15 @@
     </div>
 
     <h1>Prisliste på skader</h1>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Søg...">
+    </div>
     <table>
         <thead>
         <tr>
-            <th>category_id</th>
-            <th>damage_name</th>
-            <th>price</th>
-
+            <th>Kategori</th>
+            <th>Skade</th>
+            <th>Pris</th>
         </tr>
         </thead>
         <tbody>
@@ -65,9 +85,28 @@
         </tr>
         </tbody>
     </table>
-</div>
 
-<div class="footer">
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const rows = document.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('input', function() {
+            const searchText = searchInput.value.toLowerCase();
+
+            rows.forEach(function(row) {
+                const text = row.innerText.toLowerCase();
+
+                if (text.includes(searchText)) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+
+    <div class="footer">
     <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
 </div>
 </body>

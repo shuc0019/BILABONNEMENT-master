@@ -4,61 +4,45 @@
     <meta charset="UTF-8">
     <title>Personale</title>
     <link rel="stylesheet" href="home.css">
+    <div th:include="navbar.html"></div>
 
+
+    <style>
+        .search-container {
+            max-width: 300px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Add this line to include padding and border in the element's total width */
+        }
+
+    </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-
-        <div class="dashboard">
-            <a href="home">
-                <img class="logo" src="images/BILABONNEMENT_rgb_mmahqw.png" alt="Logo">
-            </a>
-            <div class="dashboard-item">
-                <button class="dashboard-button">Dataregistrering</button>
-                <div class="dropdown">
-                    <a href="opretlejekontrakt">Opret lejekontrakt</a>
-                    <a href="selejekontrakt">Se lejekontrakt</a>
-                </div>
-            </div>
-            <div class="dashboard-item">
-                <button class="dashboard-button">Skade og udbedring</button>
-                <div class="dropdown">
-                    <a href="skaderapport">skade rapport</a>
-                    <a href="skader">Se priser på skader</a>
-                </div>
-            </div>
-            <div class="dashboard-item">
-                <button class="dashboard-button">Rapportering og overvågning</button>
-                <div class="dropdown">
-                    <a href="seallebiler">Se alle biler</a>
-                    <a href="ledigbiler">Se ledige biler</a>
-                    <a href="sammenlagtpris">Sammenlagt pris på nuværende udlejede biler</a>
-                </div>
-            </div>
-            <div class="dashboard-item">
-                <button class="dashboard-button">Personale</button>
-                <div class="dropdown">
-                    <a href="personale">Se ansatte</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
     <h1>Personale</h1>
-    <div class="create employee">
 
+    <div class="create employee">
         <a href="/opretPersonale">
-            <button class = "createEmployee">
+            <button class="createEmployee">
                 Opret ny medarbejder
             </button>
         </a>
-
-
     </div>
 
-    <table>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Søg..." />
+    </div>
 
+
+
+    <table>
         <thead>
         <tr>
             <th>Brugernavn</th>
@@ -71,7 +55,7 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Loop through the cars and populate the table rows -->
+        <!-- Loop through the employees and populate the table rows -->
         <tr th:each="employee:${employees}">
             <td th:text="${employee.username}"></td>
             <td th:text="${employee.user_password}"></td>
@@ -80,13 +64,32 @@
             <td th:text="${employee.phone}"></td>
             <td th:text="${employee.is_active}"></td>
             <td th:text="${employee.is_admin}"></td>
-            <td> <a th:href="@{'/personale/'+${employee.username}}">  <button> gør bruger inaktiv </button></a></td>
-            <td> <a th:href="@{'/opdaterPersonale/'+${employee.username}}">  <button> Opdater oplysninger </button></a></td>
+            <td><a th:href="@{'/personale/'+${employee.username}}"><button>gør bruger inaktiv</button></a></td>
+            <td><a th:href="@{'/opdaterPersonale/'+${employee.username}}"><button>Opdater oplysninger</button></a></td>
         </tr>
         </tbody>
     </table>
-</div>
-<div class="footer">
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const tableRows = document.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('input', function () {
+            const searchValue = searchInput.value.toLowerCase();
+
+            tableRows.forEach(function (row) {
+                const employeeName = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+
+                if (employeeName.includes(searchValue)) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <div class="footer">
     <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
 </div>
 

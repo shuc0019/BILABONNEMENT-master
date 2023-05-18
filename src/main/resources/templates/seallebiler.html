@@ -4,48 +4,30 @@
     <meta charset="UTF-8">
     <title>Alle biler</title>
     <link rel="stylesheet" href="home.css">
+    <div th:include="navbar.html"></div>
+
+    <style>
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Add this line to include padding and border in the element's total width */
+        }
+    </style>
+
 
 </head>
 <body>
-<div class="container">
-    <div class="header">
 
-        <div class="dashboard">
-            <a href="home">
-                <img class="logo" src="images/BILABONNEMENT_rgb_mmahqw.png" alt="Logo">
-            </a>
-            <div class="dashboard-item">
-                <button class="dashboard-button">Dataregistrering</button>
-                <div class="dropdown">
-                    <a href="opretlejekontrakt">Opret lejekontrakt</a>
-                    <a href="selejekontrakt">Se lejekontrakt</a>
-                </div>
-            </div>
-            <div class="dashboard-item">
-                <button class="dashboard-button">Skade og udbedring</button>
-                <div class="dropdown">
-                    <a href="skaderapport">skade rapport</a>
-                    <a href="skader">Se priser på skader</a>
-                </div>
-            </div>
-            <div class="dashboard-item">
-                <button class="dashboard-button">Rapportering og overvågning</button>
-                <div class="dropdown">
-                    <a href="seallebiler">Se alle biler</a>
-                    <a href="ledigbiler">Se ledige biler</a>
-                    <a href="sammenlagtpris">Sammenlagt pris på nuværende udlejede biler</a>
-                </div>
-            </div>
-            <div class="dashboard-item">
-                <button class="dashboard-button">Personale</button>
-                <div class="dropdown">
-                    <a href="personale">Se ansatte</a>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
 
     <h1>Alle biler</h1>
 
@@ -82,8 +64,6 @@
             }
         });
     </script>
-
-
 
 
     <table>
@@ -129,7 +109,7 @@
         </tr>
         </tbody>
     </table>
-</div>
+
 <div class="footer">
     <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
 </div>
