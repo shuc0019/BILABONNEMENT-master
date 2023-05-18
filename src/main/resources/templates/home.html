@@ -6,6 +6,12 @@
     <title>My Dashboard</title>
     <link rel="stylesheet" href="home.css">
 
+    <style>
+        .logout{
+            display: inline-block;
+        }
+
+    </style>
 </head>
 <body>
 <div class="container">
@@ -22,7 +28,7 @@
                 </div>
             </div>
             <div class="dashboard-item">
-                <button class="dashboard-button">Skade og udbedring</button>
+                <button class="dashboard-button">Skader</button>
                 <div class="dropdown">
                     <a href="skaderapport">skade rapport</a>
                     <a href="skader">Se priser på skader</a>
@@ -41,7 +47,10 @@
                 <div class="dropdown">
                     <a href="personale">Se ansatte</a>
                 </div>
+
             </div>
+            <a href="/"> <button class="logout" style="background: red"> log out
+            </button></a>
         </div>
     </div>
 </div>
