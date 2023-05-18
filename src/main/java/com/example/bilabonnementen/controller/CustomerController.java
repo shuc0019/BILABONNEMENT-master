@@ -26,7 +26,7 @@ public class CustomerController {
         return "opretKontrakt";
     }
 
-    @GetMapping("/opretKunde")
+    @GetMapping("/opretNyKunde")
     public String CreateNewCustomer(){
         return "opretNyKunde";
     }
