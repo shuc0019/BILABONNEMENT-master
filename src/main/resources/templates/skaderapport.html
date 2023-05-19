@@ -4,24 +4,6 @@
     <meta charset="UTF-8">
     <title>Opret skaderapport</title>
     <link rel="stylesheet" href="home.css">
-
-    <style>
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto;
-            margin-bottom: 20px;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 5px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box; /* Add this line to include padding and border in the element's total width */
-        }
-
-    </style>
 </head>
 <body>
 <div class="container">
@@ -40,7 +22,7 @@
             <div class="dashboard-item">
                 <button class="dashboard-button">Skade og udbedring</button>
                 <div class="dropdown">
-                    <a href="skaderapport">   Skaderapport </a>
+                    <a href="skaderapport">skade rapport</a>
                     <a href="skader">Se priser på skader</a>
                 </div>
             </div>
@@ -62,29 +44,22 @@
         </div>
 
     </div>
-    <h1>Skadesrapport</h1>
-
-
-
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search...">
-    </div>
-
-    <a href="opretskaderapport">
+<h1>Skadesrapport</h1>
+    <a href="skaderapportopret">
         <button class="createDamageRep">
             Opret en skadesrapport
         </button>
     </a>
-
     <table>
         <thead>
         <tr>
-            <th>Report ID</th>
-            <th>Samlet pris</th>
-            <th>Kontrakt ID</th>
+            <th>report id</th>
+            <th>total price</th>
+            <th>contract id</th>
         </tr>
         </thead>
         <tbody>
+        <!-- Loop through the cars and populate the table rows -->
         <tr th:each="damage_report : ${damage_report}">
             <td th:text="${damage_report.report_id}"></td>
             <td th:text="${damage_report.total_price}"></td>
@@ -92,28 +67,6 @@
         </tr>
         </tbody>
     </table>
-
-
-
-    <script>
-        const searchInput = document.getElementById('search-input');
-        const rows = document.querySelectorAll('tbody tr');
-
-        searchInput.addEventListener('input', function() {
-            const searchText = searchInput.value.toLowerCase();
-
-            rows.forEach(function(row) {
-                const text = row.innerText.toLowerCase();
-
-                if (text.includes(searchText)) {
-                    row.style.display = 'table-row';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        });
-    </script>
-
 
 <div class="footer">
     <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>

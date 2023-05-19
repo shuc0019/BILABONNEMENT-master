@@ -99,7 +99,7 @@ public class LeasingContractController {
         } else {
             // Calculate leasing price
             double monthlyPrice = car.getPrice();
-            double totalPrice = monthlyPrice * months;
+            double totalPrice = monthlyPrice + months;
             if (days > 0) {
                 double dailyPrice = (double) monthlyPrice / 30;
                 double extraDaysPrice = dailyPrice * days;
