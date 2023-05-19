@@ -4,15 +4,24 @@ public class Damage_report {
     private int report_id;
     private double total_price;
     private int contract_id;
+    private String username;
 
     public Damage_report() {
     }
 
-    public Damage_report(int report_id, double total_price, int contract_id) {
+    public Damage_report(int report_id, double total_price, int contract_id, String username ) {
         this.report_id = report_id;
         this.total_price = total_price;
         this.contract_id = contract_id;
+        this.username = username;
     }
+
+   public String getUsername(){
+        return username;
+   }
+   public void setUsername(String username){
+        this.username = username;
+   }
 
     public int getReport_id() {
         return report_id;
