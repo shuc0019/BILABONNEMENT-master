@@ -68,3 +68,19 @@ body {
     border-radius: 5px;
 }
 
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel .car-pic {
+    display: none;
+}
+
+.carousel .car-pic.active {
+    display: block;
+}
+
+.car-info {
+    /* Add your styles for car-info here */
+}

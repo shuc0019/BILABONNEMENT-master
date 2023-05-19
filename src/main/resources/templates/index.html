@@ -12,7 +12,12 @@
 </div>
 
 <div class="car-section">
-    <img src="images/photo-1580273916550-e323be2ae537.avif" alt="Car Image" class="car-pic">
+    <div class="carousel">
+        <img src="images/adam-stefanca-hdMSxGizchk-unsplash.jpg" alt="Car Image 1" class="car-pic active">
+        <img src="images/grahame-jenkins-p7tai9P7H-s-unsplash.jpg" alt="Car Image 2" class="car-pic">
+        <img src="images/car3.avif" alt="Car Image 3" class="car-pic">
+        <!-- Add more images here -->
+    </div>
     <div class="car-info">
         <h2 class="car-title">BILABONNEMENT</h2>
         <p class="car-slogan">"Drive the Car, Rent the Memories"</p>
@@ -20,8 +25,40 @@
     </div>
 </div>
 
+<script>
+    // Get all car pictures
+    const carPics = document.querySelectorAll('.car-pic');
+
+    // Start the slide show
+    let slideIndex = 0;
+    carousel();
+
+    function carousel() {
+        // Hide all car pictures
+        for (let i = 0; i < carPics.length; i++) {
+            carPics[i].style.display = 'none';
+        }
+
+        // Show the current car picture
+        carPics[slideIndex].style.display = 'block';
+
+        // Increment the slide index
+        slideIndex++;
+
+        // Reset the slide index if it exceeds the number of car pictures
+        if (slideIndex >= carPics.length) {
+            slideIndex = 0;
+        }
+
+        // Change slide every 3 seconds (adjust the duration as needed)
+        setTimeout(carousel, 3000);
+    }
+</script>
+
+
+
 <div class="footer">
-    <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
+    <p>© 2023 BA - BilAbonnement. All rights reserved.</p>
 </div>
 
 </body>
