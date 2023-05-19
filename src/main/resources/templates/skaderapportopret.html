@@ -110,13 +110,12 @@
 
     </div>
     <h1>Oprettelse af skaderapport</h1>
-    <form method="Post" action="/skaderapportopret">
+    <form method="post" action="/oprettelseskaderapport">
         <h2>Vælg en kontrakt. Se nedenfor for nuværende kontrakter</h2>
         <label for="contract_id">Kontrakt id:</label>
         <input type="number" id="contract_id" name="contract_id" placeholder="indtast venligt en kontrakt id" required>
         <input type="submit" value="Choose Contract">
-        <div class="error" th:text="${flowerror}"></div>
-        <div class="error" th:text="${error}"></div>
+
     </form>
 
     <table>

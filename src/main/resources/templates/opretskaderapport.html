@@ -5,16 +5,16 @@
     <title>Opret skaderapport</title>
     <link rel="stylesheet" href="home.css">
     <div th:include="navbar.html"></div>
-
 </head>
 <body>
 <div class="tilføj bil">
     <h1>Opret skaderapport</h1>
-    <form method="post" action="/report">
-        <label for="categoryid">category:</label>
+    <form method="post" action="/tilføjRapport">
+        <label for="categoryid">Category ID:</label>
         <input type="number" id="categoryid" name="category_id" step="0.01"><br><br>
-        <label for="finish">finish:</label>
-        <input type="checkbox" id="finish" name="finish" value="1" ><br><br>
+        <label for="finish">Finish:</label>
+        <input type="checkbox" id="finish" name="finish" value="1"><br><br>
+        <input type="hidden" name="contract_id" th:value="${contractid}"><br><br>
 
         <input type="submit" value="Beregn totalprisen for skaderne">
     </form>

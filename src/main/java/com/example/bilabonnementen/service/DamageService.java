@@ -21,4 +21,5 @@ public class DamageService {
     public Double getSpecificDamagePrice(int category_id) {
         return damageRepo.findSpecificDamagePrice(category_id);
     }
+
 }

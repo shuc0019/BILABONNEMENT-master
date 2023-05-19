@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Kvittering</h1>
+<h1>Opret skaderapport</h1>
+<form method="post" action="/Bekræftkvittering">
+    <input type="number" name="contract_id" th:value="${contractid}"><br><br>
+    <input type="number" name="total_price" th:value="${totalprisen}"><br><br>
+    <input type="submit" value="Beregn totalprisen for skaderne">
+</form>
+
+</body>
+</html>

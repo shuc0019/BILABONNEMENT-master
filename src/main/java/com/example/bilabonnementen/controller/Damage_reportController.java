@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -35,21 +36,40 @@ public class Damage_reportController {
     }
 
     @GetMapping("skaderapportopret")
-    public String createdamageReport(Model model){
-        List <Leasing_contract>leasing_contracts=leasing_contractService.fetchAll();
+    public String createdamageReport(Model model, HttpSession session,  Integer contract_id) {
+        List<Leasing_contract> leasing_contracts = leasing_contractService.fetchAll();
         model.addAttribute("contract", leasing_contracts);
-        return "skaderapportopret";
+
+
+            return "skaderapportopret";
+
     }
 
 
-    @PostMapping("/report")
-    public String addDamageReport(Model model, int category_id, RedirectAttributes redirectAttributes, Integer finish, HttpSession session) {
+    @PostMapping("/oprettelseskaderapport")
+    public String opretskaderapport(Model model, HttpSession session, Integer contract_id){
+        Leasing_contract leasing_contract = leasing_contractService.findId(contract_id);
+        session.setAttribute("contract", leasing_contract.getContract_id());
+        System.out.println(leasing_contract.getContract_id());
+        return "redirect:/opretskaderapport";
+    }
+    @GetMapping("opretskaderapport")
+    public String visSkadeRapport(HttpSession session, Model model) {
+        Integer integer = (Integer) session.getAttribute("contract");
+        model.addAttribute("contractid", integer);
+        return "opretskaderapport";
+    }
 
 
+    @PostMapping("/tilføjRapport")
+    public String addDamageReport(Model model, Integer category_id, RedirectAttributes redirectAttributes, Integer finish, HttpSession session, Damage_report damage_report) {
 
         Double totalPrice = (Double) session.getAttribute("totalPrice");
         if (totalPrice == null) {
             totalPrice = 0.0;
+        }
+        if (category_id==null && finish==1){
+            return "redirect:/kvitteringSkadeRapport";
         }
 
         Double value = damageService.getSpecificDamagePrice(category_id);
@@ -57,14 +77,34 @@ public class Damage_reportController {
 
         session.setAttribute("totalPrice", totalPrice);
 
+
         if (finish == null) {
             redirectAttributes.addFlashAttribute("totalPrice", totalPrice);
             return "redirect:/opretskaderapport";
-        } else {
+
+        }  else {
             // The finish condition is met, you can redirect or perform any other action here
-            return "redirect:/opretskaderapport";
+            return "redirect:/kvitteringSkadeRapport";
         }
+
     }
+    @GetMapping("/kvitteringSkadeRapport")
+        public String kvittering(HttpSession session, Model model){
+        Double totalpris = (Double) session.getAttribute("totalPrice");
+        Integer integer = (Integer) session.getAttribute("contract");
+        model.addAttribute("contractid", integer);
+        model.addAttribute("totalprisen", totalpris);
+        return "kvitteringSkadeRapport";
+        }
+
+    @PostMapping("/Bekræftkvittering")
+    public String kvitteringForDamageReport(Model model, RedirectAttributes redirectAttributes, Integer finish, HttpSession session, Damage_report damage_report) {
+
+        damage_reportService.addDamage_report(damage_report);
+      return "redirect:/skaderapport";
+    }
+
+
 
 
 }
