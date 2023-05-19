@@ -40,6 +40,7 @@ body {
     color: black;
     padding: 20px;
     text-align: center;
+   
 }
 
 .title {
@@ -93,12 +94,6 @@ body {
     color: black;
 }
 
-.footer {
-    background-color: ghostwhite;
-    color: black;
-    padding: 10px;
-    text-align: center;
-}
 
 a {
     text-decoration: none;
@@ -116,6 +111,7 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+
 }
 
 button:hover {
@@ -130,8 +126,9 @@ button:active {
     background-color: #003d80;
 }
 
-/*form for */
 
+
+/*form for */
 form {
     max-width: 400px;
     margin: 0 auto;
@@ -182,3 +179,50 @@ button[type="submit"]:focus {
 button[type="submit"]:active {
     background-color: #003d80;
 }
+
+
+.createEmployee{
+    margin-left: 68%;
+    background-color: #3e8e41;
+
+
+}
+
+.addCarButton{
+    margin-left: 82%;
+    background-color: #3e8e41;
+}
+
+.createDamageRep{
+    margin-left: 75%;
+    background-color: #3e8e41;
+
+}
+
+
+.footer {
+    background-color: darkgray;
+    padding: 20px;
+    text-align: center;
+    margin-top: 500px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.footer p span {
+    color: #aaa;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+

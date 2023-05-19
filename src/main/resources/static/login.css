@@ -65,3 +65,30 @@ button[type="submit"]:hover {
     font-size: 16px;
     margin-top: 10px;
 }
+
+
+.footer {
+    background-color: darkgray;
+    padding: 20px;
+    text-align: center;
+    margin-top: 500px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.footer p span {
+    color: #aaa;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

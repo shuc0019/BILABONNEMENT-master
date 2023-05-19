@@ -59,7 +59,6 @@ public class HomeController {
 
 
 
-
     // rapportering og overvågnings
     @GetMapping("/seallebil")
     public String allCars() {
@@ -76,6 +75,6 @@ public class HomeController {
         return "opretLejekontrakt";
     }
 
-
+    // Personale
 
 }

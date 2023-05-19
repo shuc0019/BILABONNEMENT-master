@@ -29,6 +29,10 @@ public class EmployeeService {
 
     }
 
+    public Employee findAdminUser(String username){
+        return employeeRepository.findAdmin(username);
+    }
+
     public Employee findByUsername(String username){
         return employeeRepository.findByUsername(username);
 

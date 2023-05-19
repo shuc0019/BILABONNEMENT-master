@@ -1,6 +1,7 @@
 package com.example.bilabonnementen.repository;
 
 import com.example.bilabonnementen.model.Damage_category;
+import com.example.bilabonnementen.model.Damage_report;
 import com.example.bilabonnementen.model.Specific_damage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -21,9 +22,15 @@ public class DamageRepo {
     }
 
     // tilføj specifikke skader metoden bliver ikke brugt endnu!
-    public void addSpecificDamage(Specific_damage specific_damage){
+    public void addSpecificDamage(Specific_damage specific_damage) {
         String sql = "INSERT INTO specific_damage (specific_damage_id, report_id, category_id) VALUES (?,?,?)";
         template.update(sql, specific_damage.getSpecific_damage_id(), specific_damage.getReport_id(), specific_damage.getCategory_id());
+    }
+
+    public Double findSpecificDamagePrice(int category_id) {
+        String sql = "SELECT price FROM damage_category WHERE category_id = ?";
+
+        return template.queryForObject(sql, Double.class, category_id);
     }
 }
 

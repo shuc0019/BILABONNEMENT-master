@@ -68,3 +68,46 @@ body {
     border-radius: 5px;
 }
 
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel .car-pic {
+    display: none;
+}
+
+.carousel .car-pic.active {
+    display: block;
+}
+
+.car-info {
+    /* Add your styles for car-info here */
+}
+
+
+.footer {
+    background-color: darkgray;
+    padding: 20px;
+    text-align: center;
+    margin-top: 500px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.footer p span {
+    color: #aaa;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
