@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret skaderapport</title>
+    <link rel="stylesheet" href="home.css">
     <div th:include="navbar.html"></div>
 
 </head>
@@ -18,6 +19,10 @@
         <input type="submit" value="Beregn totalprisen for skaderne">
     </form>
     <h1 th:text="${totalPrice}"></h1>
+</div>
+
+<div class="footer">
+    <p>© 2023 BA - BilAbonnement. All rights reserved.</p>
 </div>
 </body>
 </html>
