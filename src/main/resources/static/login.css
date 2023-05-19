@@ -71,6 +71,7 @@ button[type="submit"]:hover {
     background-color: darkgray;
     padding: 20px;
     text-align: center;
+    margin-top: 500px;
 }
 
 .footer p {
