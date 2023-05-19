@@ -84,3 +84,29 @@ body {
 .car-info {
     /* Add your styles for car-info here */
 }
+
+
+.footer {
+    background-color: darkgray;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.footer p span {
+    color: #aaa;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

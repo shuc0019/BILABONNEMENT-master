@@ -94,12 +94,6 @@ body {
     color: black;
 }
 
-.footer {
-    background-color: ghostwhite;
-    color: black;
-    padding: 10px;
-    text-align: center;
-}
 
 a {
     text-decoration: none;
@@ -205,4 +199,29 @@ button[type="submit"]:active {
 
 }
 
+
+.footer {
+    background-color: darkgray;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.footer p span {
+    color: #aaa;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
 
