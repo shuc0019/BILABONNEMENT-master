@@ -2,6 +2,7 @@ package com.example.bilabonnementen.controller;
 
 import com.example.bilabonnementen.model.Customer;
 import com.example.bilabonnementen.service.CustomerService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,15 +21,25 @@ public class CustomerController {
         return "opretLejekontrakt";
     }
     @PostMapping("/opretenkunde")
-    public String createCustomer (Customer c, Model model){
+    public String createCustomer (Customer c, Model model, HttpSession session){
         customerService.createCustomer(c);
         model.addAttribute("kunde", "Kunde tilføjet");
-        return "opretKontrakt";
+        session.setAttribute("kundeoprettet", c);
+        System.out.println(c.getCustomer_id());
+        return "redirect:/opretNyKundeConfirmed";
     }
 
     @GetMapping("/opretNyKunde")
     public String CreateNewCustomer(){
         return "opretNyKunde";
+    }
+
+    @GetMapping("/opretNyKundeConfirmed")
+    public String newCustomerCreated(HttpSession session, Model model){
+        Customer c = (Customer) session.getAttribute("kundeoprettet");
+        model.addAttribute("customer", c);
+        return "opretNyKundeConfirmed";
+
     }
 
     //TODO lav færdig imorgen
