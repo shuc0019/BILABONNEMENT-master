@@ -60,7 +60,7 @@ public class LeasingContractController {
         model.addAttribute("LC",LC );
         System.out.println(LC.size());
         double totalPrice = leasing_contractService.calculateTotalPriceOfLeasingContracts();
-        model.addAttribute("totalPrices", totalPrice);
+        model.addAttribute("totalPriceRent", totalPrice);
         return "seLejekontrakt";
     }
 
@@ -105,6 +105,7 @@ public class LeasingContractController {
                 double extraDaysPrice = dailyPrice * days;
                 totalPrice += Math.round(extraDaysPrice);
             }
+            System.out.println(totalPrice);
             model.addAttribute("opdater", car);
             model.addAttribute("username", username);
             model.addAttribute("totalPrice", totalPrice);
@@ -112,8 +113,8 @@ public class LeasingContractController {
             model.addAttribute("endDate", end_date);
             model.addAttribute("price", monthlyPrice);
             model.addAttribute("customerId", customer_id);
-            model.addAttribute("totalPrice", totalPrice);
-            session.setAttribute("totalPrice", totalPrice);
+            model.addAttribute("totalPriceRent", totalPrice);
+            session.setAttribute("totalPriceRent", totalPrice);
             session.setAttribute("startDate", start_date);
             session.setAttribute("endDate", end_date);
             session.setAttribute("customer", customer_id);
@@ -132,7 +133,7 @@ public class LeasingContractController {
         String customername = (String) session.getAttribute("customername");
         LocalDate startDate = (LocalDate) session.getAttribute("startDate");
         LocalDate endDate = (LocalDate) session.getAttribute("endDate");
-        double totalprice = (double) session.getAttribute("totalPrice");
+        double totalprice = (double) session.getAttribute("totalPriceRent");
         int customer = (int) session.getAttribute("customer");
 
         Integer numb = (Integer) session.getAttribute("numb");
@@ -142,7 +143,7 @@ public class LeasingContractController {
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
         model.addAttribute("customer", customer);
-        model.addAttribute("totalprice", totalprice);
+        model.addAttribute("totalPriceRent", totalprice);
         model.addAttribute("customername", customername);
         return "leaseconfirm";
     }
@@ -153,7 +154,7 @@ public class LeasingContractController {
         LocalDate startDate = (LocalDate) session.getAttribute("startDate");
         String customername = (String) session.getAttribute("customername");
         LocalDate endDate = (LocalDate) session.getAttribute("endDate");
-        double totalprice = (double) session.getAttribute("totalPrice");
+        double totalprice = (double) session.getAttribute("totalPriceRent");
         int customer = (int) session.getAttribute("customer");
         Integer numb = (Integer) session.getAttribute("numb");
         Car car = carService.findId(numb);
@@ -162,7 +163,7 @@ public class LeasingContractController {
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
         model.addAttribute("customer", customer);
-        model.addAttribute("totalprice", totalprice);
+        model.addAttribute("totalPriceRent", totalprice);
         model.addAttribute("customername", customername);
         leasing_contractService.addLeasingContract(leasing_contract);
         carService.updateAfterContract(numb);

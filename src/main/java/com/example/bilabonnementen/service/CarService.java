@@ -52,4 +52,8 @@ public class CarService {
         return carRepo.fetchRentedCars();
     }
 
+    public void updateAfterDamageReport(int id){
+        carRepo.updateAfterDamageReport(id);
+    }
+
 }

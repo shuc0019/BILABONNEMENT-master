@@ -4,6 +4,7 @@ import com.example.bilabonnementen.model.Damage_category;
 import com.example.bilabonnementen.model.Damage_report;
 import com.example.bilabonnementen.model.Leasing_contract;
 import com.example.bilabonnementen.repository.DamageRepo;
+import com.example.bilabonnementen.service.CarService;
 import com.example.bilabonnementen.service.DamageService;
 import com.example.bilabonnementen.service.Damage_reportService;
 import com.example.bilabonnementen.service.Leasing_contractService;
@@ -27,6 +28,8 @@ public class Damage_reportController {
     DamageService damageService;
     @Autowired
     Leasing_contractService leasing_contractService;
+    @Autowired
+    CarService carService;
 
     @GetMapping("/skaderapport")
     public String ShowDamage_Report(Model model){
@@ -51,7 +54,7 @@ public class Damage_reportController {
     public String opretskaderapport(Model model, HttpSession session, Integer contract_id){
         Leasing_contract leasing_contract = leasing_contractService.findId(contract_id);
         session.setAttribute("contract", leasing_contract.getContract_id());
-        System.out.println(leasing_contract.getContract_id());
+        session.setAttribute("leasingcontract", leasing_contract);
         return "redirect:/opretskaderapport";
     }
     @GetMapping("opretskaderapport")
@@ -102,8 +105,9 @@ public class Damage_reportController {
 
     @PostMapping("/Bekræftkvittering")
     public String kvitteringForDamageReport(Model model, RedirectAttributes redirectAttributes, Integer finish, HttpSession session, Damage_report damage_report) {
-
+       Leasing_contract leasing_contract = (Leasing_contract) session.getAttribute("leasingcontract");
         damage_reportService.addDamage_report(damage_report);
+        carService.updateAfterDamageReport(leasing_contract.getVehicle_number());
       return "redirect:/skaderapport";
     }
 

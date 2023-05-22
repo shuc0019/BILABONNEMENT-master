@@ -84,6 +84,11 @@ public class CarRepo {
         RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
         return template.query(sql, rowMapper);
     }
+
+    public void updateAfterDamageReport(int vehicle_number) {
+        String sql = "UPDATE car SET flow = 2 WHERE vehicle_number = ?";
+        template.update(sql, vehicle_number);
+    }
  
 
 

@@ -79,7 +79,8 @@ public class EmployeeController {
     //opdaterer personale oplysninger
 
     @PostMapping("/opdateretPersonale")
-    public String opdateretPersonal(Employee employee, int is_active, int is_admin, HttpSession session, RedirectAttributes redirectAttributes) {
+    public String opdateretPersonal(Employee employee, int is_active, int is_admin,
+                                    HttpSession session, RedirectAttributes redirectAttributes) {
         String usernames = (String) session.getAttribute("urlusername");
 
         //hvis begge to felter ikke har rigtig inputs, skal der gives to fejl meddelelser,
