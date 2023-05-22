@@ -1,5 +1,6 @@
 package com.example.bilabonnementen.controller;
 
+import com.example.bilabonnementen.model.Damage_category;
 import com.example.bilabonnementen.model.Damage_report;
 import com.example.bilabonnementen.model.Leasing_contract;
 import com.example.bilabonnementen.repository.DamageRepo;
@@ -56,6 +57,8 @@ public class Damage_reportController {
     @GetMapping("opretskaderapport")
     public String visSkadeRapport(HttpSession session, Model model) {
         Integer integer = (Integer) session.getAttribute("contract");
+        List<Damage_category> damage_category =  damageService.fetchAllDamageCategories();
+        model.addAttribute("category", damage_category);
         model.addAttribute("contractid", integer);
         return "opretskaderapport";
     }
