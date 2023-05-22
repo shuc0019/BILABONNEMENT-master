@@ -37,7 +37,9 @@ public class CustomerController {
     @GetMapping("/opretNyKundeConfirmed")
     public String newCustomerCreated(HttpSession session, Model model){
         Customer c = (Customer) session.getAttribute("kundeoprettet");
+        String value = customerService.findCustomerid(c.getEmail());
         model.addAttribute("customer", c);
+        model.addAttribute("customerid", value);
         return "opretNyKundeConfirmed";
 
     }

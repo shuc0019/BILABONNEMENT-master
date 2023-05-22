@@ -17,7 +17,7 @@ public class CustomerRepo {
         String sql = "INSERT INTO customer (customer_id,full_name, email, phone, address, cpr)" +
                 "VALUES(?,?,?,?,?,?)";
 
-        template.update(sql, c.getCustomer_id(), c.getFull_name(), c.getEmail(), c.getPhone(), c.getAddress(), c.getCpr());
+        template.update(sql,c.getCustomer_id(),  c.getFull_name(), c.getEmail(), c.getPhone(), c.getAddress(), c.getCpr());
 
     }
 
@@ -36,6 +36,11 @@ public class CustomerRepo {
         String sql = "Select * FROM customer WHERE customer_id = ?";
         RowMapper<Customer > rowMapper=new BeanPropertyRowMapper<>(Customer.class);
         return template.queryForObject(sql,rowMapper, customer_id);
+
+    }
+    public String findIdByEmail(String email){
+        String sql = "Select customer_id FROM customer WHERE email = ?";
+        return template.queryForObject(sql, String.class, email);
 
     }
 

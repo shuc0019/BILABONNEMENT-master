@@ -17,6 +17,9 @@ public class CustomerService {
     public Customer findId(int id){
         return customerRepo.findCustomerByid(id);
     }
+    public String findCustomerid(String email){
+        return customerRepo.findIdByEmail(email);
+    }
 
 
 
