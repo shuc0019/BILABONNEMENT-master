@@ -14,7 +14,7 @@ public class CustomerRepo {
     JdbcTemplate template;
 
     public void createCustomer(Customer c){
-        String sql = "INSERT INTO customer (customer_id,full_name, email, phone, address, cpr) " +
+        String sql = "INSERT INTO customer (customer_id,full_name, email, phone, address, cpr)" +
                 "VALUES(?,?,?,?,?,?)";
 
         template.update(sql, c.getCustomer_id(), c.getFull_name(), c.getEmail(), c.getPhone(), c.getAddress(), c.getCpr());
