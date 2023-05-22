@@ -10,17 +10,35 @@
 <div class="tilføj bil">
     <h1>Opret skaderapport</h1>
     <form method="post" action="/tilføjRapport">
-        <label for="categoryid">Category ID:</label>
+        <label for="categoryid">Indtast skadeskategori:</label>
         <input type="number" id="categoryid" name="category_id" step="0.01"><br><br>
         <label for="finish">Finish:</label>
         <input type="checkbox" id="finish" name="finish" value="1"><br><br>
         <input type="hidden" name="contract_id" th:value="${contractid}"><br><br>
 
         <input type="submit" value="Beregn totalprisen for skaderne">
+        <input type="submit" value="når du er færdig så check finish og tryk her">
+
     </form>
     <h1 th:text="${totalPrice}"></h1>
 </div>
-
+<table>
+    <thead>
+    <tr>
+        <th>Kategori</th>
+        <th>Skade</th>
+        <th>Pris</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through the cars and populate the table rows -->
+    <tr th:each="damages:${category}">
+        <td th:text="${damages.category_id}"></td>
+        <td th:text="${damages.damage_name}"></td>
+        <td th:text="${damages.price}"></td>
+    </tr>
+    </tbody>
+</table>
 <div class="footer">
     <p>© 2023 BA - BilAbonnement. All rights reserved.</p>
 </div>

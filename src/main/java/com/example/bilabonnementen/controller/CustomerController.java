@@ -39,7 +39,7 @@ public class CustomerController {
         Customer c = (Customer) session.getAttribute("kundeoprettet");
         String value = customerService.findCustomerid(c.getEmail());
         model.addAttribute("customer", c);
-        model.addAttribute("customerid", value);
+        model.addAttribute("customerid",value);
         return "opretNyKundeConfirmed";
 
     }
