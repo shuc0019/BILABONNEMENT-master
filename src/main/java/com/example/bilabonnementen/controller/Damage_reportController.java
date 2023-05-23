@@ -94,6 +94,10 @@ public class Damage_reportController {
         }
 
     }
+
+
+
+
     @GetMapping("/kvitteringSkadeRapport")
         public String kvittering(HttpSession session, Model model){
         Double totalpris = (Double) session.getAttribute("totalPrice");
