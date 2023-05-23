@@ -47,8 +47,8 @@ public class LeasingContractController {
             model.addAttribute("model", "");
             session.setAttribute("numb", car.getVehicle_number());
             if (car.getFlow() == 1) {
-                model.addAttribute("flowerror", "Bilen er allerede lejet ud");
-                return "opretKontrakt";
+                redirectAttributes.addFlashAttribute("flowerror", "Bilen er allerede lejet ud");
+                return "redirect:/opretKontrakt";
             } else {
                 return "bilValgt";
             }
@@ -63,7 +63,6 @@ public class LeasingContractController {
         model.addAttribute("totalPriceRent", totalPrice);
         return "seLejekontrakt";
     }
-
 
 
 
