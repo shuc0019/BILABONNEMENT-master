@@ -66,7 +66,6 @@ public class LeasingContractController {
 
 
 
-
     @GetMapping("/lej")
     public String leasing(Model model, HttpSession session) {
         String username = (String) session.getAttribute("username");
@@ -99,7 +98,7 @@ public class LeasingContractController {
         } else {
             // Calculate leasing price
             double monthlyPrice = car.getPrice();
-            double totalPrice = monthlyPrice + months;
+            double totalPrice = monthlyPrice * months;
             if (days > 0) {
                 double dailyPrice = (double) monthlyPrice / 30;
                 double extraDaysPrice = dailyPrice * days;
