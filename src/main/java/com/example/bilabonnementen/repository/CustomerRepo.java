@@ -1,12 +1,14 @@
 package com.example.bilabonnementen.repository;
 
-import com.example.bilabonnementen.model.Car;
 import com.example.bilabonnementen.model.Customer;
+import com.example.bilabonnementen.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class CustomerRepo {
@@ -22,13 +24,17 @@ public class CustomerRepo {
     }
 
     //TODO read metode
-
+    public List<Customer> fetchAll() {
+        String sql = "SELECT * FROM customer";
+        RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
+        return template.query(sql, rowMapper);
+    }
     //TODO DELETE metode
 
 
 
     //TODO UPDATE metode (ændringer i kundens oplysninger..)
-    public void updateCustomer(Customer customer) {
+    public void updateCustomer(Customer customer, int customer_id) {
         String sql = "UPDATE customer SET full_name = ?, email = ?, phone = ?, address = ?, cpr = ? WHERE customer_id = ?";
         template.update(sql, customer.getFull_name(), customer.getEmail(), customer.getPhone(), customer.getAddress(), customer.getCpr(), customer.getCustomer_id());
     }

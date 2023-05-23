@@ -1,5 +1,6 @@
 package com.example.bilabonnementen.controller;
 
+import com.example.bilabonnementen.model.Car;
 import com.example.bilabonnementen.model.Customer;
 import com.example.bilabonnementen.service.CustomerService;
 import jakarta.servlet.http.HttpSession;
@@ -7,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class CustomerController {
@@ -15,9 +19,10 @@ public class CustomerController {
     CustomerService customerService;
 
 
-    @GetMapping("/opretlegekontrakt")
-    public String lejekontrakt (Customer c){
-
+    @GetMapping("/opretlejekontrakt")
+    public String lejekontrakt ( Model model){
+        List<Customer> customers = customerService.fetchAll();
+        model.addAttribute("customers", customers);
         return "opretLejekontrakt";
     }
     @PostMapping("/opretenkunde")
@@ -43,6 +48,21 @@ public class CustomerController {
         return "opretNyKundeConfirmed";
 
     }
+
+
+    @GetMapping("/opdaterkunde/{customer_id}")
+    public String updateCustomer(@PathVariable("customer_id") int customer_id, Model model){
+        Customer customer=customerService.findId(customer_id);
+        model.addAttribute("opdater", customer);
+        return "opdaterKunde";
+    }
+
+    @PostMapping("/opdaterkunden")
+    public String updateTheCustomer(Customer c,int customer_id){
+        customerService.updateCustomer(c, customer_id);
+        return "redirect:/opretlejekontrakt";
+    }
+
 
     //TODO lav færdig imorgen
 }

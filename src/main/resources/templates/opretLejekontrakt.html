@@ -24,9 +24,33 @@
         </a>
     </h1>
 
+    <H1>Kunder</H1>
 
-
-
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>fuld navn</th>
+            <th>Email</th>
+            <th>Telefon nr</th>
+            <th>Adresse</th>
+            <th>CPR</th>
+        </tr>
+        </thead>
+        <tbody>
+    <tr th:each=" customer : ${customers}">
+        <td th:text="${customer.customer_id}"></td>
+        <td th:text="${customer.full_name}"></td>
+        <td th:text="${customer.email}"></td>
+        <td th:text="${customer.phone}"></td>
+        <td th:text="${customer.address}"></td>
+        <td th:text="${customer.cpr}"></td>
+        <td>  <a th:href="@{'/opdaterkunde/'+${customer.customer_id}}">
+            <button class="btn-updateOne" id="btn-updateOne">Opdater</button>
+        </a></td>
+</tr>
+        </tbody>
+    </table>
 </body>
 
     <div class="footer" style="margin-top: 600px">

@@ -27,7 +27,7 @@ public class EmployeeRepository {
 
     }
 
-    //Hent alle employees (users) ... Til visning af alle users
+
     public List<Employee> fetchAll() {
         String sql = "SELECT * FROM Employee";
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);

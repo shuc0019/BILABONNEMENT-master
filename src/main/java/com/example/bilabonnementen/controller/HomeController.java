@@ -70,10 +70,6 @@ public class HomeController {
         return "ledigbiler";
     }
 
-    @GetMapping("/opretlejekontrakt")
-    public String lejekontrakt() {
-        return "opretLejekontrakt";
-    }
 
     // Personale
 
