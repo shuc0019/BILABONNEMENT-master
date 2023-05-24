@@ -1,7 +1,7 @@
 package com.example.bilabonnementen.controller;
 
 import com.example.bilabonnementen.model.Employee;
-import com.example.bilabonnementen.repository.EmployeeRepository;
+import com.example.bilabonnementen.repository.EmployeeRepo;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ public class HomeController {
 
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    EmployeeRepo employeeRepo;
 
     //Start page
     @GetMapping("/")
@@ -38,7 +38,7 @@ public class HomeController {
     //validate login
     @PostMapping("/login")
     public String loginAccount(String username, String user_password, Model model, HttpSession session) {
-        Employee employee = employeeRepository.findByUserAndPassword(username, user_password);
+        Employee employee = employeeRepo.findByUserAndPassword(username, user_password);
 
         if (employee != null && employee.getIs_active()==1){
             session.setAttribute("username", username);
@@ -71,8 +71,5 @@ public class HomeController {
     public String availaibleCars() {
         return "ledigbiler";
     }
-
-
-    // Personale
 
 }

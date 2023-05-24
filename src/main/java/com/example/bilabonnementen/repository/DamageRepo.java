@@ -2,6 +2,7 @@ package com.example.bilabonnementen.repository;
 
 import com.example.bilabonnementen.model.Damage_category;
 import com.example.bilabonnementen.model.Damage_report;
+import com.example.bilabonnementen.model.Employee;
 import com.example.bilabonnementen.model.Specific_damage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -31,6 +32,12 @@ public class DamageRepo {
         String sql = "SELECT price FROM damage_category WHERE category_id = ?";
 
         return template.queryForObject(sql, Double.class, category_id);
+    }
+
+    public void updateSpecificDamage(Specific_damage specific_damage){
+        String sql = "UPDATE specific_damage SET specific_damage_id = ?, report_id= ?, category_id= ? where specific_damage_id=?";
+        template.update(sql, specific_damage.getSpecific_damage_id(), specific_damage.getReport_id(), specific_damage.getCategory_id());
+
     }
 }
 
