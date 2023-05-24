@@ -70,10 +70,12 @@ public class LeasingContractController {
     public String leasing(Model model, HttpSession session) {
         String username = (String) session.getAttribute("username");
         Integer numb = (Integer) session.getAttribute("numb");
+        List<Customer> customers = customerService.fetchAll();
         if (numb != null) {
             Car car = carService.findId(numb);
             model.addAttribute("opdater", car);
             model.addAttribute("username", username);
+            model.addAttribute("customers", customers);
             return "lej";
         } else {
             // handle case where numb is null
