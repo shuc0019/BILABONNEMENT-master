@@ -20,8 +20,9 @@ public class CustomerController {
 
 
     @GetMapping("/opretlejekontrakt")
-    public String lejekontrakt ( Model model){
+    public String lejekontrakt ( Model model, HttpSession session){
         List<Customer> customers = customerService.fetchAll();
+        session.setAttribute("customersInLej", customers);
         model.addAttribute("customers", customers);
         return "opretLejekontrakt";
     }

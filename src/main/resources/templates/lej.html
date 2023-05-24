@@ -81,11 +81,33 @@
 
   <input type="submit" value="Create Leasing Contract">
 </form>
-
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>fuld navn</th>
+    <th>Email</th>
+    <th>Telefon nr</th>
+    <th>Adresse</th>
+    <th>CPR</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each=" customer : ${customers}">
+    <td th:text="${customer.customer_id}"></td>
+    <td th:text="${customer.full_name}"></td>
+    <td th:text="${customer.email}"></td>
+    <td th:text="${customer.phone}"></td>
+    <td th:text="${customer.address}"></td>
+    <td th:text="${customer.cpr}"></td>
+  </tr>
+  </tbody>
+</table>
 <h1 th:text="${error}" class="error"></h1>
 
 <div class="footer">
   <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
+
 </div>
 </body>
 </html>
