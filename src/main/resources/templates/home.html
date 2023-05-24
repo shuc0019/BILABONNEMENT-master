@@ -17,10 +17,22 @@
 
         }
 
+        .center {
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
 <div th:include="navbar.html"></div>
+
+
+
+<div class="center">
+    <h1>Velkommen, <span th:text="${(username)}"></span> !</h1>
+    <p>Vælg en af overstående for at komme i gang!</p>
+</div>
+
 <div class="footer">
     <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
 </div>

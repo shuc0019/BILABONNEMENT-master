@@ -30,7 +30,9 @@ public class HomeController {
 
     //Homepage
     @GetMapping("/home")
-    public String home() {
+    public String home(HttpSession session, Model model) {
+        String value = (String) session.getAttribute("username");
+        model.addAttribute("username", value);
         return "home";
     }
     //validate login
