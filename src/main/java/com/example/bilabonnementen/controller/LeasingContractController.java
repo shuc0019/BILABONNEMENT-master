@@ -44,7 +44,6 @@ public class LeasingContractController {
             return "redirect:/opretKontrakt";
         } else {
             model.addAttribute("opdater", car);
-            model.addAttribute("model", "");
             session.setAttribute("numb", car.getVehicle_number());
             if (car.getFlow() == 1) {
                 redirectAttributes.addFlashAttribute("flowerror", "Bilen er allerede lejet ud");
@@ -93,7 +92,7 @@ public class LeasingContractController {
         int months = period.getMonths();
         int days = period.getDays();
         // check if lease period is at least 3 months
-        if (months < 3 && (months == 2 && days < 5 || months < 2)) {
+        if (months < 3) {
             model.addAttribute("error", "Lej perioden skal være mindst 3 måneder.");
             return "lej";
 
@@ -157,19 +156,33 @@ public class LeasingContractController {
         LocalDate endDate = (LocalDate) session.getAttribute("endDate");
         double totalprice = (double) session.getAttribute("totalPriceRent");
         int customer = (int) session.getAttribute("customer");
+        // Henter værdien af attributten "numb" fra HttpSession-objektet og gemmer den i variablen `numb`
         Integer numb = (Integer) session.getAttribute("numb");
+
+        // Finder bilen med det angivne nummer ved hjælp af carService og gemmer den i variablen `car`
         Car car = carService.findId(numb);
+
+        // Tilføjer bilen til modellen med attributtenavnet "opdater"
         model.addAttribute("opdater", car);
+
+        // Tilføjer `username`, `startDate`, `endDate`, `customer`, `totalPriceRent` og `customername` til modellen
         model.addAttribute("username", username);
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
         model.addAttribute("customer", customer);
         model.addAttribute("totalPriceRent", totalprice);
         model.addAttribute("customername", customername);
+
+        // Tilføjer leasingaftalen ved hjælp af leasing_contractService
         leasing_contractService.addLeasingContract(leasing_contract);
+
+        // Opdaterer bilen efter kontrakten ved hjælp af carService
         carService.updateAfterContract(numb);
+
+        // Omdirigerer til "/home"
         return "redirect:/home";
     }
+
 
 
 }
