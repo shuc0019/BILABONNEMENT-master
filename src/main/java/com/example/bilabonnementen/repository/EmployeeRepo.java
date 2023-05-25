@@ -1,6 +1,7 @@
 package com.example.bilabonnementen.repository;
 
 import com.example.bilabonnementen.model.Employee;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

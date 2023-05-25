@@ -3,6 +3,7 @@ package com.example.bilabonnementen.controller;
 import com.example.bilabonnementen.model.Car;
 import com.example.bilabonnementen.model.Customer;
 import com.example.bilabonnementen.service.CustomerService;
+import com.example.bilabonnementen.service.EmployeeService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,15 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     CustomerService customerService;
-
+    @Autowired
+    EmployeeService employeeService;
 
     @GetMapping("/opretlejekontrakt")
     public String lejekontrakt ( Model model, HttpSession session){
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
+
         List<Customer> customers = customerService.fetchAll();
         session.setAttribute("customersInLej", customers);
         model.addAttribute("customers", customers);
@@ -36,12 +42,18 @@ public class CustomerController {
     }
 
     @GetMapping("/opretNyKunde")
-    public String CreateNewCustomer(){
+    public String CreateNewCustomer(HttpSession session){
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         return "opretNyKunde";
     }
 
     @GetMapping("/opretNyKundeConfirmed")
     public String newCustomerCreated(HttpSession session, Model model){
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         Customer c = (Customer) session.getAttribute("kundeoprettet");
         String value = customerService.findCustomerid(c.getEmail());
         model.addAttribute("customer", c);
@@ -52,7 +64,10 @@ public class CustomerController {
 
 
     @GetMapping("/opdaterkunde/{customer_id}")
-    public String updateCustomer(@PathVariable("customer_id") int customer_id, Model model){
+    public String updateCustomer(@PathVariable("customer_id") int customer_id, Model model, HttpSession session){
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         Customer customer=customerService.findId(customer_id);
         model.addAttribute("opdater", customer);
         return "opdaterKunde";

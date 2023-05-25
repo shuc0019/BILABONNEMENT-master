@@ -1,13 +1,14 @@
 package com.example.bilabonnementen.controller;
 
 import com.example.bilabonnementen.model.Employee;
-import com.example.bilabonnementen.repository.EmployeeRepo;
+import com.example.bilabonnementen.repository.EmployeeRepository;
 import com.example.bilabonnementen.service.EmployeeService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -18,14 +19,15 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
-    EmployeeRepo employeeRepo;
+    EmployeeRepository employeeRepository;
 
     @GetMapping("/personale")
     public String getAllEmployees(Model model, HttpSession session) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         List<Employee> employees = employeeService.fetchAllEmployees();
         Employee adminLogin = (Employee) session.getAttribute("adminlogin");
-
-        System.out.println(adminLogin.getIs_admin());
 
         model.addAttribute("admin", adminLogin);
 
@@ -35,13 +37,16 @@ public class EmployeeController {
     }
 
     @GetMapping("/opretPersonale")
-    public String opretPersonale(HttpSession session, RedirectAttributes redirectAttributes) {
+    public String opretPersonale(HttpSession session) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         String adminLogin = (String) session.getAttribute("username");
         Employee adminEmployee = employeeService.findAdminUser(adminLogin);
         if (adminEmployee == null) {
-            redirectAttributes.addFlashAttribute("Adminfeature","Denne funktion kan kun tilgås af administrator");
             return "redirect:/personale";
         } else {
+
             return "opretPersonale";
         }
 
@@ -56,6 +61,9 @@ public class EmployeeController {
 
     @GetMapping("/personale/{username}")
     public String fireEmployee(@PathVariable("username") String username,  HttpSession session){
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         String adminLogin = (String) session.getAttribute("username");
         Employee adminEmployee =employeeService.findAdminUser(adminLogin);
         if (adminEmployee==null) {
@@ -69,6 +77,9 @@ public class EmployeeController {
 
     @GetMapping("/opdaterPersonale/{username}")
     public String findByUsername(@PathVariable("username") String username, Model model, HttpSession session) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         Employee employee = employeeService.findByUsername(username);
         String adminLogin = (String) session.getAttribute("username");
         Employee adminEmployee =employeeService.findAdminUser(adminLogin);

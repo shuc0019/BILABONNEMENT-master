@@ -4,10 +4,7 @@ import com.example.bilabonnementen.model.Damage_category;
 import com.example.bilabonnementen.model.Damage_report;
 import com.example.bilabonnementen.model.Leasing_contract;
 import com.example.bilabonnementen.repository.DamageRepo;
-import com.example.bilabonnementen.service.CarService;
-import com.example.bilabonnementen.service.DamageService;
-import com.example.bilabonnementen.service.Damage_reportService;
-import com.example.bilabonnementen.service.Leasing_contractService;
+import com.example.bilabonnementen.service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
@@ -31,8 +28,14 @@ public class Damage_reportController {
     @Autowired
     CarService carService;
 
+    @Autowired
+    EmployeeService employeeService;
+
     @GetMapping("/skaderapport")
-    public String ShowDamage_Report(Model model){
+    public String ShowDamage_Report(Model model, HttpSession session){
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         List<Damage_report> damage_reports = damage_reportService.showReport();
         model.addAttribute("damage_report", damage_reports);
         return "skaderapport";
@@ -41,6 +44,9 @@ public class Damage_reportController {
 
     @GetMapping("skaderapportopret")
     public String createdamageReport(Model model, HttpSession session,  Integer contract_id) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         List<Leasing_contract> leasing_contracts = leasing_contractService.fetchAll();
         model.addAttribute("contract", leasing_contracts);
 
@@ -59,6 +65,9 @@ public class Damage_reportController {
     }
     @GetMapping("opretskaderapport")
     public String visSkadeRapport(HttpSession session, Model model) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         Integer integer = (Integer) session.getAttribute("contract");
         List<Damage_category> damage_category =  damageService.fetchAllDamageCategories();
         model.addAttribute("category", damage_category);
@@ -100,6 +109,9 @@ public class Damage_reportController {
 
     @GetMapping("/kvitteringSkadeRapport")
         public String kvittering(HttpSession session, Model model){
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         Double totalpris = (Double) session.getAttribute("totalPrice");
         Integer integer = (Integer) session.getAttribute("contract");
         model.addAttribute("contractid", integer);
