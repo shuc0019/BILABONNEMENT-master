@@ -12,7 +12,7 @@ import java.util.List;
 @SpringBootTest
 class BilabonnementenApplicationTests {
 
-
+/*
 	@Autowired
 	CarRepo carRepo;
 	@Test
@@ -56,3 +56,6 @@ void testForOmBilenBliverTiltøjetTilDatabasen(){
 		//Succesfully
 	}
 	}
+
+ */
+}

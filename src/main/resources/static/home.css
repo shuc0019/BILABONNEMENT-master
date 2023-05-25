@@ -1,26 +1,51 @@
+
 * {
     box-sizing: border-box;
 }
+
 .logo {
     width: 100px; /* Adjust the width as per your logo dimensions */
     height: auto; /* Keeps the aspect ratio */
     margin-right: 10px; /* Add margin to create space between the logo and buttons */
 }
 
-
 table {
     border-collapse: collapse;
     width: 100%;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 th, td {
     text-align: left;
-    padding: 8px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
     background-color: #f2f2f2;
 }
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.btn-updateOne {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-updateOne:hover {
+    background-color: #45a049;
+}
+
+/* Additional styles for other elements */
 html,
 body {
     height: 100%;
@@ -33,6 +58,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
 }
 
 .header {
@@ -40,7 +66,6 @@ body {
     color: black;
     padding: 20px;
     text-align: center;
-   
 }
 
 .title {
@@ -53,12 +78,11 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-
 }
 
 .dashboard-item {
-    display: flex; /* Display the dashboard items as flex containers */
-    align-items: center; /* Align items vertically in the center */
+    display: flex;
+    align-items: center;
     margin: 10px;
     text-align: center;
     position: relative;
@@ -95,7 +119,6 @@ body {
     color: black;
 }
 
-
 a {
     text-decoration: none;
 }
@@ -112,7 +135,6 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
 }
 
 button:hover {
@@ -127,9 +149,7 @@ button:active {
     background-color: #003d80;
 }
 
-
-
-/*form for */
+/* Form styles */
 form {
     max-width: 400px;
     margin: 0 auto;
@@ -181,25 +201,20 @@ button[type="submit"]:active {
     background-color: #003d80;
 }
 
-
-.createEmployee{
+.createEmployee {
     margin-left: 68%;
     background-color: #3e8e41;
-
-
 }
 
-.addCarButton{
+.addCarButton {
     margin-left: 82%;
     background-color: #3e8e41;
 }
 
-.createDamageRep{
+.createDamageRep {
     margin-left: 75%;
     background-color: #3e8e41;
-
 }
-
 
 .footer {
     background-color: darkgray;
@@ -226,4 +241,11 @@ button[type="submit"]:active {
 .footer a:hover {
     text-decoration: underline;
 }
-
+form {
+    width: 55%;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
