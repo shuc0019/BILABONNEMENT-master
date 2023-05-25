@@ -108,13 +108,14 @@ public class Damage_reportController {
 
 
     @GetMapping("/kvitteringSkadeRapport")
-        public String kvittering(HttpSession session, Model model){
+        public String kvittering(HttpSession session, Model model, String username){
         if (!employeeService.checkSession(session)){
             return "redirect:/";
         }
         Double totalpris = (Double) session.getAttribute("totalPrice");
         Integer integer = (Integer) session.getAttribute("contract");
         model.addAttribute("contractid", integer);
+        model.addAttribute("username", username);
         model.addAttribute("totalprisen", totalpris);
         return "kvitteringSkadeRapport";
         }
