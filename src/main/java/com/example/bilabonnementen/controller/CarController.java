@@ -2,7 +2,9 @@ package com.example.bilabonnementen.controller;
 
 import com.example.bilabonnementen.model.Car;
 import com.example.bilabonnementen.repository.CarRepo;
+import com.example.bilabonnementen.repository.EmployeeRepository;
 import com.example.bilabonnementen.service.CarService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ public class CarController {
 
     @Autowired
     CarService carService;
+    @Autowired
+    EmployeeRepository employeeRepository;
 
 
     //Se alle biler
@@ -30,7 +34,11 @@ public class CarController {
     //Se alle biler der er ledig
 
     @GetMapping("/ledigbiler")
-    public String getAvailableCars(Model model) {
+    public String getAvailableCars(Model model, HttpSession session) {
+
+        if (!employeeRepository.checkSession(session)){
+            return "redirect:/";
+        }
         List <Car> availableCars = carService.fetchAvailable();
         model.addAttribute("available", availableCars);
         return "ledigbiler";

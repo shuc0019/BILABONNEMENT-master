@@ -2,6 +2,7 @@ package com.example.bilabonnementen.controller;
 
 import com.example.bilabonnementen.model.Employee;
 import com.example.bilabonnementen.repository.EmployeeRepository;
+import com.example.bilabonnementen.service.EmployeeService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,7 @@ public class HomeController {
 
 
     @Autowired
-    EmployeeRepository employeeRepository;
-
+    EmployeeService employeeService;
     //Start page
     @GetMapping("/")
     public String index() {
@@ -28,18 +28,28 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("adminlogin");
+        return "redirect:/";
+    }
+
     //Homepage
     @GetMapping("/home")
     public String home(HttpSession session, Model model) {
         String value = (String) session.getAttribute("username");
         model.addAttribute("username", value);
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         return "home";
     }
     //validate login
     @PostMapping("/login")
     public String loginAccount(String username, String user_password, Model model, HttpSession session) {
-        Employee employee = employeeRepository.findByUserAndPassword(username, user_password);
+        Employee employee = employeeService.findbyuserandpassword(username,user_password);
         session.setAttribute("adminlogin", employee);
+        System.out.println(employeeService.checkSession(session));
 
         if (employee != null && employee.getIs_active()==1){
             session.setAttribute("username", username);
@@ -50,30 +60,4 @@ public class HomeController {
 
         }
     }
-
-    //Dashboards button gateways
-
-    //Dataregistrering
-
-
-
-    //skade og udbedring
-
-
-
-
-    // rapportering og overvågnings
-    @GetMapping("/seallebil")
-    public String allCars() {
-        return "seallebiler";
-    }
-
-    @GetMapping("/ledigbil")
-    public String availaibleCars() {
-        return "ledigbiler";
-    }
-
-
-    // Personale
-
 }

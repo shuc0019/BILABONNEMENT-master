@@ -26,8 +26,6 @@ public class EmployeeController {
         List<Employee> employees = employeeService.fetchAllEmployees();
         Employee adminLogin = (Employee) session.getAttribute("adminlogin");
 
-        System.out.println(adminLogin.getIs_admin());
-
         model.addAttribute("admin", adminLogin);
 
         model.addAttribute("employees", employees);
