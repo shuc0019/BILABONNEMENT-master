@@ -27,7 +27,7 @@
 </head>
 <body>
     <h1>
-        <p>Sammenlagt pris pr. måned for udlejet biler: <span th:text="${totalPrice}"></span></p>
+        <p th:if="${admin.getIs_admin()==1}" >Sammenlagt pris pr. måned for udlejet biler: <span th:text="${totalPrice}"></span></p>
     </h1>
 
     <div class="search-container">
@@ -36,6 +36,7 @@
     </div>
 
     <h2>Liste af udlejet biler:</h2>
+    <h2 th:if="${admin.getIs_admin()==0}">Kan kun ses af admin:</h2>
     <table>
         <thead>
         <tr>
@@ -55,7 +56,7 @@
         </thead>
         <tbody>
         <!-- Loop through the rented cars and populate the table rows -->
-        <tr th:each="car : ${rentedCars}">
+        <tr th:if="${admin.getIs_admin()==1}" th:each="car : ${rentedCars}">
             <td th:text="${car.vehicle_number}"></td>
             <td th:text="${car.frame_number}"></td>
             <td th:text="${car.brand}"></td>

@@ -1,6 +1,7 @@
 package com.example.bilabonnementen.controller;
 
 import com.example.bilabonnementen.model.Car;
+import com.example.bilabonnementen.model.Employee;
 import com.example.bilabonnementen.repository.CarRepo;
 import com.example.bilabonnementen.repository.EmployeeRepository;
 import com.example.bilabonnementen.service.CarService;
@@ -89,6 +90,10 @@ public class CarController {
         if (!employeeService.checkSession(session)){
             return "redirect:/";
         }
+        Employee adminLogin = (Employee) session.getAttribute("adminlogin");
+
+        model.addAttribute("admin", adminLogin);
+
         double totalPrice = carService.calculateTotalPriceOfRentedCars();
         model.addAttribute("totalPrice", totalPrice);
 
