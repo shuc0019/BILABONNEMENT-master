@@ -24,4 +24,6 @@ public class DamageController {
         return "skader";
     }
 
+
+
 }
