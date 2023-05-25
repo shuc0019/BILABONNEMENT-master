@@ -28,13 +28,13 @@ public class EmployeeController {
     }
 
     @GetMapping("/opretPersonale")
-    public String opretPersonale(HttpSession session) {
+    public String opretPersonale(HttpSession session, RedirectAttributes redirectAttributes) {
         String adminLogin = (String) session.getAttribute("username");
         Employee adminEmployee = employeeService.findAdminUser(adminLogin);
         if (adminEmployee == null) {
+            redirectAttributes.addFlashAttribute("Adminfeature","Denne funktion kan kun tilgås af administrator");
             return "redirect:/personale";
         } else {
-
             return "opretPersonale";
         }
 
