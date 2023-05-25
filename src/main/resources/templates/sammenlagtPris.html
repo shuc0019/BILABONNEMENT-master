@@ -25,7 +25,8 @@
 
     </style>
 </head>
-<body>
+<h1 th:if="${admin.getIs_admin()==0}">Kan kun ses af admin.</h1>
+<body th:if="${admin.getIs_admin()==1}" >
     <h1>
         <p th:if="${admin.getIs_admin()==1}" >Sammenlagt pris pr. måned for udlejet biler: <span th:text="${totalPrice}"></span></p>
     </h1>
@@ -35,7 +36,7 @@
 
     </div>
 
-    <h2>Liste af udlejet biler:</h2>
+    <h2 >Liste af udlejet biler:</h2>
     <h2 th:if="${admin.getIs_admin()==0}">Kan kun ses af admin:</h2>
     <table>
         <thead>
