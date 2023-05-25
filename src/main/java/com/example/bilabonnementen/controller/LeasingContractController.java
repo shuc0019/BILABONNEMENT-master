@@ -28,8 +28,14 @@ public class LeasingContractController {
     @Autowired
     CustomerService customerService;
 
+    @Autowired
+    EmployeeService employeeService;
+
     @GetMapping("/opretKontrakt")
-    public String leasingKontrakt(Model model) {
+    public String leasingKontrakt(Model model, HttpSession session) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         List<Car> availableCars = carService.fetchAvailable();
         model.addAttribute("available", availableCars);
 
@@ -55,7 +61,10 @@ public class LeasingContractController {
         }
     }
     @GetMapping("/selejekontrakt")
-    public String Leasing_contracts(Model model){
+    public String Leasing_contracts(Model model, HttpSession session){
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         List<Leasing_contract> LC = leasing_contractService.fetchAll();
         model.addAttribute("LC",LC );
         System.out.println(LC.size());
@@ -68,6 +77,9 @@ public class LeasingContractController {
 
     @GetMapping("/lej")
     public String leasing(Model model, HttpSession session) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         String username = (String) session.getAttribute("username");
         Integer numb = (Integer) session.getAttribute("numb");
         List<Customer> customers = customerService.fetchAll();
@@ -130,6 +142,9 @@ public class LeasingContractController {
 
     @GetMapping("/leaseconfirm")
     public String leasingConfirmation(Model model, HttpSession session) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
         String username = (String) session.getAttribute("username");
         String customername = (String) session.getAttribute("customername");
         LocalDate startDate = (LocalDate) session.getAttribute("startDate");
