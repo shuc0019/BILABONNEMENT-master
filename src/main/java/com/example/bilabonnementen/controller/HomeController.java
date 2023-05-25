@@ -39,6 +39,7 @@ public class HomeController {
     @PostMapping("/login")
     public String loginAccount(String username, String user_password, Model model, HttpSession session) {
         Employee employee = employeeRepository.findByUserAndPassword(username, user_password);
+        session.setAttribute("adminlogin", employee);
 
         if (employee != null && employee.getIs_active()==1){
             session.setAttribute("username", username);

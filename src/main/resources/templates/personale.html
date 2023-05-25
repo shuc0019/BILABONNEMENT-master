@@ -30,7 +30,7 @@
     <h1>Personale</h1>
 
     <div class="create employee">
-        <a href="/opretPersonale">
+        <a th:if="${admin.getIs_admin()==1}" href="/opretPersonale">
             <button class="createEmployee">
                 Opret ny medarbejder
             </button>
@@ -65,8 +65,8 @@
             <td th:text="${employee.phone}"></td>
             <td th:text="${employee.is_active}"></td>
             <td th:text="${employee.is_admin}"></td>
-            <td><a th:href="@{'/personale/'+${employee.username}}"><button>gør bruger inaktiv</button></a></td>
-            <td><a th:href="@{'/opdaterPersonale/'+${employee.username}}"><button>Opdater oplysninger</button></a></td>
+            <td><a th:if="${admin.getIs_admin()==1}" th:href="@{'/personale/'+${employee.username}}"><button>gør bruger inaktiv</button></a></td>
+            <td><a th:if="${admin.getIs_admin()==1}" th:href="@{'/opdaterPersonale/'+${employee.username}}"><button>Opdater oplysninger</button></a></td>
         </tr>
         </tbody>
     </table>
