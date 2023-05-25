@@ -6,6 +6,23 @@
     <link rel="stylesheet" href="home.css">
     <div th:include="navbar.html"></div>
 </head>
+<style>
+    .updateSubmit{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        color: #ffffff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
 
 <body>
 
@@ -27,7 +44,7 @@
         <label for="cpr">cpr:</label>
         <input type="number" id="cpr" name="cpr" required><br><br>
 
-        <input type="submit" value="opret kunde">
+        <input class="updateSubmit" type="submit" value="opret kunde">
     </form>
 </div>
 

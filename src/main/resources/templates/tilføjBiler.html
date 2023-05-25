@@ -8,6 +8,24 @@
     <div th:include="navbar.html"></div>
 
 </head>
+
+<style>
+    .AddCarSubmit{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        color: #ffffff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
 <body>
 
         <div class="tilføj bil">
@@ -46,11 +64,13 @@
                 <label for="gear_type">Gear Type:</label>
                 <input type="text" id="gear_type" name="gear_type"><br><br>
 
-                <input type="submit" value="tilføj en bil">
+                <input class="AddCarSubmit" type="submit" value="tilføj en bil">
             </form>
 
 
         </div>
+
+
         </div>
         </div>
         <div class="footer">
