@@ -1,5 +1,6 @@
 package com.example.bilabonnementen.controller;
 
+import com.example.bilabonnementen.model.Car;
 import com.example.bilabonnementen.model.Damage_category;
 import com.example.bilabonnementen.service.DamageService;
 import com.example.bilabonnementen.service.EmployeeService;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -29,6 +32,45 @@ public class DamageController {
         model.addAttribute("category", damage_category);
 
         return "skader";
+    }
+
+    @GetMapping("/tilføjSkade")
+    public String addDamage(HttpSession session) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
+        return "tilføjSkade";
+    }
+    @PostMapping("/createNewDamage")
+    public String addDamagetoList( Damage_category d, HttpSession session) {
+        damageService.addDamage(d);
+        return "redirect:/skader";
+    }
+
+    @GetMapping("/updateOneDamage/{category_id}")
+    public String updateDamage(@PathVariable("category_id") int category_id, Model model, HttpSession session) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
+        Damage_category damage = damageService.findSpecifikDamage(category_id);
+        model.addAttribute("opdater", damage);
+        return "opdaterSkade";
+    }
+
+    @PostMapping("/damageUpdate")
+    public String updateDamageToList(Damage_category damage_category, int category_id) {
+        damageService.updateCategory(damage_category, category_id);
+        return "redirect:/skader";
+    }
+
+    @GetMapping("/deleteOneDamage/{category_id}")
+    public String deleteOne(@PathVariable("category_id") int category_id, HttpSession session){
+        boolean deleted = damageService.deleteDamage(category_id);
+        if (deleted){
+            return "redirect:/skader";
+        }else {
+            return "redirect:/skader";
+        }
     }
 
 

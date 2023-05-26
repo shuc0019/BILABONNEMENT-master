@@ -24,4 +24,9 @@ public class Damage_reportRepo {
         String sql = "INSERT INTO damage_report (report_id,total_price,contract_id) VALUES (?,?,?)";
         template.update(sql, d.getReport_id(),d.getTotal_price(),d.getContract_id());
     }
+
+    public boolean deleteReport(int report_id){
+        String sql= "DELETE FROM damage_report WHERE report_id=?";
+        return template.update(sql,report_id)>0;
+    }
 }

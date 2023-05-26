@@ -18,4 +18,7 @@ public class Damage_reportService {
     public void addDamage_report(Damage_report damage_report){
          damage_reportRepo.CreateDamage_report(damage_report);
     }
+    public boolean deleteReport(int report_id){
+         return damage_reportRepo.deleteReport(report_id);
+    }
 }

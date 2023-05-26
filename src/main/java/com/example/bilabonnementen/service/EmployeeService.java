@@ -1,7 +1,7 @@
 package com.example.bilabonnementen.service;
 
 import com.example.bilabonnementen.model.Employee;
-import com.example.bilabonnementen.repository.EmployeeRepository;
+import com.example.bilabonnementen.repository.EmployeeRepo;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,37 +11,37 @@ import java.util.List;
 @Service
 public class EmployeeService {
     @Autowired
-    EmployeeRepository employeeRepository;
+    EmployeeRepo employeeRepo;
 
     public List <Employee> fetchAllEmployees(){
-        return employeeRepository.fetchAll();
+        return employeeRepo.fetchAll();
     }
 
     public void createEmployee(Employee employee){
-        employeeRepository.addEmployee(employee);
+        employeeRepo.addEmployee(employee);
     }
 
     public void fireEmployee(String username){
-        employeeRepository.fireEmployee(username);
+        employeeRepo.fireEmployee(username);
     }
 
     public void updateEmployee(Employee employee){
-        employeeRepository.updateEmployee(employee);
+        employeeRepo.updateEmployee(employee);
 
     }
 
     public Employee findAdminUser(String username){
-        return employeeRepository.findAdmin(username);
+        return employeeRepo.findAdmin(username);
     }
 
     public Employee findByUsername(String username){
-        return employeeRepository.findByUsername(username);
+        return employeeRepo.findByUsername(username);
 
 
     }
 
     public Employee findbyuserandpassword(String username, String user_password){
-        return employeeRepository.findByUserAndPassword(username, user_password);
+        return employeeRepo.findByUserAndPassword(username, user_password);
 
     }
 

@@ -1,9 +1,6 @@
 package com.example.bilabonnementen.repository;
 
-import com.example.bilabonnementen.model.Damage_category;
-import com.example.bilabonnementen.model.Damage_report;
-import com.example.bilabonnementen.model.Employee;
-import com.example.bilabonnementen.model.Specific_damage;
+import com.example.bilabonnementen.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,6 +17,32 @@ public class DamageRepo {
         String sql = "SELECT * FROM damage_category";
         RowMapper<Damage_category> rowMapper = new BeanPropertyRowMapper<>(Damage_category.class);
         return template.query(sql, rowMapper);
+    }
+
+    public void AddDamage(Damage_category d) {
+        String sql = "INSERT INTO damage_category (category_id, damage_name, price) VALUES (?,?,?)";
+        template.update(sql, d.getCategory_id(),d.getDamage_name(),d.getPrice());
+    }
+    public void updateDamage( Damage_category damage_category, int category_id ){
+        String sql = "UPDATE damage_category SET damage_name= ?, price= ? where category_id=?";
+        template.update(sql, damage_category.getDamage_name(), damage_category.getPrice(),damage_category.getCategory_id());
+    }
+
+    public Boolean deleteDamage(int category_id) {
+        String sql = "DELETE FROM damage_category WHERE category_id = ?";
+        return template.update(sql, category_id) > 0;
+    }
+
+    public Damage_category findDamageByid(int category_id) {
+        String sql = "Select * FROM damage_category WHERE category_id = ?";
+        RowMapper<Damage_category> rowMapper = new BeanPropertyRowMapper<>(Damage_category.class);
+        List<Damage_category> users = template.query(sql, rowMapper, category_id);
+        if (users.size() == 1) {
+            return users.get(0);
+        } else {
+            return null;
+        }
+
     }
 
     // tilføj specifikke skader metoden bliver ikke brugt endnu!
@@ -39,6 +62,7 @@ public class DamageRepo {
         template.update(sql, specific_damage.getSpecific_damage_id(), specific_damage.getReport_id(), specific_damage.getCategory_id());
 
     }
+
 }
 
 

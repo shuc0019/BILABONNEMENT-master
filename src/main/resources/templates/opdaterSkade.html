@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="opdater bil">
+    <h1>Opdater bil</h1>
+
+    <form action="/damageUpdate" method="post">
+        <input type="hidden" id="category_id" name="category_id" th:value="${opdater.category_id}" ><br><br>
+
+        <label for="damage_name">Skade:</label>
+        <input type="text" id="damage_name" name="damage_name" th:value="${opdater.damage_name}" ><br><br>
+
+        <label for="price">Pris:</label>
+        <input type="text" id="price" name="price" th:value="${opdater.price}" ><br><br>
+
+
+        <input class="updateSubmit" type="submit" value="Opdater">
+    </form>
+
+</div>
+
+<div class="footer">
+    <p>© 2023 BA - Bil Abonnementen. All rights reserved.</p>
+</div>
+</body>
+</html>

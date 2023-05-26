@@ -27,7 +27,11 @@
     </style>
 
 </head>
-
+<a href="tilføjSkade">
+    <button class="addCarButton">
+        Tilføj skade
+    </button>
+</a>
 
     <h1>Prisliste på skader</h1>
     <div class="search-container">
@@ -47,6 +51,12 @@
             <td th:text="${damages.category_id}"></td>
             <td th:text="${damages.damage_name}"></td>
             <td th:text="${damages.price}"></td>
+            <td>  <a th:href="@{'/deleteOneDamage/'+${damages.category_id}}">
+                <button class="btn-deleteOne" id="btn-deleteOne">Slet</button>
+            </a></td>
+            <td>  <a th:href="@{'/updateOneDamage/'+${damages.category_id}}">
+                <button class="btnOpdater">Opdater</button>
+            </a></td>
         </tr>
         </tbody>
     </table>
