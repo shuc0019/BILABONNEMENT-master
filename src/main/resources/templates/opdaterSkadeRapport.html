@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="opdater bil">
+  <h1>Opdater bil</h1>
+
+  <form action="/reportUpdate" method="post">
+    <input type="hidden" id="report_id" name="report_id" th:value="${opdater.report_id}" ><br><br>
+
+    <label for="total_price">Total pris:</label>
+    <input type="text" id="total_price" name="total_price" th:value="${opdater.total_price}" ><br><br>
+
+    <label for="contract_id">Kontrakt id:</label>
+    <input type="text" id="contract_id" name="contract_id" th:value="${opdater.contract_id}" ><br><br>
+
+
+    <input class="updateSubmit" type="submit" value="Opdater">
+  </form>
+
+</div>
+</body>
+</html>

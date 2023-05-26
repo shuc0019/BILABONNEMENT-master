@@ -29,6 +29,12 @@
             <td th:text="${damage_report.report_id}"></td>
             <td th:text="${damage_report.total_price}"></td>
             <td th:text="${damage_report.contract_id}"></td>
+            <td>  <a th:href="@{'/deleteOneReport/'+${damage_report.report_id}}">
+            <button class="btn-deleteOne" id="btn-deleteOne">Slet</button>
+        </a></td>
+            <td>  <a th:href="@{'/updateOneDamageReport/'+${damage_report.report_id}}">
+                <button class="btnOpdater">Opdater</button>
+            </a></td>
         </tr>
         </tbody>
     </table>

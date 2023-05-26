@@ -11,6 +11,7 @@ import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -127,7 +128,30 @@ public class Damage_reportController {
       return "redirect:/skaderapport";
     }
 
+    @GetMapping("/updateOneDamageReport/{report_id}")
+    public String updateDamage(@PathVariable("report_id") int report_id, Model model, HttpSession session) {
+        if (!employeeService.checkSession(session)){
+            return "redirect:/";
+        }
+        Damage_report damageReport = damage_reportService.findSpecifikReport(report_id);
+        model.addAttribute("opdater", damageReport);
+        return "opdaterSkadeRapport";
+    }
 
+    @PostMapping("/reportUpdate")
+    public String updateReportToList(Damage_report damage_report, int report_id) {
+        damage_reportService.updateReport(damage_report, report_id);
+        return "redirect:/skaderapport";
+    }
+    @GetMapping("/deleteOneReport/{report_id}")
+    public String deleteOneReport(@PathVariable("report_id") int report_id, HttpSession session){
+        boolean deleted = damage_reportService.deleteReport(report_id);
+        if (deleted){
+            return "redirect:/skaderapport";
+        }else {
+            return "redirect:/skaderapport";
+        }
+    }
 
 
 }

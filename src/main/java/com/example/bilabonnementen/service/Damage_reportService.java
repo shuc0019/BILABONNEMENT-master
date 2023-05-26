@@ -1,5 +1,6 @@
 package com.example.bilabonnementen.service;
 
+import com.example.bilabonnementen.model.Damage_category;
 import com.example.bilabonnementen.model.Damage_report;
 import com.example.bilabonnementen.repository.Damage_reportRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,16 @@ public class Damage_reportService {
     public void addDamage_report(Damage_report damage_report){
          damage_reportRepo.CreateDamage_report(damage_report);
     }
+
+    public void updateReport(Damage_report damageReport, int report_id){
+        damage_reportRepo.updateDamageReport(damageReport, report_id);
+    }
+
+    public Damage_report findSpecifikReport(int report_id){
+        return damage_reportRepo.findDamageReportByid(report_id);
+    }
     public boolean deleteReport(int report_id){
          return damage_reportRepo.deleteReport(report_id);
     }
+
 }
