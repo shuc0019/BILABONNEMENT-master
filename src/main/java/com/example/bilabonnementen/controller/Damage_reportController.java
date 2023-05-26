@@ -73,6 +73,7 @@ public class Damage_reportController {
         List<Damage_category> damage_category =  damageService.fetchAllDamageCategories();
         model.addAttribute("category", damage_category);
         model.addAttribute("contractid", integer);
+        session.setAttribute("contractid", integer);
         return "opretskaderapport";
     }
 
@@ -115,8 +116,12 @@ public class Damage_reportController {
         }
         Double totalpris = (Double) session.getAttribute("totalPrice");
         Integer integer = (Integer) session.getAttribute("contract");
+        String username = (String) session.getAttribute("username");
+        Integer contractId = (Integer) session.getAttribute("contractid");
         model.addAttribute("contractid", integer);
+        model.addAttribute("username", username);
         model.addAttribute("totalprisen", totalpris);
+        model.addAttribute("contractid", contractId);
         return "kvitteringSkadeRapport";
         }
 
