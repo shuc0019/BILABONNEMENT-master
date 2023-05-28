@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CarService {
@@ -36,12 +37,12 @@ public class CarService {
         return carRepo.findCarByid(id);
     }
     public double calculateTotalPriceOfRentedCars() {
-        List<Car> rentedCars = carRepo.fetchRentedCars(); // Retrieve rented cars
+        List<Car> rentedCars = carRepo.fetchRentedCars(); // Hent de udlejet biler
         double totalPrice = 0.0;
 
         for (Car car : rentedCars) {
-            if (car.getFlow() == 1) { // Check if car is rented (flow = 1)
-                totalPrice += car.getPrice(); // Add the car's price to the total
+            if (car.getFlow() == 1) { // Tjek hvis bil er udlejet (flow = 1)
+                totalPrice += car.getPrice(); // Tilføj bilens pris til den totale pris
             }
         }
 
@@ -55,5 +56,7 @@ public class CarService {
     public void updateAfterDamageReport(int id){
         carRepo.updateAfterDamageReport(id);
     }
-
+    public List<Map<String, Object>> TotalpriceData() {
+        return carRepo.getTotalPricesData();
+    }
 }

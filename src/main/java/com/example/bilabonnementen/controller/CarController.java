@@ -2,8 +2,10 @@ package com.example.bilabonnementen.controller;
 
 import com.example.bilabonnementen.model.Car;
 import com.example.bilabonnementen.model.Employee;
+import com.example.bilabonnementen.model.Leasing_contract;
 import com.example.bilabonnementen.service.CarService;
 import com.example.bilabonnementen.service.EmployeeService;
+import com.example.bilabonnementen.service.Leasing_contractService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Map;
+
 @Controller
 public class CarController {
 
@@ -21,6 +25,8 @@ public class CarController {
     CarService carService;
     @Autowired
     EmployeeService employeeService;
+    @Autowired
+    Leasing_contractService leasingContractService;
 
 
     //Se alle biler
@@ -92,10 +98,13 @@ public class CarController {
 
         model.addAttribute("admin", adminLogin);
 
-        double totalPrice = carService.calculateTotalPriceOfRentedCars();
+        double totalPrice = carService.calculateTotalPriceOfRentedCars(); //sammenlagt bil pris pr måned
         model.addAttribute("totalPrice", totalPrice);
 
-        List<Car> rentedCars = carService.getRentedCars(); // Retrieve rented cars
+        double totalPrices = leasingContractService.calculateTotalPriceOfLeasingContracts();  // sammenlagt kontrakt pris
+        model.addAttribute("totalPrices", totalPrices);
+
+        List<Map<String, Object>> rentedCars = carService.TotalpriceData(); // Join tabellen
         model.addAttribute("rentedCars", rentedCars);
 
         return "sammenlagtpris";

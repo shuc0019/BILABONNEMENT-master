@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 
@@ -89,7 +90,14 @@ public class CarRepo {
         String sql = "UPDATE car SET flow = 2 WHERE vehicle_number = ?";
         template.update(sql, vehicle_number);
     }
- 
 
+    public List<Map<String, Object>> getTotalPricesData() {
+        String sql = "SELECT car.vehicle_number, car.frame_number, car.brand, car.flow, leasing_contract.contract_id," +
+                " leasing_contract.username, leasing_contract.customer_id, leasing_contract.start_date, leasing_contract.end_date, car.price" +
+                " AS car_price, leasing_contract.price AS contract_price " +
+                "FROM car " +
+                "JOIN leasing_contract ON car.vehicle_number = leasing_contract.vehicle_number";
+        return template.queryForList(sql);
+    }
 
 }

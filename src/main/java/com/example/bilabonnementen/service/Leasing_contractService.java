@@ -24,11 +24,11 @@ public class Leasing_contractService {
         leasing_contractRepo.createLeasingContract(leasing_contract);
     }
     public double calculateTotalPriceOfLeasingContracts() {
-        List<Leasing_contract> leasingContracts = leasing_contractRepo.fetchAll();
+        List<Leasing_contract> leasingContracts = leasing_contractRepo.fetchAll(); //Henter alle kontrakter
         double totalPrice = 0.0;
 
         for (Leasing_contract contract : leasingContracts) {
-            totalPrice += contract.getPrice();
+            totalPrice += contract.getPrice();// Tilføj kontrakt pris til den totale pris
         }
 
         return totalPrice;
