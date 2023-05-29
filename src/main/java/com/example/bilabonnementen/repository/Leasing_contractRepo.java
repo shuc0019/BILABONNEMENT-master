@@ -20,6 +20,12 @@ public class Leasing_contractRepo {
         RowMapper<Leasing_contract> rowMapper = new BeanPropertyRowMapper<>(Leasing_contract.class);
         return jdbcTemplate.query(sql, rowMapper);
     }
+    public List<Leasing_contract> fetchFlow1(){
+        String sql = "SELECT * FROM leasing_contract Join car using(vehicle_number) where flow = 1;";
+        RowMapper<Leasing_contract> rowMapper = new BeanPropertyRowMapper<>(Leasing_contract.class);
+        return jdbcTemplate.query(sql, rowMapper);
+    }
+
 
     public void createLeasingContract(Leasing_contract leasingContract) {
         String sql = "INSERT INTO leasing_contract (start_date, end_date, price, vehicle_number, username, customer_id) " +
@@ -30,6 +36,16 @@ public class Leasing_contractRepo {
 
     public Leasing_contract findContractByid(int contract_id) {
         String sql = "Select * FROM leasing_contract WHERE contract_id = ?";
+        RowMapper< Leasing_contract> rowMapper = new BeanPropertyRowMapper<>( Leasing_contract.class);
+        List< Leasing_contract> users = jdbcTemplate.query(sql, rowMapper, contract_id);
+        if (users.size() == 1) {
+            return users.get(0);
+        } else {
+            return null;
+        }
+    }
+    public Leasing_contract findContractByidAndFlow(int contract_id) {
+        String sql = "SELECT * FROM leasing_contract Join car using(vehicle_number) where flow = 1 and contract_id = ?";
         RowMapper< Leasing_contract> rowMapper = new BeanPropertyRowMapper<>( Leasing_contract.class);
         List< Leasing_contract> users = jdbcTemplate.query(sql, rowMapper, contract_id);
         if (users.size() == 1) {

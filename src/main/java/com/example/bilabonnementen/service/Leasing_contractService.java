@@ -18,6 +18,9 @@ public class Leasing_contractService {
     public List <Leasing_contract> fetchAll() {
         return leasing_contractRepo.fetchAll();
     }
+    public List <Leasing_contract> fetchFlow1() {
+        return leasing_contractRepo.fetchFlow1();
+    }
 
 
     public void addLeasingContract(Leasing_contract leasing_contract){
@@ -35,5 +38,8 @@ public class Leasing_contractService {
     }
     public Leasing_contract findId(int id){
         return leasing_contractRepo.findContractByid(id);
+    }
+    public Leasing_contract findIdAndFlow(int id){
+        return leasing_contractRepo.findContractByidAndFlow(id);
     }
 }

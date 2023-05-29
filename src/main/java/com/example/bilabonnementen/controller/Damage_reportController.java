@@ -48,7 +48,7 @@ public class Damage_reportController {
         if (!employeeService.checkSession(session)){
             return "redirect:/";
         }
-        List<Leasing_contract> leasing_contracts = leasing_contractService.fetchAll();
+        List<Leasing_contract> leasing_contracts = leasing_contractService.fetchFlow1();
         model.addAttribute("contract", leasing_contracts);
 
 
@@ -58,8 +58,13 @@ public class Damage_reportController {
 
 
     @PostMapping("/oprettelseskaderapport")
-    public String opretskaderapport(Model model, HttpSession session, Integer contract_id){
-        Leasing_contract leasing_contract = leasing_contractService.findId(contract_id);
+    public String opretskaderapport(Model model, HttpSession session, Integer contract_id, RedirectAttributes redirectAttributes){
+        Leasing_contract leasing_contract = leasing_contractService.findIdAndFlow(contract_id);
+
+        if (leasing_contract==null){
+            redirectAttributes.addFlashAttribute("fejl", "Vælg venligst et af kontrakterne nedenfor");
+            return "redirect:/skaderapportopret";
+        }
         session.setAttribute("contract", leasing_contract.getContract_id());
         session.setAttribute("leasingcontract", leasing_contract);
         return "redirect:/opretskaderapport";
