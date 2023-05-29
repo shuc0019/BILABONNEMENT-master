@@ -96,7 +96,7 @@ public class CarRepo {
                 " leasing_contract.username, leasing_contract.customer_id, leasing_contract.start_date, leasing_contract.end_date, car.price" +
                 " AS car_price, leasing_contract.price AS contract_price " +
                 "FROM car " +
-                "JOIN leasing_contract ON car.vehicle_number = leasing_contract.vehicle_number";
+                "JOIN leasing_contract ON car.vehicle_number = leasing_contract.vehicle_number WHERE flow = 1";
         return template.queryForList(sql);
     }
 

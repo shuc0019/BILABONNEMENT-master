@@ -28,10 +28,10 @@
 <h1 th:if="${admin.getIs_admin()==0}">Kan kun ses af admin.</h1>
 <body th:if="${admin.getIs_admin()==1}" >
     <h1>
-        <p th:if="${admin.getIs_admin()==1}" >Sammenlagt pris for udlejet biler: <span th:text="${totalPrices}"></span></p>
+        <p th:if="${admin.getIs_admin()==1}" >Sammenlagt totalpris for udlejet biler: <span th:text="${totalPrices}"></span> dkk</p>
     </h1>
     <h1>
-        <p th:if="${admin.getIs_admin()==1}" >Sammenlagt pris pr. måned for udlejet biler: <span th:text="${totalPrice}"></span></p>
+        <p th:if="${admin.getIs_admin()==1}" >Sammenlagt pris pr. måned for udlejet biler: <span th:text="${totalPrice}"></span> dkk</p>
     </h1>
 
     <div class="search-container">
