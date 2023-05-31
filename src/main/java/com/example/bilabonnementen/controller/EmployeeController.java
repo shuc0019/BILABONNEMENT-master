@@ -79,16 +79,11 @@ public class EmployeeController {
             return "redirect:/";
         }
         Employee employee = employeeService.findByUsername(username);
-        String adminLogin = (String) session.getAttribute("username");
-        Employee adminEmployee =employeeService.findAdminUser(adminLogin);
-        if (adminEmployee==null) {
-            return"redirect:/personale";
-        } else {
             model.addAttribute("employee", employee);
             session.setAttribute("urlusername", employee.getUsername());
             return "opdaterPersonale";
         }
-    }
+
 
 
     //opdaterer personale oplysninger
