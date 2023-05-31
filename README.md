@@ -8,7 +8,7 @@ Hannan Noor
 GitHub brugernavn: HannanxNoor
 https://github.com/hannanxnoor
 
-Shucabe
+Shucayb
 GitHub brugernavn: shuc0019
 https://github.com/shuc0019/
 
