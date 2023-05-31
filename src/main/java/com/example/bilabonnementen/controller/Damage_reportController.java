@@ -31,7 +31,7 @@ public class Damage_reportController {
 
     @Autowired
     EmployeeService employeeService;
-
+// returner en liste af skaderapporter
     @GetMapping("/skaderapport")
     public String ShowDamage_Report(Model model, HttpSession session){
         if (!employeeService.checkSession(session)){
@@ -43,6 +43,7 @@ public class Damage_reportController {
 
     }
 
+    //returner en liste af leasingcontract joined med car hvor flow er 1
     @GetMapping("skaderapportopret")
     public String createdamageReport(Model model, HttpSession session,  Integer contract_id) {
         if (!employeeService.checkSession(session)){
@@ -57,6 +58,7 @@ public class Damage_reportController {
     }
 
 
+    //returner en liste af leasingcontract joined med car hvor flow er 1, og contract id skal vælges
     @PostMapping("/oprettelseskaderapport")
     public String opretskaderapport(Model model, HttpSession session, Integer contract_id, RedirectAttributes redirectAttributes){
         Leasing_contract leasing_contract = leasing_contractService.findIdAndFlow(contract_id);
@@ -69,6 +71,7 @@ public class Damage_reportController {
         session.setAttribute("leasingcontract", leasing_contract);
         return "redirect:/opretskaderapport";
     }
+    //Returner en liste af skader
     @GetMapping("opretskaderapport")
     public String visSkadeRapport(HttpSession session, Model model) {
         if (!employeeService.checkSession(session)){
@@ -82,7 +85,7 @@ public class Damage_reportController {
         return "opretskaderapport";
     }
 
-
+// vælg skade og Udregn totalprisen for skaderapport
     @PostMapping("/tilføjRapport")
     public String addDamageReport(Model model, Integer category_id, RedirectAttributes redirectAttributes, Integer finish, HttpSession session, Damage_report damage_report) {
 
@@ -113,7 +116,7 @@ public class Damage_reportController {
 
 
 
-
+// Hente en kvittering af vores tidligere inputs
     @GetMapping("/kvitteringSkadeRapport")
         public String kvittering(HttpSession session, Model model){
         if (!employeeService.checkSession(session)){
@@ -130,6 +133,7 @@ public class Damage_reportController {
         return "kvitteringSkadeRapport";
         }
 
+        // bekræft din kvittering og tilføj din skaderapport
     @PostMapping("/Bekræftkvittering")
     public String kvitteringForDamageReport(Model model, RedirectAttributes redirectAttributes, Integer finish, HttpSession session, Damage_report damage_report) {
        Leasing_contract leasing_contract = (Leasing_contract) session.getAttribute("leasingcontract");
@@ -138,6 +142,7 @@ public class Damage_reportController {
       return "redirect:/skaderapport";
     }
 
+    // opdater skaderapport knapper
     @GetMapping("/updateOneDamageReport/{report_id}")
     public String updateDamage(@PathVariable("report_id") int report_id, Model model, HttpSession session) {
         if (!employeeService.checkSession(session)){
@@ -148,11 +153,14 @@ public class Damage_reportController {
         return "opdaterSkadeRapport";
     }
 
+    // opdater skaderapporten
     @PostMapping("/reportUpdate")
     public String updateReportToList(Damage_report damage_report, int report_id) {
         damage_reportService.updateReport(damage_report, report_id);
         return "redirect:/skaderapport";
     }
+
+    // Slet skaderapporten
     @GetMapping("/deleteOneReport/{report_id}")
     public String deleteOneReport(@PathVariable("report_id") int report_id, HttpSession session){
         boolean deleted = damage_reportService.deleteReport(report_id);

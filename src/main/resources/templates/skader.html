@@ -21,18 +21,19 @@
             margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            box-sizing: border-box; /* Add this line to include padding and border in the element's total width */
+            box-sizing: border-box;
         }
 
     </style>
 
 </head>
+
+    <h1>Prisliste på skader</h1>
 <a href="tilføjSkade">
-    <button class="addCarButton">
+    <button class="addCarButton" >
         Tilføj skade
     </button>
 </a>
-    <h1>Prisliste på skader</h1>
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Søg...">
     </div>
@@ -45,7 +46,7 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Loop through the cars and populate the table rows -->
+
         <tr th:each="damages:${category}">
             <td th:text="${damages.category_id}"></td>
             <td th:text="${damages.damage_name}"></td>

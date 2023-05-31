@@ -18,7 +18,7 @@
           margin-top: 5px;
           border: 1px solid #ccc;
           border-radius: 4px;
-          box-sizing: border-box; /* Add this line to include padding and border in the element's total width */
+          box-sizing: border-box;
       }
   </style>
 </head>
@@ -71,7 +71,7 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Loop through the cars and populate the table rows -->
+
         <tr th:each="car: ${available}">
             <td th:text="${car.vehicle_number}"></td>
             <td th:text="${car.frame_number}"></td>

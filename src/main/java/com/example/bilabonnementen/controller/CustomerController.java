@@ -21,6 +21,8 @@ public class CustomerController {
     @Autowired
     EmployeeService employeeService;
 
+
+// Returnere liste af alle kunder
     @GetMapping("/opretlejekontrakt")
     public String lejekontrakt ( Model model, HttpSession session){
         if (!employeeService.checkSession(session)){
@@ -32,6 +34,8 @@ public class CustomerController {
         model.addAttribute("customers", customers);
         return "opretLejekontrakt";
     }
+
+    // Opretter kunde, returnere bekræftelse ved oprettelse af kunde
     @PostMapping("/opretenkunde")
     public String createCustomer (Customer c, Model model, HttpSession session){
         customerService.createCustomer(c);
@@ -41,6 +45,7 @@ public class CustomerController {
         return "redirect:/opretNyKundeConfirmed";
     }
 
+    // HttpSession check
     @GetMapping("/opretNyKunde")
     public String CreateNewCustomer(HttpSession session){
         if (!employeeService.checkSession(session)){
@@ -48,6 +53,8 @@ public class CustomerController {
         }
         return "opretNyKunde";
     }
+
+    // Returnere den oprettede kunde
 
     @GetMapping("/opretNyKundeConfirmed")
     public String newCustomerCreated(HttpSession session, Model model){
@@ -63,6 +70,7 @@ public class CustomerController {
     }
 
 
+    // modtager customer object baseret på id, tilføjer kundeobjekt som attribut til modellen.
     @GetMapping("/opdaterkunde/{customer_id}")
     public String updateCustomer(@PathVariable("customer_id") int customer_id, Model model, HttpSession session){
         if (!employeeService.checkSession(session)){
@@ -73,12 +81,11 @@ public class CustomerController {
         return "opdaterKunde";
     }
 
+    // Modtager opdateret kundeinfo, kalder opdatermetode og redirecter til opretlejekontrakt ved udførelse
     @PostMapping("/opdaterkunden")
     public String updateTheCustomer(Customer c,int customer_id){
         customerService.updateCustomer(c, customer_id);
         return "redirect:/opretlejekontrakt";
     }
 
-
-    //TODO lav færdig imorgen
 }
