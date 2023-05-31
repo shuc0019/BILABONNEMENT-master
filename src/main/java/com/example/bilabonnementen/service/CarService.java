@@ -36,6 +36,8 @@ public class CarService {
     public Car findId(int id){
         return carRepo.findCarByid(id);
     }
+
+    // bruger list til at indholde bilerne og udfra dette beregner og summere alle bilernes pris sammen.
     public double calculateTotalPriceOfRentedCars() {
         List<Car> rentedCars = carRepo.fetchRentedCars(); // Hent de udlejet biler
         double totalPrice = 0.0;
