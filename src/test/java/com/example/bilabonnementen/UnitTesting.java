@@ -10,9 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-class BilabonnementenApplicationTests {
+class UnitTesting {
 
-/*
+
 	@Autowired
 	CarRepo carRepo;
 	@Test
@@ -44,6 +44,26 @@ void testForOmBilenBliverTiltøjetTilDatabasen(){
 		Assertions.assertEquals(afterAdded, beforeAdded-1);
 }
 @Test
+void testForOpdaterBilen(){
+    List<Car> carsBefore = carRepo.fetchAll();
+    Car car = new Car();
+    car.setBrand("bmw");
+    car.setFlow(0);
+    car.setColor("black");
+    car.setMake(2003);
+    car.setModel("a8");
+    car.setMotor("l2");
+    car.setOdometer(0);
+    car.setFuel_type("benz");
+    car.setGear_type("manual");
+    car.setPrice(2222);
+    car.setFrame_number("662222");
+    carRepo.updateCar(car , car.getVehicle_number());
+    List<Car> carsAfter = carRepo.fetchAll();
+    int afterAdded = carsAfter.size();
+
+}
+@Test
 	void testForDelete() {
 		List<Car> carsBefore = carRepo.fetchAll();
 		int beforeDeleted = carsBefore.size();
@@ -56,6 +76,3 @@ void testForOmBilenBliverTiltøjetTilDatabasen(){
 		//Succesfully
 	}
 	}
-
- */
-}
