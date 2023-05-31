@@ -29,10 +29,10 @@ public class CarController {
     Leasing_contractService leasingContractService;
 
 
-    //Se alle biler
+    // Se liste over alle biler
     @GetMapping("/seallebiler")
     public String car(Model model, HttpSession session) {
-        if (!employeeService.checkSession(session)){
+        if (!employeeService.checkSession(session)) {
             return "redirect:/";
         }
         List<Car> cars = carService.fetchAll();
@@ -40,8 +40,8 @@ public class CarController {
         return "seallebiler";
     }
 
-    //Se alle biler der er ledig
 
+    // Se liste over alle biler
     @GetMapping("/ledigbiler")
     public String getAvailableCars(Model model, HttpSession session) {
 
@@ -52,6 +52,8 @@ public class CarController {
         model.addAttribute("available", availableCars);
         return "ledigbiler";
     }
+
+    // Metoden sender dig til en side hvor du kan tilføje en bil
     @GetMapping("/tilføjBiler")
     public String addCar(HttpSession session) {
         if (!employeeService.checkSession(session)){
@@ -59,11 +61,17 @@ public class CarController {
         }
         return "tilføjBiler";
     }
+
+    // Her kan du udfylde informationer om en bil og den bliver gemt i listen i databasen
     @PostMapping("/createNew")
     public String addCartoList( Car car, HttpSession session) {
         carService.addCar(car);
         return "redirect:/seallebiler";
     }
+
+
+
+    // Her slettes en bil baseret på vehicle number, og der bliver omdigeret til en opdateret liste af biler
     @GetMapping("/deleteOne/{vehicle_number}")
     public String deleteOne(@PathVariable("vehicle_number") int vehicle_number, HttpSession session){
         boolean deleted = carService.deleteCar(vehicle_number);
@@ -74,6 +82,7 @@ public class CarController {
         }
     }
 
+    //Du bliver sendt til siden hvor du kan opdater oplysninger på en bil
     @GetMapping("/opdaterBilen/{vehicle_number}")
     public String updateCar(@PathVariable("vehicle_number") int vehicle_number, Model model, HttpSession session) {
         if (!employeeService.checkSession(session)){
@@ -84,12 +93,15 @@ public class CarController {
         return "opdaterBil";
     }
 
+    // Denne metode håndtere selve oplysningerne af en bil, når formularen bliver sendt
     @PostMapping("/carupdate")
     public String updateCarToList(Car car, int vehicle_number) {
         carService.updateCar(car, vehicle_number);
         return "redirect:/seallebiler";
     }
-    @GetMapping("/sammenlagtpris")
+
+
+    @GetMapping("/sammenlagtPris")
     public String getTotalPrice(Model model, HttpSession session) {
         if (!employeeService.checkSession(session)){
             return "redirect:/";
@@ -101,14 +113,12 @@ public class CarController {
         double totalPrice = carService.calculateTotalPriceOfRentedCars(); //sammenlagt bil pris pr måned
         model.addAttribute("totalPrice", totalPrice);
 
-        double totalPrices = leasingContractService.calculateTotalPriceOfLeasingContracts();  // sammenlagt kontrakt pris
+        double totalPrices = leasingContractService.calculateTotalPriceOfLeasingContracts();  //sammenlagt bil pris pr måned.
         model.addAttribute("totalPrices", totalPrices);
 
-        List<Map<String, Object>> rentedCars = carService.TotalpriceData(); // Join tabellen
+        List<Map<String, Object>> rentedCars = carService.TotalpriceData(); //sammenlagt bil pris pr måned
         model.addAttribute("rentedCars", rentedCars);
 
         return "sammenlagtPris";
     }
-
-
 }
