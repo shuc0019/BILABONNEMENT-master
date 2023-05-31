@@ -16,20 +16,21 @@ public class CarRepo {
     @Autowired
     JdbcTemplate template;
 
-
+// Returner en liste af  biler
     public List<Car> fetchAll() {
         String sql = "SELECT * FROM Car";
         RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
         return template.query(sql, rowMapper);
     }
 
-
+//returner en liste af ledig biler
     public List<Car> fetchAvailable() {
         String sql = "SELECT * FROM Car WHERE flow = 0";
         RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
         return template.query(sql, rowMapper);
     }
 
+    // Tilføj bil
     public void addCar(Car c) {
         String sql = "INSERT INTO car (vehicle_number,frame_number, " +
                 "brand, model, make, color, price, flow, odometer, fuel_type, motor, gear_type)" +
@@ -39,25 +40,13 @@ public class CarRepo {
                 c.getColor(), c.getPrice(), c.getFlow(), c.getOdometer(), c.getFuel_type(), c.getMotor(), c.getGear_type());
     }
 
-    public Car findAvailableCarByVehicleNum(int vehicle_number, int flow) {
-
-        String sql = "SELECT * FROM car WHERE vehicle_number = ? AND flow = 0";
-        RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
-        Car c = template.queryForObject(sql, rowMapper, vehicle_number, flow);
-        return c;
-    }
-
+    //Slet bil
     public Boolean deleteCar(int vehicle_number) {
         String sql = "DELETE FROM car WHERE vehicle_number = ?";
         return template.update(sql, vehicle_number) > 0;
     }
 
-    // TODO delete car (Admin feature)
-    public void deleteCar(String vehicleNumber) {
-        String sql = "DELETE FROM car WHERE vehicle_number = ?";
-        template.update(sql, vehicleNumber);
-    }
-
+    // find en bil hvor vehicle_number er ?
     public Car findCarByid(int vehicle_number) {
         String sql = "Select * FROM car WHERE vehicle_number = ?";
         RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
