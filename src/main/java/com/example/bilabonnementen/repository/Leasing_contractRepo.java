@@ -12,6 +12,7 @@ import java.util.List;
 
 @Repository
 public class Leasing_contractRepo {
+    // Udarbejdet af Shucayb,  Hassan og Yasin
     @Autowired
     JdbcTemplate jdbcTemplate;
 

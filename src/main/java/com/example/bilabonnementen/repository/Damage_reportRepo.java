@@ -13,6 +13,7 @@ import java.util.List;
 
 @Repository
 public class Damage_reportRepo {
+    // Udarbejdet af Shucayb,  Hassan og Yasin
     @Autowired
     JdbcTemplate template;
 

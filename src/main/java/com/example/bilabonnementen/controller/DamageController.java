@@ -16,6 +16,7 @@ import java.util.List;
 
 @Controller
 public class DamageController {
+    //Shucayb & Susmita
 
     @Autowired
     DamageService damageService;

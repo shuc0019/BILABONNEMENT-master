@@ -19,6 +19,7 @@ import java.util.List;
 
 @Controller
 public class LeasingContractController {
+    // Udarbejdet af Shucayb & Hassan
 
     int number;
     @Autowired

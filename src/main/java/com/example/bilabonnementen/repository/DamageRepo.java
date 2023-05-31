@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public class DamageRepo {
+    // Udarbejdet af Yasin & Susmita
     @Autowired
     JdbcTemplate template;
 

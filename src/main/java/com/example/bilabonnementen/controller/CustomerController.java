@@ -16,6 +16,7 @@ import java.util.List;
 
 @Controller
 public class CustomerController {
+    // Udarbejdet af Shucayb og Hassan
     @Autowired
     CustomerService customerService;
     @Autowired

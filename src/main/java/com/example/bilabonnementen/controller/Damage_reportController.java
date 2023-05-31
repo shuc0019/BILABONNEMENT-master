@@ -20,6 +20,7 @@ import java.util.List;
 
 @Controller
 public class Damage_reportController {
+    //Udarbejdet af Shucayb & Hassan
     @Autowired
     Damage_reportService damage_reportService;
     @Autowired

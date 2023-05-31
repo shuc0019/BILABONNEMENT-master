@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public class EmployeeRepo {
+    // Udarbejdet af Shucayb,  Hassan og Yasin
     @Autowired
     JdbcTemplate template;
 

@@ -21,6 +21,7 @@ import java.util.Map;
 @Controller
 public class CarController {
 
+    // Udarbejdet af Shucayb og Hannan
     @Autowired
     CarService carService;
     @Autowired

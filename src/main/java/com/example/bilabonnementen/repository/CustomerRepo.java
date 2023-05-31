@@ -12,6 +12,7 @@ import java.util.List;
 
 @Repository
 public class CustomerRepo {
+    // Udarbejdet af Shucayb,  Hassan og Yasin
     @Autowired
     JdbcTemplate template;
 

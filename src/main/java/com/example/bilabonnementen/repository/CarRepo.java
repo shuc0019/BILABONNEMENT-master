@@ -13,6 +13,7 @@ import java.util.Map;
 @Repository
 
 public class CarRepo {
+    // Udarbejdet af Shucayb og Hannan
     @Autowired
     JdbcTemplate template;
 
