@@ -105,7 +105,8 @@ public class LeasingContractController {
     @PostMapping("/createLeasingContract")
     public String createLease(LocalDate start_date, LocalDate end_date, Model model, HttpSession session, int customer_id, String username, RedirectAttributes redirectAttributes) {
         int numb = (int) session.getAttribute("numb");
-        Car car = carService.findId(numb);
+        Car car = carService.findId(numb); // sekvens step 1.1.1
+
         model.addAttribute("opdater", car);
         model.addAttribute("username", username);
         Period period = Period.between(start_date, end_date);
@@ -138,7 +139,7 @@ public class LeasingContractController {
             session.setAttribute("endDate", end_date);
             session.setAttribute("customer", customer_id);
             session.setAttribute("username", username);
-            Customer customer = customerService.findId(customer_id);
+            Customer customer = customerService.findId(customer_id); // sekvens 1.2 og efter
             session.setAttribute("customer_id", customer);
             session.setAttribute("customername", customer.getFull_name());
 
