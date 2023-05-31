@@ -47,3 +47,13 @@ Naviger til kildekodens rodmappe.
 Kør følgende kommando for at kompilere og bygge systemet: mvn clean install.
 Når byggeprocessen er færdig, kan du køre systemet med følgende kommando: mvn spring-boot:run.
 Systemet er nu kørende. Du kan få adgang til Bilabonnement via din webbrowser ved at åbne følgende URL:[ ---------------](http://20.229.245.221:3344)
+
+Her er de loginoplysninger, vi har oprettet:
+* Admin-login:
+    * Brugernavn: cay
+    * Kodeord: cay
+    * Brugernavn: hardy
+    * Kodeord: hardy
+* Normal medarbejder-login:
+    * Brugernavn: ikkeadmin
+    * Kodeord: ikkeadmin
