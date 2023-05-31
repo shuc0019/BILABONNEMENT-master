@@ -17,20 +17,20 @@ public class Damage_reportRepo {
     JdbcTemplate template;
 
 
-    // Hente alle skaderapporter fra databasen
+    // Hente alle skaderapporter fra databasen.
     public List <Damage_report> fetchAll(){
         String sql = "SELECT * FROM damage_report";
         RowMapper rowMapper = new BeanPropertyRowMapper<>(Damage_report.class);
         return template.query(sql, rowMapper);
     }
 
-    // Formålet er at insætte data fra Damage_report objektet ind i "damage_report" tabellen i databasen ved SQL-forespørgsel
+    // Formålet er at insætte data fra Damage_report objektet ind i "damage_report" tabellen i databasen ved SQL-forespørgsel.
     public void CreateDamage_report(Damage_report d) {
         String sql = "INSERT INTO damage_report (report_id,total_price,contract_id) VALUES (?,?,?)";
         template.update(sql, d.getReport_id(),d.getTotal_price(),d.getContract_id());
     }
 
-    // Update en eksiterende skade rapport i databsen, værdierne der opdateres er total_price, contract_ id fra en repport id.
+    // Update en eksiterende skade rapport i databsen, værdierne der opdateres er total_price, contract_ id fra en repport id
     public void updateDamageReport(Damage_report damageReport, int report_id ){
         String sql = "UPDATE damage_report SET total_price= ?, contract_id= ? where report_id=?";
         template.update(sql, damageReport.getTotal_price(), damageReport.getContract_id(), damageReport.getReport_id());
@@ -51,7 +51,7 @@ public class Damage_reportRepo {
 
 
 
-    // Sletter en skaderapport fra databasen baseret på report id, returnere en boolean værdi  der angiver det vellykket.
+    // Sletter en skaderapport fra databasen baseret på report id, returnere en boolean værdi  der angiver det vellykket
     public boolean deleteReport(int report_id){
         String sql= "DELETE FROM damage_report WHERE report_id=?";
         return template.update(sql,report_id)>0;
