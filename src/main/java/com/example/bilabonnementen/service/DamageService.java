@@ -38,9 +38,6 @@ public class DamageService {
         return damageRepo.findSpecificDamagePrice(category_id);
     }
 
-    public void updateSpecificDamage(Specific_damage specific_damage){
-        damageRepo.updateSpecificDamage(specific_damage);
 
-    }
 
 }
