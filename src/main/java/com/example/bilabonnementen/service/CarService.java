@@ -51,9 +51,6 @@ public class CarService {
         return totalPrice;
     }
 
-    public List <Car> getRentedCars(){
-        return carRepo.fetchRentedCars();
-    }
 
     public void updateAfterDamageReport(int id){
         carRepo.updateAfterDamageReport(id);

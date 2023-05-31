@@ -36,9 +36,7 @@ public class Leasing_contractService {
 
         return totalPrice;
     }
-    public Leasing_contract findId(int id){
-        return leasing_contractRepo.findContractByid(id);
-    }
+
     public Leasing_contract findIdAndFlow(int id){
         return leasing_contractRepo.findContractByidAndFlow(id);
     }

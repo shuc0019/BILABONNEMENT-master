@@ -69,11 +69,6 @@ public class DamageRepo {
     }
 
 
-    // tilføj specifikke skader metoden bliver ikke brugt endnu!
-    public void addSpecificDamage(Specific_damage specific_damage) {
-        String sql = "INSERT INTO specific_damage (specific_damage_id, report_id, category_id) VALUES (?,?,?)";
-        template.update(sql, specific_damage.getSpecific_damage_id(), specific_damage.getReport_id(), specific_damage.getCategory_id());
-    }
 
     // Metoden finder prisen på en bestemt skadeskategori i databasen baseret på kategori-id.
     public Double findSpecificDamagePrice(int category_id) {
@@ -83,17 +78,6 @@ public class DamageRepo {
         // Udfører SQL-forespørgslen ved hjælp af JdbcTemplate-objektet og returnerer prisen som et Double-objekt.
         return template.queryForObject(sql, Double.class, category_id);
     }
-
-
-    // Metoden opdaterer en specifik skade i databasen.
-    public void updateSpecificDamage(Specific_damage specific_damage) {
-        // Definerer en SQL-forespørgsel for at opdatere den specifikke skade med de nye værdier.
-        String sql = "UPDATE specific_damage SET specific_damage_id = ?, report_id= ?, category_id= ? where specific_damage_id=?";
-
-        // Udfører SQL-forespørgslen ved hjælp af JdbcTemplate-objektet og opdaterer den specifikke skade med de angivne værdier.
-        template.update(sql, specific_damage.getSpecific_damage_id(), specific_damage.getReport_id(), specific_damage.getCategory_id(), specific_damage.getSpecific_damage_id());
-    }
-
 
 }
 
