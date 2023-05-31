@@ -16,6 +16,7 @@ public class CarRepo {
     @Autowired
     JdbcTemplate template;
 
+
     public List<Car> fetchAll() {
         String sql = "SELECT * FROM Car";
         RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
