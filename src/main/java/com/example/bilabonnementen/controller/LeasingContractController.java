@@ -31,6 +31,7 @@ public class LeasingContractController {
     @Autowired
     EmployeeService employeeService;
 
+    //metoden for oprettelsen af en lejekontrakt de ledige biler vises.
     @GetMapping("/opretKontrakt")
     public String leasingKontrakt(Model model, HttpSession session) {
         if (!employeeService.checkSession(session)){
@@ -41,6 +42,8 @@ public class LeasingContractController {
 
         return "opretKontrakt";
     }
+
+    //viderefortsættelse af øvre metode hvor der bliver inputvaliderde.
 
     @PostMapping("/chooseCar")
     public String seBiler(Model model, int vehicle_number, HttpSession session, RedirectAttributes redirectAttributes) {
@@ -60,6 +63,8 @@ public class LeasingContractController {
             }
         }
     }
+
+    //metode hvor der bliver vist en bekræftelsesmenu
     @GetMapping("/selejekontrakt")
     public String Leasing_contracts(Model model, HttpSession session){
         if (!employeeService.checkSession(session)){
@@ -74,7 +79,7 @@ public class LeasingContractController {
     }
 
 
-
+    //metode hvor der bliver sammlet nogle oplysninger, fra medarbejderen og bilen.
     @GetMapping("/lej")
     public String leasing(Model model, HttpSession session) {
         if (!employeeService.checkSession(session)){
@@ -95,6 +100,8 @@ public class LeasingContractController {
         }
     }
 
+
+    //fortsættelse af metoden ovenfra hvor der herunder bliver inputvalideret i flere punkter.Såsom antal månender. totalprisen beregnes også
     @PostMapping("/createLeasingContract")
     public String createLease(LocalDate start_date, LocalDate end_date, Model model, HttpSession session, int customer_id, String username, RedirectAttributes redirectAttributes) {
         int numb = (int) session.getAttribute("numb");
@@ -139,6 +146,7 @@ public class LeasingContractController {
         }
     }
 
+    //metode der samler oplysningerne fra tidligere metode og viser en kvittering
     @GetMapping("/leaseconfirm")
     public String leasingConfirmation(Model model, HttpSession session) {
         if (!employeeService.checkSession(session)){
@@ -163,6 +171,7 @@ public class LeasingContractController {
         return "leaseconfirm";
     }
 
+    //videreførelse af tidligere metode, hvor man bliver vist en html side, og man kan trykke på confirm for at færdiggøre opretning
     @PostMapping("/createLeasingContractConfirmed")
     public String leasingAdd(Model model, HttpSession session, Leasing_contract leasing_contract) {
         String username = (String) session.getAttribute("username");
