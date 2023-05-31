@@ -60,27 +60,32 @@ public class CarRepo {
     }
 
 
-    // TODO update feature?
+    // opdater bil
     public void updateCar(Car c, int vehicle_number) {
         String sql = "UPDATE car SET frame_number = ?, brand = ?, model = ?, make = ?, color = ?, price = ?, flow = ?, odometer = ?, fuel_type = ?, motor = ?, gear_type = ? WHERE vehicle_number = ?";
         template.update(sql, c.getFrame_number(), c.getBrand(), c.getModel(), c.getMake(), c.getColor(), c.getPrice(), c.getFlow(), c.getOdometer(), c.getFuel_type(), c.getMotor(), c.getGear_type(), c.getVehicle_number());
     }
 
+    //gør en bil til flow 1 altså en udlejet bil
     public void updateAfterContract(int vehicle_number) {
         String sql = "UPDATE car SET flow = 1 WHERE vehicle_number = ?";
         template.update(sql, vehicle_number);
     }
+
+    //Hent udlejet biler (flow 1)
     public List<Car> fetchRentedCars() {
         String sql = "SELECT * FROM car WHERE flow = 1";
         RowMapper<Car> rowMapper = new BeanPropertyRowMapper<>(Car.class);
         return template.query(sql, rowMapper);
     }
 
+    // Gør en bil til flow 2 når der er blevet lavet en skaderapport
     public void updateAfterDamageReport(int vehicle_number) {
         String sql = "UPDATE car SET flow = 2 WHERE vehicle_number = ?";
         template.update(sql, vehicle_number);
     }
 
+    // lav en join tabel til sammenlagt priser
     public List<Map<String, Object>> getTotalPricesData() {
         String sql = "SELECT car.vehicle_number, car.frame_number, car.brand, car.flow, leasing_contract.contract_id," +
                 " leasing_contract.username, leasing_contract.customer_id, leasing_contract.start_date, leasing_contract.end_date, car.price" +
