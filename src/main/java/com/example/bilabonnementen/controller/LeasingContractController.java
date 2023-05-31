@@ -96,7 +96,7 @@ public class LeasingContractController {
     }
 
     @PostMapping("/createLeasingContract")
-    public String createLease(LocalDate start_date, LocalDate end_date, Model model, HttpSession session, int customer_id, String username) {
+    public String createLease(LocalDate start_date, LocalDate end_date, Model model, HttpSession session, int customer_id, String username, RedirectAttributes redirectAttributes) {
         int numb = (int) session.getAttribute("numb");
         Car car = carService.findId(numb);
         model.addAttribute("opdater", car);
@@ -105,10 +105,9 @@ public class LeasingContractController {
         int months = period.getMonths();
         int days = period.getDays();
         // check if lease period is at least 3 months
-        if (months < 3 && (months == 2 && days < 5 || months < 2)) {
-            model.addAttribute("error", "Lej perioden skal være mindst 3 måneder.");
-            return "lej";
-
+        if (months < 3) {
+            redirectAttributes.addFlashAttribute("error", "Lej perioden skal være mindst 3 måneder.");
+            return "redirect:/lej";
         } else {
             // Calculate leasing price
             double monthlyPrice = car.getPrice();

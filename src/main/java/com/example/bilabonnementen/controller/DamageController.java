@@ -23,6 +23,7 @@ public class DamageController {
     @Autowired
     EmployeeService employeeService;
 
+    // metode som hiver fat i damagekategorier
     @GetMapping("/skader")
     public String skaddeRapportListe(Model model, HttpSession session){
         if (!employeeService.checkSession(session)){
@@ -34,6 +35,7 @@ public class DamageController {
         return "skader";
     }
 
+    // metode som anvendes til at tilføje en ekstra skade
     @GetMapping("/tilføjSkade")
     public String addDamage(HttpSession session) {
         if (!employeeService.checkSession(session)){
@@ -41,12 +43,14 @@ public class DamageController {
         }
         return "tilføjSkade";
     }
+    // en fortsættelse og af overnævnte tilføje metode, hvor en html login forum displays
     @PostMapping("/createNewDamage")
     public String addDamagetoList( Damage_category d, HttpSession session) {
         damageService.addDamage(d);
         return "redirect:/skader";
     }
 
+    //metode som opdaterer en kategori, hvor vi først tager fat i id'en.
     @GetMapping("/updateOneDamage/{category_id}")
     public String updateDamage(@PathVariable("category_id") int category_id, Model model, HttpSession session) {
         if (!employeeService.checkSession(session)){
@@ -57,12 +61,14 @@ public class DamageController {
         return "opdaterSkade";
     }
 
+    //fortsættelse af overstående metode, hvor man ajourføre oplysningerne af den tildelte kategori.
     @PostMapping("/damageUpdate")
     public String updateDamageToList(Damage_category damage_category, int category_id) {
         damageService.updateCategory(damage_category, category_id);
         return "redirect:/skader";
     }
 
+    //metode til at slette en kategori i tilfælde af overflødighedhed eller lignende
     @GetMapping("/deleteOneDamage/{category_id}")
     public String deleteOne(@PathVariable("category_id") int category_id, HttpSession session){
         boolean deleted = damageService.deleteDamage(category_id);

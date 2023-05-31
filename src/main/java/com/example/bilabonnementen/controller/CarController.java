@@ -107,7 +107,7 @@ public class CarController {
         List<Map<String, Object>> rentedCars = carService.TotalpriceData(); // Join tabellen
         model.addAttribute("rentedCars", rentedCars);
 
-        return "sammenlagtpris";
+        return "sammenlagtPris";
     }
 
 
