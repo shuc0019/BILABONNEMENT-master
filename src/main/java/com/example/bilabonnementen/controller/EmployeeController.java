@@ -19,9 +19,15 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
+    /* Denne metode bruges til at håndtere en GET-anmodning til "/personale" -ruten,
+     og den returnerer en visningsside kaldet "personale", der viser alle medarbejdere.
+    */
     @GetMapping("/personale")
     public String getAllEmployees(Model model, HttpSession session) {
         if (!employeeService.checkSession(session)){
+
+            /* Før visningen kontrolleres sessionen for at sikre, at den er gyldig.
+      Hvis sessionen ikke er gyldig, omdirigeres brugeren til startsiden ("/").*/
             return "redirect:/";
         }
         List<Employee> employees = employeeService.fetchAllEmployees();
@@ -29,6 +35,8 @@ public class EmployeeController {
 
         model.addAttribute("admin", adminLogin);
 
+        /*     Derudover tilføjes en administratorkonto og en liste med medarbejdere til modellen,
+       som bruges til at opdatere visningen.*/
         model.addAttribute("employees", employees);
 
         return "personale";
