@@ -22,6 +22,7 @@ public class CustomerController {
     EmployeeService employeeService;
 
 
+
 // Returnere liste af alle kunder
     @GetMapping("/opretlejekontrakt")
     public String lejekontrakt ( Model model, HttpSession session){

@@ -88,7 +88,8 @@ public class CarRepo {
     // lav en join tabel til sammenlagt priser
     public List<Map<String, Object>> getTotalPricesData() {
         String sql = "SELECT car.vehicle_number, car.frame_number, car.brand, car.flow, leasing_contract.contract_id," +
-                " leasing_contract.username, leasing_contract.customer_id, leasing_contract.start_date, leasing_contract.end_date, car.price" +
+                " leasing_contract.username, leasing_contract.customer_id, leasing_contract.start_date, " +
+                "leasing_contract.end_date, car.price" +
                 " AS car_price, leasing_contract.price AS contract_price " +
                 "FROM car " +
                 "JOIN leasing_contract ON car.vehicle_number = leasing_contract.vehicle_number WHERE flow = 1";
