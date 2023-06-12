@@ -75,6 +75,7 @@ public class LeasingContractController {
         System.out.println(LC.size());
         double totalPrice = leasing_contractService.calculateTotalPriceOfLeasingContracts();
         model.addAttribute("totalPriceRent", totalPrice);
+
         return "seLejekontrakt";
     }
 
@@ -85,6 +86,11 @@ public class LeasingContractController {
         if (!employeeService.checkSession(session)){
             return "redirect:/";
         }
+        String id = (String) session.getAttribute("gettingCustomerId");
+        model.addAttribute("id", id);
+        session.removeAttribute("gettingCustomerId");
+        System.out.println(id);
+
         String username = (String) session.getAttribute("username");
         Integer numb = (Integer) session.getAttribute("numb");
         List<Customer> customers = customerService.fetchAll();
@@ -125,6 +131,9 @@ public class LeasingContractController {
                 double extraDaysPrice = dailyPrice * days;
                 totalPrice += Math.round(extraDaysPrice);
             }
+
+
+
             System.out.println(totalPrice);
             model.addAttribute("opdater", car);
             model.addAttribute("username", username);

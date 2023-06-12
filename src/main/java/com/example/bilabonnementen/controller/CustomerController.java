@@ -66,6 +66,7 @@ public class CustomerController {
         String value = customerService.findCustomerid(c.getEmail());
         model.addAttribute("customer", c);
         model.addAttribute("customerid",value);
+        session.setAttribute("gettingCustomerId", value);
         return "opretNyKundeConfirmed";
 
     }
@@ -79,6 +80,8 @@ public class CustomerController {
         }
         Customer customer=customerService.findId(customer_id);
         model.addAttribute("opdater", customer);
+
+
         return "opdaterKunde";
     }
 
