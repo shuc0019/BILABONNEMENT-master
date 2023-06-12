@@ -102,7 +102,7 @@ public class CarController {
     }
 
 
-    @GetMapping("/sammenlagtPris")
+    @GetMapping("/sammenlagtpris")
     public String getTotalPrice(Model model, HttpSession session) {
         if (!employeeService.checkSession(session)){
             return "redirect:/";
@@ -120,6 +120,6 @@ public class CarController {
         List<Map<String, Object>> rentedCars = carService.TotalpriceData(); //sammenlagt bil pris pr måned
         model.addAttribute("rentedCars", rentedCars);
 
-        return "sammenlagtPris";
+        return "sammenlagtpris";
     }
 }
